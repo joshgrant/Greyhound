@@ -15,4 +15,3 @@ FOUNDATION_EXPORT const unsigned char HeartbeatVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Heartbeat/PublicHeader.h>
 
-

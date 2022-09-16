@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03FF92BD28C3FCE400FC1956 /* Heartbeat.docc in Sources */ = {isa = PBXBuildFile; fileRef = 03FF92BC28C3FCE400FC1956 /* Heartbeat.docc */; };
+		030122E528D3DA2B008A9978 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E428D3DA2B008A9978 /* Algorithms */; };
+		030122E828D3DA4C008A9978 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E728D3DA4C008A9978 /* Collections */; };
+		030122EA28D3DA4C008A9978 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E928D3DA4C008A9978 /* DequeModule */; };
+		030122EC28D3DA4C008A9978 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 030122EB28D3DA4C008A9978 /* OrderedCollections */; };
+		030122EF28D3DA9F008A9978 /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122EE28D3DA9F008A9978 /* ComplexModule */; };
+		030122F128D3DA9F008A9978 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 030122F028D3DA9F008A9978 /* Numerics */; };
+		030122F328D3DA9F008A9978 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122F228D3DA9F008A9978 /* RealModule */; };
+		030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F428D3DC2A008A9978 /* Stock+Tests.swift */; };
+		030122FB28D3DD39008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F828D3DD39008A9978 /* Flow.swift */; };
+		030122FC28D3DD39008A9978 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122FA28D3DD39008A9978 /* Condition.swift */; };
+		030122FD28D3DD39008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F928D3DD39008A9978 /* Stock.swift */; };
+		030122FE28D3DD39008A9978 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F728D3DD39008A9978 /* Procedure.swift */; };
+		030122FF28D3DD39008A9978 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F628D3DD39008A9978 /* Event.swift */; };
+		0301230128D3DD40008A9978 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230028D3DD40008A9978 /* Vector.swift */; };
+		0301230328D3DE2B008A9978 /* Vector+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230228D3DE2B008A9978 /* Vector+Tests.swift */; };
+		0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */; };
+		0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230728D3E208008A9978 /* Real+Extensions.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
-		03FF92C828C3FCE500FC1956 /* HeartbeatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF92C728C3FCE500FC1956 /* HeartbeatTests.swift */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -24,11 +39,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030122F428D3DC2A008A9978 /* Stock+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Tests.swift"; sourceTree = "<group>"; };
+		030122F628D3DD39008A9978 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		030122F728D3DD39008A9978 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
+		030122F828D3DD39008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		030122F928D3DD39008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		030122FA28D3DD39008A9978 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		0301230028D3DD40008A9978 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		0301230228D3DE2B008A9978 /* Vector+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vector+Tests.swift"; sourceTree = "<group>"; };
+		0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real+Extensions+Tests.swift"; sourceTree = "<group>"; };
+		0301230728D3E208008A9978 /* Real+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real+Extensions.swift"; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
-		03FF92BC28C3FCE400FC1956 /* Heartbeat.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Heartbeat.docc; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03FF92C728C3FCE500FC1956 /* HeartbeatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +59,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030122EF28D3DA9F008A9978 /* ComplexModule in Frameworks */,
+				030122E828D3DA4C008A9978 /* Collections in Frameworks */,
+				030122F328D3DA9F008A9978 /* RealModule in Frameworks */,
+				030122E528D3DA2B008A9978 /* Algorithms in Frameworks */,
+				030122EC28D3DA4C008A9978 /* OrderedCollections in Frameworks */,
+				030122F128D3DA9F008A9978 /* Numerics in Frameworks */,
+				030122EA28D3DA4C008A9978 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0301230628D3E1FB008A9978 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0301230728D3E208008A9978 /* Real+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		03FF92AE28C3FCE400FC1956 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +110,13 @@
 			isa = PBXGroup;
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
-				03FF92BC28C3FCE400FC1956 /* Heartbeat.docc */,
+				030122FA28D3DD39008A9978 /* Condition.swift */,
+				030122F628D3DD39008A9978 /* Event.swift */,
+				030122F828D3DD39008A9978 /* Flow.swift */,
+				030122F728D3DD39008A9978 /* Procedure.swift */,
+				030122F928D3DD39008A9978 /* Stock.swift */,
+				0301230028D3DD40008A9978 /* Vector.swift */,
+				0301230628D3E1FB008A9978 /* Extensions */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -80,7 +124,9 @@
 		03FF92C628C3FCE500FC1956 /* HeartbeatTests */ = {
 			isa = PBXGroup;
 			children = (
-				03FF92C728C3FCE500FC1956 /* HeartbeatTests.swift */,
+				030122F428D3DC2A008A9978 /* Stock+Tests.swift */,
+				0301230228D3DE2B008A9978 /* Vector+Tests.swift */,
+				0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -113,6 +159,15 @@
 			dependencies = (
 			);
 			name = Heartbeat;
+			packageProductDependencies = (
+				030122E428D3DA2B008A9978 /* Algorithms */,
+				030122E728D3DA4C008A9978 /* Collections */,
+				030122E928D3DA4C008A9978 /* DequeModule */,
+				030122EB28D3DA4C008A9978 /* OrderedCollections */,
+				030122EE28D3DA9F008A9978 /* ComplexModule */,
+				030122F028D3DA9F008A9978 /* Numerics */,
+				030122F228D3DA9F008A9978 /* RealModule */,
+			);
 			productName = Heartbeat;
 			productReference = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */;
 			productType = "com.apple.product-type.framework";
@@ -162,6 +217,11 @@
 				Base,
 			);
 			mainGroup = 03FF92AE28C3FCE400FC1956;
+			packageReferences = (
+				030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+			);
 			productRefGroup = 03FF92B928C3FCE400FC1956 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -194,7 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FF92BD28C3FCE400FC1956 /* Heartbeat.docc in Sources */,
+				030122FC28D3DD39008A9978 /* Condition.swift in Sources */,
+				0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */,
+				030122FD28D3DD39008A9978 /* Stock.swift in Sources */,
+				0301230128D3DD40008A9978 /* Vector.swift in Sources */,
+				030122FE28D3DD39008A9978 /* Procedure.swift in Sources */,
+				030122FF28D3DD39008A9978 /* Event.swift in Sources */,
+				030122FB28D3DD39008A9978 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FF92C828C3FCE500FC1956 /* HeartbeatTests.swift in Sources */,
+				0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */,
+				0301230328D3DE2B008A9978 /* Vector+Tests.swift in Sources */,
+				030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +336,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -323,6 +393,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -345,7 +417,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
@@ -354,7 +426,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.Heartbeat;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -380,7 +452,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
@@ -389,7 +461,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.Heartbeat;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -405,12 +477,13 @@
 		03FF92D028C3FCE500FC1956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 685257RUQP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,12 +498,13 @@
 		03FF92D128C3FCE500FC1956 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 685257RUQP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -473,6 +547,71 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		030122E428D3DA2B008A9978 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		030122E728D3DA4C008A9978 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		030122E928D3DA4C008A9978 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		030122EB28D3DA4C008A9978 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		030122EE28D3DA9F008A9978 /* ComplexModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = ComplexModule;
+		};
+		030122F028D3DA9F008A9978 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+		030122F228D3DA9F008A9978 /* RealModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = RealModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 03FF92AF28C3FCE400FC1956 /* Project object */;
 }
