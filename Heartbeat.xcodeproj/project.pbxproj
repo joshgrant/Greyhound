@@ -17,13 +17,13 @@
 		030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F428D3DC2A008A9978 /* Stock+Tests.swift */; };
 		030122FB28D3DD39008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F828D3DD39008A9978 /* Flow.swift */; };
 		030122FD28D3DD39008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F928D3DD39008A9978 /* Stock.swift */; };
-		030122FE28D3DD39008A9978 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F728D3DD39008A9978 /* Procedure.swift */; };
 		0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */; };
 		0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230728D3E208008A9978 /* Real+Extensions.swift */; };
 		0301231428D3F6BB008A9978 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231328D3F6BB008A9978 /* System.swift */; };
 		0301231628D3F702008A9978 /* System+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System+Tests.swift */; };
 		0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow+Tests.swift */; };
-		0301231A28D3F8AE008A9978 /* Procedure+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231928D3F8AE008A9978 /* Procedure+Tests.swift */; };
+		0301232328D42ADF008A9978 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232228D42ADF008A9978 /* main.swift */; };
+		0301232828D43395008A9978 /* Copier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232728D43395008A9978 /* Copier.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -38,9 +38,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0301231E28D42ADF008A9978 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		030122F428D3DC2A008A9978 /* Stock+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Tests.swift"; sourceTree = "<group>"; };
-		030122F728D3DD39008A9978 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
 		030122F828D3DD39008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		030122F928D3DD39008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real+Extensions+Tests.swift"; sourceTree = "<group>"; };
@@ -48,13 +59,23 @@
 		0301231328D3F6BB008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		0301231528D3F702008A9978 /* System+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System+Tests.swift"; sourceTree = "<group>"; };
 		0301231728D3F70D008A9978 /* Flow+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+Tests.swift"; sourceTree = "<group>"; };
-		0301231928D3F8AE008A9978 /* Procedure+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Procedure+Tests.swift"; sourceTree = "<group>"; };
+		0301231B28D4291E008A9978 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0301232028D42ADF008A9978 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
+		0301232228D42ADF008A9978 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0301232728D43395008A9978 /* Copier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copier.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0301231D28D42ADF008A9978 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF92B528C3FCE400FC1956 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,12 +101,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0301230628D3E1FB008A9978 /* Extensions */ = {
+		0301230628D3E1FB008A9978 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				0301230728D3E208008A9978 /* Real+Extensions.swift */,
+				0301232728D43395008A9978 /* Copier.swift */,
 			);
-			path = Extensions;
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		0301232128D42ADF008A9978 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				0301232228D42ADF008A9978 /* main.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 		03FF92AE28C3FCE400FC1956 = {
@@ -93,6 +123,7 @@
 			children = (
 				03FF92BA28C3FCE400FC1956 /* Heartbeat */,
 				03FF92C628C3FCE500FC1956 /* HeartbeatTests */,
+				0301232128D42ADF008A9978 /* Client */,
 				03FF92B928C3FCE400FC1956 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +133,7 @@
 			children = (
 				03FF92B828C3FCE400FC1956 /* Heartbeat.framework */,
 				03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */,
+				0301232028D42ADF008A9978 /* Client */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,11 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
+				0301231B28D4291E008A9978 /* README.md */,
 				030122F828D3DD39008A9978 /* Flow.swift */,
-				030122F728D3DD39008A9978 /* Procedure.swift */,
 				030122F928D3DD39008A9978 /* Stock.swift */,
 				0301231328D3F6BB008A9978 /* System.swift */,
-				0301230628D3E1FB008A9978 /* Extensions */,
+				0301230628D3E1FB008A9978 /* Utility */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -126,7 +158,6 @@
 				0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */,
 				0301231528D3F702008A9978 /* System+Tests.swift */,
 				0301231728D3F70D008A9978 /* Flow+Tests.swift */,
-				0301231928D3F8AE008A9978 /* Procedure+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -145,6 +176,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0301231F28D42ADF008A9978 /* Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0301232428D42ADF008A9978 /* Build configuration list for PBXNativeTarget "Client" */;
+			buildPhases = (
+				0301231C28D42ADF008A9978 /* Sources */,
+				0301231D28D42ADF008A9978 /* Frameworks */,
+				0301231E28D42ADF008A9978 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Client;
+			productName = Client;
+			productReference = 0301232028D42ADF008A9978 /* Client */;
+			productType = "com.apple.product-type.tool";
+		};
 		03FF92B728C3FCE400FC1956 /* Heartbeat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03FF92CC28C3FCE500FC1956 /* Build configuration list for PBXNativeTarget "Heartbeat" */;
@@ -200,6 +248,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					0301231F28D42ADF008A9978 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					03FF92B728C3FCE400FC1956 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -228,6 +279,7 @@
 			targets = (
 				03FF92B728C3FCE400FC1956 /* Heartbeat */,
 				03FF92C128C3FCE500FC1956 /* HeartbeatTests */,
+				0301231F28D42ADF008A9978 /* Client */,
 			);
 		};
 /* End PBXProject section */
@@ -250,13 +302,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0301231C28D42ADF008A9978 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0301232328D42ADF008A9978 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF92B428C3FCE400FC1956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0301232828D43395008A9978 /* Copier.swift in Sources */,
 				0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */,
 				030122FD28D3DD39008A9978 /* Stock.swift in Sources */,
-				030122FE28D3DD39008A9978 /* Procedure.swift in Sources */,
 				0301231428D3F6BB008A9978 /* System.swift in Sources */,
 				030122FB28D3DD39008A9978 /* Flow.swift in Sources */,
 			);
@@ -267,7 +327,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0301231628D3F702008A9978 /* System+Tests.swift in Sources */,
-				0301231A28D3F8AE008A9978 /* Procedure+Tests.swift in Sources */,
 				0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */,
 				0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */,
 				030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */,
@@ -285,6 +344,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0301232528D42ADF008A9978 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 685257RUQP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0301232628D42ADF008A9978 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 685257RUQP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		03FF92CA28C3FCE500FC1956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -519,6 +604,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0301232428D42ADF008A9978 /* Build configuration list for PBXNativeTarget "Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0301232528D42ADF008A9978 /* Debug */,
+				0301232628D42ADF008A9978 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03FF92B228C3FCE400FC1956 /* Build configuration list for PBXProject "Heartbeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

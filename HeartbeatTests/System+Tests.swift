@@ -18,7 +18,7 @@ final class System_Tests: XCTestCase
     
     func test_system_leastBalancedStock()
     {
-        var system = System<Double>()
+        let system = System<Double>()
         system.stocks = [
             .init(current: 50, ideal: 100, min: 0, max: 100, unit: UnitArea.acres),
             .init(current: 75, ideal: 100, min: 0, max: 100, unit: UnitArea.acres)
@@ -27,37 +27,68 @@ final class System_Tests: XCTestCase
         XCTAssertEqual(leastBalanced?.current, 50)
     }
     
-    func test_system_findsProcedureForStock()
+    func test_system_nextFlow()
     {
+        let stockA = Stock<Double>(
+            current: 0,
+            ideal: 100,
+            min: 0,
+            max: 100)
+        let stockB = Stock<Double>(
+            current: 4,
+            ideal: 0,
+            min: 0,
+            max: 100)
+        
+        let flowA = Flow(
+            from: stockA,
+            to: stockB,
+            amount: 4,
+            duration: 1)
+        let flowB = Flow(
+            from: stockB,
+            to: stockA,
+            amount: 4,
+            duration: 1)
+        
         let system = System<Double>()
-        let from = Stock<Double>(current: 50, ideal: 100, min: 0, max: 100)
-        let to = Stock<Double>(current: 60, ideal: 100, min: 0, max: 100)
-        let flow = Flow<Double>(from: from, to: to)
-        let procedureA = Procedure<Double>(stock: from, balanceRange: 0.2...0.3, flows: [flow])
-        let procedureB = Procedure<Double>(stock: from, balanceRange: 0.4...0.55, flows: [flow])
+        system.stocks = [stockA, stockB]
+        system.flows = [flowA, flowB]
         
-        system.stocks = [from, to]
-        system.flows = [flow]
-        system.procedures = [procedureA, procedureB]
-        
-        let procedure = system.availableProcedure(for: from)
-        XCTAssertEqual(procedure, procedureB)
+        let nextFlow = system.nextFlow
+        XCTAssertEqual(nextFlow, flowB)
     }
     
-    func test_system_doesNotFindProcedureForStock()
+    func test_system_balance_allStocksInBalance()
     {
         let system = System<Double>()
-        let from = Stock<Double>(current: 50, ideal: 100, min: 0, max: 100)
-        let to = Stock<Double>(current: 60, ideal: 100, min: 0, max: 100)
-        let flow = Flow<Double>(from: from, to: to)
-        let procedureA = Procedure<Double>(stock: from, balanceRange: 0.2...0.3, flows: [flow])
-        let procedureB = Procedure<Double>(stock: from, balanceRange: 0.6...0.8, flows: [flow])
-        
-        system.stocks = [from, to]
-        system.flows = [flow]
-        system.procedures = [procedureA, procedureB]
-        
-        let procedure = system.availableProcedure(for: from)
-        XCTAssertNil(procedure)
+        system.stocks = [
+            .init(current: 1, ideal: 1, min: 0, max: 1),
+            .init(current: 1, ideal: 1, min: 0, max: 1)
+        ]
+        let balance = system.balance
+        XCTAssertEqual(balance, 1)
+    }
+    
+    func test_system_balance_halfStocksInBalance()
+    {
+        let system = System<Double>()
+        system.stocks = [
+            .init(current: 1, ideal: 1, min: 0, max: 1),
+            .init(current: 0, ideal: 1, min: 0, max: 1)
+        ]
+        let balance = system.balance
+        XCTAssertEqual(balance, 0.5)
+    }
+    
+    func test_system_balance_noStocksInBalance()
+    {
+        let system = System<Double>()
+        system.stocks = [
+            .init(current: 0, ideal: 1, min: 0, max: 1),
+            .init(current: 0, ideal: 1, min: 0, max: 1)
+        ]
+        let balance = system.balance
+        XCTAssertEqual(balance, 0)
     }
 }

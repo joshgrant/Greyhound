@@ -8,7 +8,7 @@
 import Foundation
 import Numerics
 
-public class Stock<T: Real>
+public class Stock<T: Real & Codable>: Copyable
 {
     // MARK: - Variables
     
@@ -36,6 +36,42 @@ public class Stock<T: Real>
         self.min = min
         self.max = max
         self.unit = unit
+    }
+    
+    // MARK: - Copyable
+    
+    enum CodingKeys: CodingKey
+    {
+        case uuid
+        case current
+        case ideal
+        case min
+        case max
+        case unit
+    }
+    
+    public required init(from decoder: Decoder) throws
+    {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        uuid = try container.decode(UUID.self, forKey: .uuid)
+        current = try container.decode(T.self, forKey: .current)
+        ideal = try container.decode(T.self, forKey: .ideal)
+        min = try container.decode(T.self, forKey: .min)
+        max = try container.decode(T.self, forKey: .max)
+//        unit = try container.decode(Unit.self, forKey: .unit)
+        unit = UnitArea.acres
+        
+    }
+    
+    public func encode(to encoder: Encoder) throws
+    {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(uuid, forKey: .uuid)
+        try container.encode(current, forKey: .current)
+        try container.encode(ideal, forKey: .ideal)
+        try container.encode(min, forKey: .min)
+        try container.encode(max, forKey: .max)
+//        try container.encode(unit, forKey: .unit)
     }
 }
 
