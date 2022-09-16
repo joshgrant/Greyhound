@@ -43,4 +43,21 @@ final class System_Tests: XCTestCase
         let procedure = system.availableProcedure(for: from)
         XCTAssertEqual(procedure, procedureB)
     }
+    
+    func test_system_doesNotFindProcedureForStock()
+    {
+        let system = System<Double>()
+        let from = Stock<Double>(current: 50, ideal: 100, min: 0, max: 100)
+        let to = Stock<Double>(current: 60, ideal: 100, min: 0, max: 100)
+        let flow = Flow<Double>(from: from, to: to)
+        let procedureA = Procedure<Double>(stock: from, balanceRange: 0.2...0.3, flows: [flow])
+        let procedureB = Procedure<Double>(stock: from, balanceRange: 0.6...0.8, flows: [flow])
+        
+        system.stocks = [from, to]
+        system.flows = [flow]
+        system.procedures = [procedureA, procedureB]
+        
+        let procedure = system.availableProcedure(for: from)
+        XCTAssertNil(procedure)
+    }
 }
