@@ -28,6 +28,7 @@
 		0301231428D3F6BB008A9978 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231328D3F6BB008A9978 /* System.swift */; };
 		0301231628D3F702008A9978 /* System+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System+Tests.swift */; };
 		0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow+Tests.swift */; };
+		0301231A28D3F8AE008A9978 /* Procedure+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231928D3F8AE008A9978 /* Procedure+Tests.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		0301231328D3F6BB008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		0301231528D3F702008A9978 /* System+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System+Tests.swift"; sourceTree = "<group>"; };
 		0301231728D3F70D008A9978 /* Flow+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+Tests.swift"; sourceTree = "<group>"; };
+		0301231928D3F8AE008A9978 /* Procedure+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Procedure+Tests.swift"; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */,
 				0301231528D3F702008A9978 /* System+Tests.swift */,
 				0301231728D3F70D008A9978 /* Flow+Tests.swift */,
+				0301231928D3F8AE008A9978 /* Procedure+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0301231628D3F702008A9978 /* System+Tests.swift in Sources */,
+				0301231A28D3F8AE008A9978 /* Procedure+Tests.swift in Sources */,
 				0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */,
 				0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */,
 				0301230328D3DE2B008A9978 /* Vector+Tests.swift in Sources */,

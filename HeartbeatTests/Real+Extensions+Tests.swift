@@ -28,4 +28,18 @@ final class Real_Extensions_Tests: XCTestCase
         let delta = Double.delta(a, b)
         XCTAssertEqual(delta, 0)
     }
+    
+    func test_real_percentDelta()
+    {
+        let current: Double = 30
+        let target: Double = 0
+        let min: Double = 0
+        let max: Double = 100
+        let percentDelta = Double.percentDelta(
+            a: current,
+            b: target,
+            minimum: min,
+            maximum: max)
+        XCTAssertEqual(percentDelta, 0.7)
+    }
 }

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Numerics
 
-public struct Stock<T>
+public struct Stock<T: Real>
 {
     var current: T
     var ideal: T
@@ -16,4 +17,15 @@ public struct Stock<T>
     var max: T
     
     var unit: Unit
+}
+
+extension Stock
+{
+    var imbalance: T {
+        T.percentDelta(
+            a: current,
+            b: ideal,
+            minimum: min,
+            maximum: max)
+    }
 }

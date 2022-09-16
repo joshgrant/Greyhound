@@ -15,4 +15,9 @@ final class System_Tests: XCTestCase
         let system = System<Double>()
         XCTAssertNotNil(system)
     }
+    
+    func test_system_mostImbalancedStock()
+    {
+        XCTFail()
+    }
 }
