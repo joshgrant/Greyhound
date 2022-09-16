@@ -29,6 +29,17 @@ final class Stock_Tests: XCTestCase
             min: 0,
             max: 100,
             unit: UnitArea.acres)
-        XCTAssertEqual(stock.imbalance, 0.33, accuracy: 0.01)
+        XCTAssertEqual(stock.balance, 0.33, accuracy: 0.01)
+    }
+    
+    func test_stock_imbalanceZero()
+    {
+        let stock = Stock<Double>(
+            current: 0,
+            ideal: 100,
+            min: 0,
+            max: 100,
+            unit: UnitArea.acres)
+        XCTAssertEqual(stock.balance, 0)
     }
 }

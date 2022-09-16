@@ -15,12 +15,12 @@ final class Procedure_Tests: XCTestCase
         let stock = Stock<Double>(current: 0, ideal: 0, min: 0, max: 0, unit: UnitArea.acres)
         let procedure = Procedure<Double>(
             stock: stock,
-            thresholdRange: 0...100,
+            balanceRange: 0...1,
             flows: [])
         XCTAssertNotNil(procedure)
     }
     
-    func test_procedure_isTriggered()
+    func test_procedure_isNotTriggered()
     {
         let stock = Stock<Double>(
             current: 0,
@@ -30,12 +30,12 @@ final class Procedure_Tests: XCTestCase
             unit: UnitLength.astronomicalUnits)
         let procedure = Procedure<Double>(
             stock: stock,
-            thresholdRange: 99...(.infinity),
+            balanceRange: 0.001...1,
             flows: [])
-        XCTAssertTrue(procedure.canExecute)
+        XCTAssertFalse(procedure.canExecute)
     }
     
-    func test_procedure_isNotTriggered()
+    func test_procedure_isNotTriggeredNegative()
     {
         let stock = Stock<Double>(
             current: 0,
@@ -45,8 +45,22 @@ final class Procedure_Tests: XCTestCase
             unit: UnitLength.astronomicalUnits)
         let procedure = Procedure<Double>(
             stock: stock,
-            thresholdRange: -.infinity...0,
+            balanceRange: -1.0...(-0.0001),
             flows: [])
         XCTAssertFalse(procedure.canExecute)
+    }
+    
+    func test_procedure_isTriggered()
+    {
+        let stock = Stock<Double>(
+            current: 50,
+            ideal: 100,
+            min: 0,
+            max: 100,
+            unit: UnitSpeed.knots)
+        let procedure = Procedure<Double>(
+            stock: stock,
+            balanceRange: 0.4...0.6, flows: [])
+        XCTAssertTrue(procedure.canExecute)
     }
 }
