@@ -24,6 +24,10 @@
 		0301230328D3DE2B008A9978 /* Vector+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230228D3DE2B008A9978 /* Vector+Tests.swift */; };
 		0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */; };
 		0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301230728D3E208008A9978 /* Real+Extensions.swift */; };
+		0301231228D3F648008A9978 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231128D3F648008A9978 /* Conversion.swift */; };
+		0301231428D3F6BB008A9978 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231328D3F6BB008A9978 /* System.swift */; };
+		0301231628D3F702008A9978 /* System+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System+Tests.swift */; };
+		0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow+Tests.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -49,6 +53,10 @@
 		0301230228D3DE2B008A9978 /* Vector+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vector+Tests.swift"; sourceTree = "<group>"; };
 		0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real+Extensions+Tests.swift"; sourceTree = "<group>"; };
 		0301230728D3E208008A9978 /* Real+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Real+Extensions.swift"; sourceTree = "<group>"; };
+		0301231128D3F648008A9978 /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
+		0301231328D3F6BB008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		0301231528D3F702008A9978 /* System+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System+Tests.swift"; sourceTree = "<group>"; };
+		0301231728D3F70D008A9978 /* Flow+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+Tests.swift"; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,10 +119,12 @@
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
 				030122FA28D3DD39008A9978 /* Condition.swift */,
+				0301231128D3F648008A9978 /* Conversion.swift */,
 				030122F628D3DD39008A9978 /* Event.swift */,
 				030122F828D3DD39008A9978 /* Flow.swift */,
 				030122F728D3DD39008A9978 /* Procedure.swift */,
 				030122F928D3DD39008A9978 /* Stock.swift */,
+				0301231328D3F6BB008A9978 /* System.swift */,
 				0301230028D3DD40008A9978 /* Vector.swift */,
 				0301230628D3E1FB008A9978 /* Extensions */,
 			);
@@ -127,6 +137,8 @@
 				030122F428D3DC2A008A9978 /* Stock+Tests.swift */,
 				0301230228D3DE2B008A9978 /* Vector+Tests.swift */,
 				0301230428D3E197008A9978 /* Real+Extensions+Tests.swift */,
+				0301231528D3F702008A9978 /* System+Tests.swift */,
+				0301231728D3F70D008A9978 /* Flow+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -257,9 +269,11 @@
 				030122FC28D3DD39008A9978 /* Condition.swift in Sources */,
 				0301230828D3E208008A9978 /* Real+Extensions.swift in Sources */,
 				030122FD28D3DD39008A9978 /* Stock.swift in Sources */,
+				0301231228D3F648008A9978 /* Conversion.swift in Sources */,
 				0301230128D3DD40008A9978 /* Vector.swift in Sources */,
 				030122FE28D3DD39008A9978 /* Procedure.swift in Sources */,
 				030122FF28D3DD39008A9978 /* Event.swift in Sources */,
+				0301231428D3F6BB008A9978 /* System.swift in Sources */,
 				030122FB28D3DD39008A9978 /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0301231628D3F702008A9978 /* System+Tests.swift in Sources */,
 				0301230528D3E197008A9978 /* Real+Extensions+Tests.swift in Sources */,
+				0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */,
 				0301230328D3DE2B008A9978 /* Vector+Tests.swift in Sources */,
 				030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */,
 			);

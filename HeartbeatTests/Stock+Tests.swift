@@ -16,7 +16,8 @@ final class Stock_Tests: XCTestCase
             current: 0,
             ideal: 50,
             min: 0,
-            max: 100)
+            max: 100,
+            unit: UnitArea.acres)
         XCTAssertNotNil(stock)
     }
 }

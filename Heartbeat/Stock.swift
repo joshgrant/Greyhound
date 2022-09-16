@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: Is a Stock really just a matrix with named fields?
 public struct Stock<T>
 {
     var current: T
@@ -16,7 +15,5 @@ public struct Stock<T>
     var min: T
     var max: T
     
-    // These are like the "body"
-    var inflows: [Flow] = []
-    var outflows: [Flow] = []
+    var unit: Unit
 }
