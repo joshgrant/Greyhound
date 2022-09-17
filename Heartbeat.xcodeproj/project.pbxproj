@@ -24,6 +24,11 @@
 		0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow+Tests.swift */; };
 		0301232328D42ADF008A9978 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232228D42ADF008A9978 /* main.swift */; };
 		0301232828D43395008A9978 /* Copier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232728D43395008A9978 /* Copier.swift */; };
+		0301232E28D53E31008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock.swift */; };
+		0301233028D53E3C008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow.swift */; };
+		0301233228D53E4C008A9978 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233128D53E4C008A9978 /* System.swift */; };
+		0301233428D53E91008A9978 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233328D53E91008A9978 /* World.swift */; };
+		0301233628D53EC0008A9978 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233528D53EC0008A9978 /* App.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -63,6 +68,11 @@
 		0301232028D42ADF008A9978 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		0301232228D42ADF008A9978 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0301232728D43395008A9978 /* Copier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copier.swift; sourceTree = "<group>"; };
+		0301232D28D53E31008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		0301232F28D53E3C008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		0301233128D53E4C008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		0301233528D53EC0008A9978 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +124,11 @@
 			isa = PBXGroup;
 			children = (
 				0301232228D42ADF008A9978 /* main.swift */,
+				0301233528D53EC0008A9978 /* App.swift */,
+				0301233328D53E91008A9978 /* World.swift */,
+				0301233128D53E4C008A9978 /* System.swift */,
+				0301232F28D53E3C008A9978 /* Flow.swift */,
+				0301232D28D53E31008A9978 /* Stock.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -306,7 +321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0301233228D53E4C008A9978 /* System.swift in Sources */,
+				0301233028D53E3C008A9978 /* Flow.swift in Sources */,
+				0301232E28D53E31008A9978 /* Stock.swift in Sources */,
+				0301233628D53EC0008A9978 /* App.swift in Sources */,
 				0301232328D42ADF008A9978 /* main.swift in Sources */,
+				0301233428D53E91008A9978 /* World.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
