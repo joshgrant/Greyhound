@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Flow<T: FloatingPoint>
+class Flow<T: FloatingPoint>
 {
     typealias StockModifier = (Stock<T>) -> Stock<T>
     
     // MARK: - Variables
     
-    var uuid = UUID()
+    var uuid: UUID
     
     var from: Stock<T>
     var to: Stock<T>
@@ -22,24 +22,31 @@ struct Flow<T: FloatingPoint>
     
     // MARK: - Initialization
     
-    init(from: Stock<T>, to: Stock<T>, amount: T)
+    init(from: Stock<T>, to: Stock<T>, amount: T, uuid: UUID = UUID())
     {
         precondition(amount > 0)
         
         self.from = from
         self.to = to
         self.amount = amount
+        self.uuid = uuid
     }
     
-    init(flow: Flow, from: Stock<T>? = nil, to: Stock<T>? = nil, amount: T? = nil)
+    convenience init(
+        flow: Flow,
+        from: Stock<T>? = nil,
+        to: Stock<T>? = nil,
+        amount: T? = nil,
+        uuid: UUID? = nil)
     {
         self.init(
             from: from ?? flow.from,
             to: to ?? flow.to,
-            amount: amount ?? flow.amount)
+            amount: amount ?? flow.amount,
+            uuid: uuid ?? flow.uuid)
     }
     
-    init(
+    convenience init(
         flow: Flow,
         fromModifier: StockModifier,
         toModifier: StockModifier,
@@ -55,7 +62,10 @@ struct Flow<T: FloatingPoint>
 
 extension Flow: Equatable
 {
-    
+    static func == (lhs: Flow<T>, rhs: Flow<T>) -> Bool
+    {
+        lhs.uuid == rhs.uuid
+    }
 }
 
 extension Flow: CustomStringConvertible

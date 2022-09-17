@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct System<T: FloatingPoint>
+class System<T: FloatingPoint>
 {
     typealias StocksModifier = ([Stock<T>]) -> [Stock<T>]
     typealias FlowsModifier = ([Flow<T>]) -> [Flow<T>]
     
     // MARK: - Variables
     
-    var uuid = UUID()
+    var uuid: UUID
     
     var stocks: [Stock<T>]
     var flows: [Flow<T>]
@@ -34,22 +34,65 @@ struct System<T: FloatingPoint>
         return total / ideal
     }
     
+    var leastBalanced: Stock<T>?
+    {
+        var balance: T = .infinity
+        var stock: Stock<T>?
+        
+        for s in stocks
+        {
+            if s.balance < balance
+            {
+                balance = s.balance
+                stock = s
+            }
+        }
+        
+        return stock
+    }
+    
+    var nextFlow: Flow<T>?
+    {
+        guard let leastBalanced = leastBalanced else { return nil }
+        
+        return flows.first { flow in
+            switch leastBalanced.sign
+            {
+            case .positive:
+                return flow.from == leastBalanced
+            case .negative:
+                return flow.to == leastBalanced
+            case .neither:
+                return false
+            }
+        }
+    }
+    
     // MARK: - Initialization
     
-    init(stocks: [Stock<T>], flows: [Flow<T>])
+    init(stocks: [Stock<T>], flows: [Flow<T>], uuid: UUID = UUID())
     {
         self.stocks = stocks
         self.flows = flows
+        self.uuid = uuid
     }
     
-    init(system: System<T>, stocks: [Stock<T>]? = nil, flows: [Flow<T>]? = nil)
+    convenience init(
+        system: System<T>,
+        stocks: [Stock<T>]? = nil,
+        flows: [Flow<T>]? = nil,
+        uuid: UUID? = nil)
     {
         self.init(
             stocks: stocks ?? system.stocks,
-            flows: flows ?? system.flows)
+            flows: flows ?? system.flows,
+            uuid: uuid ?? system.uuid)
     }
     
-    init(system: System<T>, stocksModifier: StocksModifier? = nil, flowsModifier: FlowsModifier? = nil)
+    convenience init(
+        system: System<T>,
+        stocksModifier: StocksModifier? = nil,
+        flowsModifier: FlowsModifier? = nil)
     {
         self.init(
             system: system,
@@ -61,52 +104,21 @@ struct System<T: FloatingPoint>
     
     static func modifier(system: System<T>) -> System<T>
     {
-        print("BEFORE: \(system)")
-        var system = system
-        for flow in system.flows
-        {
-            system = System.run(flow: flow, system: system)
-        }
-        print("AFTER: \(system)")
-        print("-----")
+        guard let flow = system.nextFlow else { return system }
+        
+        flow.from.current -= flow.amount
+        flow.to.current += flow.amount
+        
         return system
-    }
-    
-    static func run(flow: Flow<T>, system: System<T>) -> System<T>
-    {
-        System<T>(
-            system: system,
-            stocksModifier: stocksModifier(flow))
-    }
-    
-    static func stocksModifier(_ flow: Flow<T>) -> StocksModifier
-    {
-        { stocks in
-            stocks.map { stock in
-                if flow.from == stock
-                {
-                    return Stock(stock: stock) { current in
-                        current - flow.amount
-                    }
-                }
-                else if flow.to == stock
-                {
-                    return Stock(stock: stock) { current in
-                        current + flow.amount
-                    }
-                }
-                else
-                {
-                    return stock
-                }
-            }
-        }
     }
 }
 
 extension System: Equatable
 {
-    
+    static func == (lhs: System<T>, rhs: System<T>) -> Bool
+    {
+        lhs.uuid == rhs.uuid
+    }
 }
 
 extension System: CustomStringConvertible

@@ -7,19 +7,26 @@
 
 import Foundation
 
-struct Stock<T: FloatingPoint>
+enum Sign
+{
+    case positive
+    case negative
+    case neither
+}
+
+class Stock<T: FloatingPoint>
 {
     typealias CurrentModifier = (T) -> T
     
     // MARK: - Variables
     
-    var uuid = UUID()
+    var uuid: UUID
     
-    let current: T
-    let ideal: T
+    var current: T
+    var ideal: T
     
-    let minimum: T
-    let maximum: T
+    var minimum: T
+    var maximum: T
     
     var balance: T
     {
@@ -28,26 +35,50 @@ struct Stock<T: FloatingPoint>
         return 1 - delta / scale
     }
     
+    var sign: Sign
+    {
+        if current > ideal
+        {
+            return .positive
+        }
+        else if current < ideal
+        {
+            return .negative
+        }
+        else
+        {
+            return .neither
+        }
+    }
+    
     // MARK: - Initialization
     
-    init(current: T, ideal: T, minimum: T, maximum: T)
+    init(current: T, ideal: T, minimum: T, maximum: T, uuid: UUID = UUID())
     {
         self.current = current
         self.ideal = ideal
         self.minimum = minimum
         self.maximum = maximum
+        self.uuid = uuid
     }
     
-    init(stock: Stock, current: T? = nil, ideal: T? = nil, minimum: T? = nil, maximum: T? = nil)
+    convenience init(
+        stock: Stock,
+        current: T? = nil,
+        ideal: T? = nil,
+        minimum: T? = nil,
+        maximum: T? = nil,
+        uuid: UUID? = nil)
     {
         self.init(
             current: current ?? stock.current,
             ideal: ideal ?? stock.ideal,
             minimum: minimum ?? stock.minimum,
-            maximum: maximum ?? stock.maximum)
+            maximum: maximum ?? stock.maximum,
+            uuid: uuid ?? stock.uuid)
     }
     
-    init(stock: Stock, modifier: CurrentModifier? = nil)
+    convenience init(stock: Stock, modifier: CurrentModifier? = nil)
     {
         self.init(
             stock: stock,
@@ -57,7 +88,10 @@ struct Stock<T: FloatingPoint>
 
 extension Stock: Equatable
 {
-    
+    static func == (lhs: Stock<T>, rhs: Stock<T>) -> Bool
+    {
+        lhs.uuid == rhs.uuid
+    }
 }
 
 extension Stock: CustomStringConvertible

@@ -15,25 +15,32 @@ struct World<T: FloatingPoint>
     // MARK: - Variables
     
     var system: System<T>
-    
     let iterations: Int
     
     // MARK: - Initialization
     
-    init(system: System<T>, iterations: Int)
+    init(
+        system: System<T>,
+        iterations: Int)
     {
         self.system = system
         self.iterations = iterations
     }
     
-    init(world: World<T>, system: System<T>? = nil, iterations: Int? = nil)
+    init(
+        world: World<T>,
+        system: System<T>? = nil,
+        iterations: Int? = nil)
     {
         self.init(
             system: system ?? world.system,
             iterations: iterations ?? world.iterations)
     }
     
-    init(world: World<T>, systemModifier: SystemModifier? = nil, iterationsModifier: IterationsModifier? = nil)
+    init(
+        world: World<T>,
+        systemModifier: SystemModifier? = nil,
+        iterationsModifier: IterationsModifier? = nil)
     {
         self.init(
             world: world,
@@ -47,24 +54,24 @@ struct World<T: FloatingPoint>
     {
         World(
             world: world,
-            systemModifier: System<T>.modifier,
+            systemModifier: System.modifier,
             iterationsModifier: iterationsModifier)
     }
     
     static func display(_ world: World)
     {
-        // TODO: Render to a Metal context
+        print(world)
     }
     
     static func shouldExit(_ world: World) -> Bool
     {
-        return world.iterations >= 100
+        world.iterations >= 100
     }
     
     // MARK: - Modifiers
     
     static func iterationsModifier(_ iterations: Int) -> Int
     {
-        return iterations + 1
+        iterations + 1
     }
 }
