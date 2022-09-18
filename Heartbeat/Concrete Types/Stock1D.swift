@@ -7,31 +7,27 @@
 
 import Foundation
 
-enum Sign
+open class Stock1D: Stock
 {
-    case positive
-    case negative
-    case neither
-}
-
-class Stock1D: Stock
-{
-    typealias CurrentModifier = (Double) -> Double
+    public typealias CurrentModifier = (Double) -> Double
     
     // MARK: - Variables
     
-    var current: Double
-    var ideal: Double
+    public var name: String
     
-    var min: Double
-    var max: Double
+    public var current: Double
+    public var ideal: Double
     
-    var unit: Unit?
+    public var min: Double
+    public var max: Double
+    
+    public var unit: Unit?
     
     // MARK: - Initialization
     
-    init(current: Double, ideal: Double, min: Double, max: Double, unit: Unit? = nil)
+    public init(name: String, current: Double, ideal: Double, min: Double, max: Double, unit: Unit? = nil)
     {
+        self.name = name
         self.current = current
         self.ideal = ideal
         self.min = min
@@ -39,8 +35,9 @@ class Stock1D: Stock
         self.unit = unit
     }
     
-    convenience init(
+    public convenience init(
         stock: Stock1D,
+        name: String? = nil,
         current: Double? = nil,
         ideal: Double? = nil,
         min: Double? = nil,
@@ -48,6 +45,7 @@ class Stock1D: Stock
         unit: Unit? = nil)
     {
         self.init(
+            name: name ?? stock.name,
             current: current ?? stock.current,
             ideal: ideal ?? stock.ideal,
             min: min ?? stock.min,
@@ -55,7 +53,7 @@ class Stock1D: Stock
             unit: unit ?? stock.unit)
     }
     
-    convenience init(stock: Stock1D, modifier: CurrentModifier? = nil)
+    public convenience init(stock: Stock1D, modifier: CurrentModifier? = nil)
     {
         self.init(
             stock: stock,
@@ -77,15 +75,15 @@ extension Stock1D
 
 extension Stock1D: CustomStringConvertible
 {
-    var description: String
+    public var description: String
     {
-        "Current: \(current)"
+        "Stock (\(name)): \(current)"
     }
 }
 
 extension Stock1D: Equatable
 {
-    static func ==(lhs: Stock1D, rhs: Stock1D) -> Bool
+    public static func ==(lhs: Stock1D, rhs: Stock1D) -> Bool
     {
         lhs === rhs
     }

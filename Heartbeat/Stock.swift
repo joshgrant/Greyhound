@@ -11,6 +11,8 @@ protocol Stock: AnyObject, CustomStringConvertible, Equatable
 {
     associatedtype T: Comparable
     
+    var name: String { get }
+    
     var current: T { get }
     var ideal: T { get set }
     var min: T { get set }
@@ -19,24 +21,24 @@ protocol Stock: AnyObject, CustomStringConvertible, Equatable
     var unit: Unit? { get set }
     
     var balance: Double { get }
-    var sign: Sign { get }
+    var sign: ComparisonResult { get }
 }
 
 extension Stock
 {
-    var sign: Sign
+    var sign: ComparisonResult
     {
         if current > ideal
         {
-            return .positive
+            return .orderedAscending
         }
         else if current < ideal
         {
-            return .negative
+            return .orderedDescending
         }
         else
         {
-            return .neither
+            return .orderedSame
         }
     }
 }

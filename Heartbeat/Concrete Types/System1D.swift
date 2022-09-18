@@ -7,20 +7,20 @@
 
 import Foundation
 
-class System1D: System
+open class System1D: System
 {
-    typealias S = Stock1D
-    typealias F = Flow1D
+    public typealias S = Stock1D
+    public typealias F = Flow1D
     
-    typealias StocksModifier = ([S]) -> [S]
-    typealias FlowsModifier = ([F]) -> [F]
+    public typealias StocksModifier = ([S]) -> [S]
+    public typealias FlowsModifier = ([F]) -> [F]
     
     // MARK: - Variables
     
     var stocks: [S]
     var flows: [F]
     
-    var balance: Double?
+    private var balance: Double?
     {
         var total: Double = 0
         var ideal: Double = 0
@@ -35,7 +35,7 @@ class System1D: System
         return total / ideal
     }
     
-    var leastBalanced: S?
+    private var leastBalanced: S?
     {
         var balance = Double.infinity
         var stock: S?
@@ -52,18 +52,18 @@ class System1D: System
         return stock
     }
     
-    var nextFlow: F?
+    private var nextFlow: F?
     {
         guard let leastBalanced = leastBalanced else { return nil }
 
         return flows.first { flow in
             switch leastBalanced.sign
             {
-            case .positive:
+            case .orderedAscending:
                 return flow.from == leastBalanced
-            case .negative:
+            case .orderedDescending:
                 return flow.to == leastBalanced
-            case .neither:
+            case .orderedSame:
                 return false
             }
         }
@@ -71,13 +71,13 @@ class System1D: System
     
     // MARK: - Initialization
     
-    init(stocks: [S], flows: [F])
+    public init(stocks: [S], flows: [F])
     {
         self.stocks = stocks
         self.flows = flows
     }
     
-    convenience init(
+    public convenience init(
         system: System1D,
         stocks: [S]? = nil,
         flows: [F]? = nil)
@@ -87,7 +87,7 @@ class System1D: System
             flows: flows ?? system.flows)
     }
     
-    convenience init(
+    public convenience init(
         system: System1D,
         stocksModifier: StocksModifier? = nil,
         flowsModifier: FlowsModifier? = nil)
@@ -100,7 +100,7 @@ class System1D: System
     
     // MARK: - Modifiers
     
-    static func modifier(system: System1D) -> System1D
+    private static func modifier(system: System1D) -> System1D
     {
         guard let flow = system.nextFlow else { return system }
         
@@ -115,7 +115,7 @@ class System1D: System
 
 extension System1D: CustomStringConvertible
 {
-    var description: String
+    public var description: String
     {
 """
 Flows:

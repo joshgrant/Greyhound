@@ -17,12 +17,29 @@
 		0301233B28D7537E008A9978 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233528D53EC0008A9978 /* App.swift */; };
 		0301233F28D7CF12008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233E28D7CF12008A9978 /* Stock.swift */; };
 		0301234128D7D4AC008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301234028D7D4AC008A9978 /* Flow.swift */; };
+		03747B8828D7DBA50036678B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8728D7DBA50036678B /* AppDelegate.swift */; };
+		03747B8A28D7DBA50036678B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03747B8928D7DBA50036678B /* GameScene.sks */; };
+		03747B8C28D7DBA50036678B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03747B8B28D7DBA50036678B /* Actions.sks */; };
+		03747B8E28D7DBA50036678B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8D28D7DBA50036678B /* GameScene.swift */; };
+		03747B9028D7DBA50036678B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8F28D7DBA50036678B /* GameViewController.swift */; };
+		03747B9328D7DBA50036678B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9128D7DBA50036678B /* Main.storyboard */; };
+		03747B9528D7DBA60036678B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9428D7DBA60036678B /* Assets.xcassets */; };
+		03747B9828D7DBA60036678B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9628D7DBA60036678B /* LaunchScreen.storyboard */; };
+		03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
+		03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03C0858A28D7D6EC0087D0DC /* System1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System1D.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		03747B9F28D7DBB20036678B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03FF92B728C3FCE400FC1956;
+			remoteInfo = Heartbeat;
+		};
 		03FF92C428C3FCE500FC1956 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
@@ -31,6 +48,20 @@
 			remoteInfo = Heartbeat;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		03747BA128D7DBB20036678B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		030122F428D3DC2A008A9978 /* Stock1D+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock1D+Tests.swift"; sourceTree = "<group>"; };
@@ -44,6 +75,15 @@
 		0301233528D53EC0008A9978 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0301233E28D7CF12008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		0301234028D7D4AC008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		03747B8528D7DBA50036678B /* HeartbeatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartbeatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03747B8728D7DBA50036678B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03747B8928D7DBA50036678B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		03747B8B28D7DBA50036678B /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		03747B8D28D7DBA50036678B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		03747B8F28D7DBA50036678B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		03747B9228D7DBA50036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03747B9428D7DBA60036678B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03747B9728D7DBA60036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03C0858928D7D6EC0087D0DC /* System1D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System1D.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
@@ -51,6 +91,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		03747B8228D7DBA50036678B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF92B528C3FCE400FC1956 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,12 +127,36 @@
 			path = "Concrete Types";
 			sourceTree = "<group>";
 		};
+		03747B8628D7DBA50036678B /* HeartbeatDemo */ = {
+			isa = PBXGroup;
+			children = (
+				03747B8728D7DBA50036678B /* AppDelegate.swift */,
+				03747B8928D7DBA50036678B /* GameScene.sks */,
+				03747B8B28D7DBA50036678B /* Actions.sks */,
+				03747B8D28D7DBA50036678B /* GameScene.swift */,
+				03747B8F28D7DBA50036678B /* GameViewController.swift */,
+				03747B9128D7DBA50036678B /* Main.storyboard */,
+				03747B9428D7DBA60036678B /* Assets.xcassets */,
+				03747B9628D7DBA60036678B /* LaunchScreen.storyboard */,
+			);
+			path = HeartbeatDemo;
+			sourceTree = "<group>";
+		};
+		03747B9C28D7DBB20036678B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		03FF92AE28C3FCE400FC1956 = {
 			isa = PBXGroup;
 			children = (
 				03FF92BA28C3FCE400FC1956 /* Heartbeat */,
 				03FF92C628C3FCE500FC1956 /* HeartbeatTests */,
+				03747B8628D7DBA50036678B /* HeartbeatDemo */,
 				03FF92B928C3FCE400FC1956 /* Products */,
+				03747B9C28D7DBB20036678B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +165,7 @@
 			children = (
 				03FF92B828C3FCE400FC1956 /* Heartbeat.framework */,
 				03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */,
+				03747B8528D7DBA50036678B /* HeartbeatDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +209,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		03747B8428D7DBA50036678B /* HeartbeatDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03747B9B28D7DBA60036678B /* Build configuration list for PBXNativeTarget "HeartbeatDemo" */;
+			buildPhases = (
+				03747B8128D7DBA50036678B /* Sources */,
+				03747B8228D7DBA50036678B /* Frameworks */,
+				03747B8328D7DBA50036678B /* Resources */,
+				03747BA128D7DBB20036678B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03747BA028D7DBB20036678B /* PBXTargetDependency */,
+			);
+			name = HeartbeatDemo;
+			productName = HeartbeatDemo;
+			productReference = 03747B8528D7DBA50036678B /* HeartbeatDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		03FF92B728C3FCE400FC1956 /* Heartbeat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03FF92CC28C3FCE500FC1956 /* Build configuration list for PBXNativeTarget "Heartbeat" */;
@@ -181,9 +273,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					03747B8428D7DBA50036678B = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					03FF92B728C3FCE400FC1956 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -209,11 +304,24 @@
 			targets = (
 				03FF92B728C3FCE400FC1956 /* Heartbeat */,
 				03FF92C128C3FCE500FC1956 /* HeartbeatTests */,
+				03747B8428D7DBA50036678B /* HeartbeatDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		03747B8328D7DBA50036678B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03747B9328D7DBA50036678B /* Main.storyboard in Resources */,
+				03747B8A28D7DBA50036678B /* GameScene.sks in Resources */,
+				03747B9528D7DBA60036678B /* Assets.xcassets in Resources */,
+				03747B9828D7DBA60036678B /* LaunchScreen.storyboard in Resources */,
+				03747B8C28D7DBA50036678B /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF92B628C3FCE400FC1956 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,6 +339,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		03747B8128D7DBA50036678B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03747B8E28D7DBA50036678B /* GameScene.swift in Sources */,
+				03747B9028D7DBA50036678B /* GameViewController.swift in Sources */,
+				03747B8828D7DBA50036678B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03FF92B428C3FCE400FC1956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,6 +377,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		03747BA028D7DBB20036678B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
+			targetProxy = 03747B9F28D7DBB20036678B /* PBXContainerItemProxy */;
+		};
 		03FF92C528C3FCE500FC1956 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
@@ -266,7 +389,89 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		03747B9128D7DBA50036678B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03747B9228D7DBA50036678B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		03747B9628D7DBA60036678B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03747B9728D7DBA60036678B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		03747B9928D7DBA60036678B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685257RUQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03747B9A28D7DBA60036678B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 685257RUQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		03FF92CA28C3FCE500FC1956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -501,6 +706,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		03747B9B28D7DBA60036678B /* Build configuration list for PBXNativeTarget "HeartbeatDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03747B9928D7DBA60036678B /* Debug */,
+				03747B9A28D7DBA60036678B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03FF92B228C3FCE400FC1956 /* Build configuration list for PBXProject "Heartbeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

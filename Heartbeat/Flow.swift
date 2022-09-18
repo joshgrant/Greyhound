@@ -11,6 +11,8 @@ protocol Flow: AnyObject, CustomStringConvertible, Equatable
 {
     associatedtype T: Stock
     
+    var name: String { get }
+    
     var from: T { get set }
     var to: T { get set }
     

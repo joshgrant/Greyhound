@@ -7,43 +7,48 @@
 
 import Foundation
 
-class Flow1D: Flow
+open class Flow1D: Flow
 {
-    typealias StockModifier = (Stock1D) -> Stock1D
+    public typealias StockModifier = (Stock1D) -> Stock1D
     
     // MARK: - Variables
     
-    var from: Stock1D
-    var to: Stock1D
+    public var name: String
     
-    var amount: Double
-    var duration: TimeInterval
+    public var from: Stock1D
+    public var to: Stock1D
+    
+    public var amount: Double
+    public var duration: TimeInterval
     
     // MARK: - Initialization
     
-    init(from: Stock1D, to: Stock1D, amount: Double, duration: TimeInterval)
+    public init(name: String, from: Stock1D, to: Stock1D, amount: Double, duration: TimeInterval)
     {
+        self.name = name
         self.from = from
         self.to = to
         self.amount = amount
         self.duration = duration
     }
     
-    convenience init(
+    public convenience init(
         flow: Flow1D,
+        name: String? = nil,
         from: Stock1D? = nil,
         to: Stock1D? = nil,
         amount: Double? = nil,
         duration: TimeInterval? = nil)
     {
         self.init(
+            name: name ?? flow.name,
             from: from ?? flow.from,
             to: to ?? flow.to,
             amount: amount ?? flow.amount,
             duration: duration ?? flow.duration)
     }
     
-    convenience init(
+    public convenience init(
         flow: Flow1D,
         fromModifier: StockModifier,
         toModifier: StockModifier,
@@ -59,15 +64,15 @@ class Flow1D: Flow
 
 extension Flow1D: CustomStringConvertible
 {
-    var description: String
+    public var description: String
     {
-        "Amount: \(amount)"
+        "Flow \(name): \(amount)"
     }
 }
 
 extension Flow1D: Equatable
 {
-    static func ==(lhs: Flow1D, rhs: Flow1D) -> Bool
+    public static func ==(lhs: Flow1D, rhs: Flow1D) -> Bool
     {
         lhs === rhs
     }
