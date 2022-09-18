@@ -23,6 +23,7 @@
 		0301233A28D7537E008A9978 /* Flow1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow1D.swift */; };
 		0301233B28D7537E008A9978 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233528D53EC0008A9978 /* App.swift */; };
 		0301233F28D7CF12008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233E28D7CF12008A9978 /* Stock.swift */; };
+		0301234128D7D4AC008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301234028D7D4AC008A9978 /* Flow.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		0301233528D53EC0008A9978 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0301233E28D7CF12008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		0301234028D7D4AC008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0301234228D7D4B5008A9978 /* Concrete Types */ = {
+			isa = PBXGroup;
+			children = (
+				0301232F28D53E3C008A9978 /* Flow1D.swift */,
+				0301232D28D53E31008A9978 /* Stock1D.swift */,
+			);
+			path = "Concrete Types";
+			sourceTree = "<group>";
+		};
 		03FF92AE28C3FCE400FC1956 = {
 			isa = PBXGroup;
 			children = (
@@ -103,11 +114,11 @@
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
 				0301231B28D4291E008A9978 /* README.md */,
 				0301233528D53EC0008A9978 /* App.swift */,
-				0301233328D53E91008A9978 /* World.swift */,
-				0301233128D53E4C008A9978 /* System.swift */,
-				0301232F28D53E3C008A9978 /* Flow1D.swift */,
-				0301232D28D53E31008A9978 /* Stock1D.swift */,
+				0301234028D7D4AC008A9978 /* Flow.swift */,
 				0301233E28D7CF12008A9978 /* Stock.swift */,
+				0301233128D53E4C008A9978 /* System.swift */,
+				0301233328D53E91008A9978 /* World.swift */,
+				0301234228D7D4B5008A9978 /* Concrete Types */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0301234128D7D4AC008A9978 /* Flow.swift in Sources */,
 				0301233828D7537E008A9978 /* World.swift in Sources */,
 				0301233A28D7537E008A9978 /* Flow1D.swift in Sources */,
 				0301233F28D7CF12008A9978 /* Stock.swift in Sources */,

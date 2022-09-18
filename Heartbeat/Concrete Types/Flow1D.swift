@@ -8,17 +8,6 @@
 import Foundation
 import Spatial
 
-protocol Flow: AnyObject, CustomStringConvertible, Equatable
-{
-    associatedtype Stock
-    
-    var from: Stock { get set }
-    var to: Stock { get set }
-    
-    var amount: Double { get set }
-    var duration: TimeInterval { get set }
-}
-
 class Flow1D: Flow
 {
     typealias StockModifier = (Stock1D) -> Stock1D
