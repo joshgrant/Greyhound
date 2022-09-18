@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Spatial
 
 // A world should definetly not be genericized like this...
 class World
@@ -15,13 +14,13 @@ class World
 
     // MARK: - Variables
 
-    var systems: [AnyObject]
+    var systems: [any System]
     let iterations: Int
 
     // MARK: - Initialization
 
     init(
-        systems: [AnyObject],
+        systems: [any System],
         iterations: Int)
     {
         self.systems = systems
@@ -30,7 +29,7 @@ class World
 
     convenience init(
         world: World,
-        systems: [AnyObject]? = nil,
+        systems: [any System]? = nil,
         iterations: Int? = nil)
     {
         self.init(
@@ -40,7 +39,7 @@ class World
 
     convenience init(
         world: World,
-        systems: [AnyObject]? = nil,
+        systems: [any System]? = nil,
         iterationsModifier: IterationsModifier? = nil)
     {
         self.init(

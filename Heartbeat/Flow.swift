@@ -9,10 +9,10 @@ import Foundation
 
 protocol Flow: AnyObject, CustomStringConvertible, Equatable
 {
-    associatedtype Stock
+    associatedtype T: Stock
     
-    var from: Stock { get set }
-    var to: Stock { get set }
+    var from: T { get set }
+    var to: T { get set }
     
     var amount: Double { get set }
     var duration: TimeInterval { get set }

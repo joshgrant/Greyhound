@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Spatial
 
 class Flow1D: Flow
 {
@@ -58,18 +57,18 @@ class Flow1D: Flow
     }
 }
 
-extension Flow1D: Equatable
-{
-    static func ==(lhs: Flow1D, rhs: Flow1D) -> Bool
-    {
-        lhs === rhs
-    }
-}
-
 extension Flow1D: CustomStringConvertible
 {
     var description: String
     {
         "Amount: \(amount)"
+    }
+}
+
+extension Flow1D: Equatable
+{
+    static func ==(lhs: Flow1D, rhs: Flow1D) -> Bool
+    {
+        lhs === rhs
     }
 }

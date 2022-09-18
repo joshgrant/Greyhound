@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Spatial
 
 enum Sign
 {
@@ -28,13 +27,6 @@ class Stock1D: Stock
     var max: Double
     
     var unit: Unit?
-    
-    var balance: Double
-    {
-        let delta = abs(current - ideal)
-        let scale = Swift.max(max - ideal, ideal - min)
-        return 1 - delta / scale
-    }
     
     // MARK: - Initialization
     
@@ -69,25 +61,17 @@ class Stock1D: Stock
             stock: stock,
             current: modifier?(stock.current) ?? stock.current)
     }
-    
-    // MARK: - Functions
-    
-    func remove(amount: Double)
-    {
-        current -= amount
-    }
-    
-    func add(amount: Double)
-    {
-        current += amount
-    }
 }
 
-extension Stock1D: Equatable
+// MARK: - Stock protocol
+
+extension Stock1D
 {
-    static func ==(lhs: Stock1D, rhs: Stock1D) -> Bool
+    var balance: Double
     {
-        lhs === rhs
+        let delta = abs(current - ideal)
+        let scale = Swift.max(max - ideal, ideal - min)
+        return 1 - delta / scale
     }
 }
 
@@ -96,5 +80,13 @@ extension Stock1D: CustomStringConvertible
     var description: String
     {
         "Current: \(current)"
+    }
+}
+
+extension Stock1D: Equatable
+{
+    static func ==(lhs: Stock1D, rhs: Stock1D) -> Bool
+    {
+        lhs === rhs
     }
 }

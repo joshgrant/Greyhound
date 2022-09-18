@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Spatial
 
 protocol Stock: AnyObject, CustomStringConvertible, Equatable
 {
@@ -21,9 +20,6 @@ protocol Stock: AnyObject, CustomStringConvertible, Equatable
     
     var balance: Double { get }
     var sign: Sign { get }
-    
-    func remove(amount: T)
-    func add(amount: T)
 }
 
 extension Stock

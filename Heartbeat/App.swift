@@ -7,17 +7,17 @@
 
 import Foundation
 
-class App<T>
+class App
 {
     // MARK: - Variables
 
-    var state: T
-    var start: ((T) -> Void)?
-    var input: (T, String) -> T
-    var update: (T) -> T
-    var display: (T) -> Void
-    var shouldExit: (T) -> Bool
-    var exit: ((T) -> Void)?
+    var state: World
+    var start: ((World) -> Void)?
+    var input: (World, String) -> World
+    var update: (World) -> World
+    var display: (World) -> Void
+    var shouldExit: (World) -> Bool
+    var exit: ((World) -> Void)?
 
     private lazy var inputThread: Thread = {
         Thread { [self] in
@@ -39,13 +39,13 @@ class App<T>
     // MARK: - Initialization
 
     init(
-        state: T,
-        start: ((T) -> Void)? = nil,
-        input: @escaping (T, String) -> T,
-        update: @escaping (T) -> T,
-        display: @escaping (T) -> Void,
-        shouldExit: @escaping (T) -> Bool,
-        exit: ((T) -> Void)? = nil)
+        state: World,
+        start: ((World) -> Void)? = nil,
+        input: @escaping (World, String) -> World,
+        update: @escaping (World) -> World,
+        display: @escaping (World) -> Void,
+        shouldExit: @escaping (World) -> Bool,
+        exit: ((World) -> Void)? = nil)
     {
         self.state = state
         self.start = start
