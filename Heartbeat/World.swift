@@ -6,70 +6,76 @@
 //
 
 import Foundation
+import Spatial
 
-struct World<T: FloatingPoint>
+// A world should definetly not be genericized like this...
+class World
 {
-    typealias SystemModifier = (System<T>) -> System<T>
     typealias IterationsModifier = (Int) -> Int
-    
+
     // MARK: - Variables
-    
-    var system: System<T>
+
+    var systems: [any System]
     let iterations: Int
-    
+
     // MARK: - Initialization
-    
+
     init(
-        system: System<T>,
+        systems: [any System],
         iterations: Int)
     {
-        self.system = system
+        self.systems = systems
         self.iterations = iterations
     }
-    
-    init(
-        world: World<T>,
-        system: System<T>? = nil,
+
+    convenience init(
+        world: World,
+        systems: [any System]? = nil,
         iterations: Int? = nil)
     {
         self.init(
-            system: system ?? world.system,
+            systems: systems ?? world.systems,
             iterations: iterations ?? world.iterations)
     }
-    
-    init(
-        world: World<T>,
-        systemModifier: SystemModifier? = nil,
+
+    convenience init(
+        world: World,
+        systems: [any System]? = nil,
         iterationsModifier: IterationsModifier? = nil)
     {
         self.init(
             world: world,
-            system: systemModifier?(world.system) ?? world.system,
+            systems: systems ?? world.systems,
             iterations: iterationsModifier?(world.iterations) ?? world.iterations)
     }
-    
+
     // MARK: - Updates
-    
-    static func update(_ world: World<T>) -> World<T>
+
+    static func input(_ world: World, input: String) -> World
+    {
+        print(input)
+        return world
+    }
+
+    static func update(_ world: World) -> World
     {
         World(
             world: world,
-            systemModifier: System.modifier,
             iterationsModifier: iterationsModifier)
     }
-    
+
     static func display(_ world: World)
     {
-        print(world)
+        // This is where we want to render the world to the screen
     }
-    
+
     static func shouldExit(_ world: World) -> Bool
     {
         world.iterations >= 100
     }
-    
+
     // MARK: - Modifiers
-    
+
     static func iterationsModifier(_ iterations: Int) -> Int
     {
         iterations + 1

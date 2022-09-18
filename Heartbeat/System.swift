@@ -1,61 +1,23 @@
 //
 //  System.swift
-//  Heartbeat
+//  Client
 //
-//  Created by Joshua Grant on 9/15/22.
+//  Created by Joshua Grant on 9/16/22.
 //
 
 import Foundation
-import Numerics
+import Spatial
 
-public class System<T: Real & Codable>: Copyable
+class System<T: Primitive3D>
 {
-    // MARK: - Variables
+    typealias StocksModifier = ([Stock<T>]) -> [Stock<T>]
+    typealias FlowsModifier = ([Flow<T>]) -> [Flow<T>]
     
-    var uuid = UUID()
+    // MARK: - Variables
     
     var stocks: [Stock<T>]
     var flows: [Flow<T>]
     
-    // MARK: - Initialization
-    
-    init()
-    {
-        self.stocks = []
-        self.flows = []
-    }
-    
-    required init(stocks: [Stock<T>], flows: [Flow<T>])
-    {
-        self.stocks = stocks
-        self.flows = flows
-    }
-    
-    // MARK: - Copyable
-    
-    enum CodingKeys: CodingKey
-    {
-        case stocks
-        case flows
-    }
-    
-    public required init(from decoder: Decoder) throws
-    {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        stocks = try container.decode([Stock<T>].self, forKey: .stocks)
-        flows = try container.decode([Flow<T>].self, forKey: .flows)
-    }
-    
-    public func encode(to encoder: Encoder) throws
-    {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(stocks, forKey: .stocks)
-        try container.encode(flows, forKey: .flows)
-    }
-}
-
-extension System
-{
     var balance: T
     {
         var total: T = 0
@@ -71,18 +33,16 @@ extension System
         return total / ideal
     }
     
-    @available(*, deprecated)
     var leastBalanced: Stock<T>?
     {
+        var balance: T = .infinity
         var stock: Stock<T>?
-        var balance = T.infinity
         
         for s in stocks
         {
-            let b = s.balance
-            
-            if b < balance {
-                balance = b
+            if s.balance < balance
+            {
+                balance = s.balance
                 stock = s
             }
         }
@@ -91,48 +51,75 @@ extension System
     }
     
     var nextFlow: Flow<T>?
-    {   
-        guard let copy = self.deepCopy() else { fatalError() }
+    {
+        guard let leastBalanced = leastBalanced else { return nil }
         
-        print("EQUALS")
-        print(copy == self)
-        
-        var bestBalance: T = balance
-        var bestFlow: Flow<T>?
-        
-        for flow in copy.flows
-        {
-            print("BEFORE")
-            print(flow.from.balance)
-            print(flow.to.balance)
-            print(copy.balance)
-            
-            flow.run()
-            
-            print("AFTER")
-            print(flow.from.balance)
-            print(flow.to.balance)
-            // Somehow the flow.from loses track of the same stock that copy is referencing...
-            // So... getting the balance never updates...
-            // We need a better way of doing this
-            print(copy.balance)
-            print("-----")
-            
-            if copy.balance > bestBalance
+        return flows.first { flow in
+            switch leastBalanced.sign
             {
-                bestBalance = copy.balance
-                bestFlow = flow
+            case .positive:
+                return flow.from === leastBalanced
+            case .negative:
+                return flow.to === leastBalanced
+            case .neither:
+                return false
             }
         }
-
-        return bestFlow
+    }
+    
+    // MARK: - Initialization
+    
+    init(stocks: [Stock<T>], flows: [Flow<T>])
+    {
+        self.stocks = stocks
+        self.flows = flows
+    }
+    
+    convenience init(
+        system: System<T>,
+        stocks: [Stock<T>]? = nil,
+        flows: [Flow<T>]? = nil)
+    {
+        self.init(
+            stocks: stocks ?? system.stocks,
+            flows: flows ?? system.flows)
+    }
+    
+    convenience init(
+        system: System<T>,
+        stocksModifier: StocksModifier? = nil,
+        flowsModifier: FlowsModifier? = nil)
+    {
+        self.init(
+            system: system,
+            stocks: stocksModifier?(system.stocks) ?? system.stocks,
+            flows: flowsModifier?(system.flows) ?? system.flows)
+    }
+    
+    // MARK: - Modifiers
+    
+    static func modifier(system: System<T>) -> System<T>
+    {
+        guard let flow = system.nextFlow else { return system }
+        
+        flow.from.current -= flow.amount
+        flow.to.current += flow.amount
+        
+        return system
     }
 }
 
-extension System: Equatable
+extension System: CustomStringConvertible
 {
-    public static func == (lhs: System<T>, rhs: System<T>) -> Bool
+    var description: String
     {
-        lhs.uuid == rhs.uuid
+"""
+Flows:
+-----
+\(flows.map { $0.description })
+Stocks:
+------
+\(stocks.map { $0.description })
+"""
     }
 }

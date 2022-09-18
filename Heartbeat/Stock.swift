@@ -1,18 +1,25 @@
 //
 //  Stock.swift
-//  
+//  Client
 //
-//  Created by Joshua Grant on 9/15/22.
+//  Created by Joshua Grant on 9/16/22.
 //
 
 import Foundation
-import Numerics
+import Spatial
 
-public class Stock<T: Real & Codable>: Copyable
+enum Sign
 {
-    // MARK: - Variables
+    case positive
+    case negative
+    case neither
+}
+
+class Stock<T: Primitive3D>
+{
+    typealias CurrentModifier = (T) -> T
     
-    var uuid = UUID()
+    // MARK: - Variables
     
     var current: T
     var ideal: T
@@ -20,16 +27,34 @@ public class Stock<T: Real & Codable>: Copyable
     var min: T
     var max: T
     
-    var unit: Unit
+    var unit: Unit?
+    
+    var balance: T
+    {
+        let delta = abs(current - ideal)
+        let scale = Swift.max(max - ideal, ideal - min)
+        return 1 - delta / scale
+    }
+    
+    var sign: Sign
+    {
+        if current > ideal
+        {
+            return .positive
+        }
+        else if current < ideal
+        {
+            return .negative
+        }
+        else
+        {
+            return .neither
+        }
+    }
     
     // MARK: - Initialization
     
-    init(
-        current: T,
-        ideal: T,
-        min: T,
-        max: T,
-        unit: Unit = UnitEnergy.joules)
+    init(current: T, ideal: T, min: T, max: T, unit: Unit? = nil)
     {
         self.current = current
         self.ideal = ideal
@@ -38,58 +63,34 @@ public class Stock<T: Real & Codable>: Copyable
         self.unit = unit
     }
     
-    // MARK: - Copyable
-    
-    enum CodingKeys: CodingKey
+    convenience init(
+        stock: Stock,
+        current: T? = nil,
+        ideal: T? = nil,
+        min: T? = nil,
+        max: T? = nil,
+        unit: Unit? = nil)
     {
-        case uuid
-        case current
-        case ideal
-        case min
-        case max
-        case unit
+        self.init(
+            current: current ?? stock.current,
+            ideal: ideal ?? stock.ideal,
+            min: min ?? stock.min,
+            max: max ?? stock.max,
+            unit: unit ?? stock.unit)
     }
     
-    public required init(from decoder: Decoder) throws
+    convenience init(stock: Stock, modifier: CurrentModifier? = nil)
     {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        uuid = try container.decode(UUID.self, forKey: .uuid)
-        current = try container.decode(T.self, forKey: .current)
-        ideal = try container.decode(T.self, forKey: .ideal)
-        min = try container.decode(T.self, forKey: .min)
-        max = try container.decode(T.self, forKey: .max)
-//        unit = try container.decode(Unit.self, forKey: .unit)
-        unit = UnitArea.acres
-        
-    }
-    
-    public func encode(to encoder: Encoder) throws
-    {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(uuid, forKey: .uuid)
-        try container.encode(current, forKey: .current)
-        try container.encode(ideal, forKey: .ideal)
-        try container.encode(min, forKey: .min)
-        try container.encode(max, forKey: .max)
-//        try container.encode(unit, forKey: .unit)
+        self.init(
+            stock: stock,
+            current: modifier?(stock.current) ?? stock.current)
     }
 }
 
-extension Stock
+extension Stock: CustomStringConvertible
 {
-    var balance: T {
-        T.percentDelta(
-            a: current,
-            b: ideal,
-            minimum: min,
-            maximum: max)
-    }
-}
-
-extension Stock: Equatable
-{
-    public static func == (lhs: Stock<T>, rhs: Stock<T>) -> Bool
+    var description: String
     {
-        lhs.uuid == rhs.uuid
+        "Current: \(current)"
     }
 }

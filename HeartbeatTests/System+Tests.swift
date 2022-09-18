@@ -12,17 +12,16 @@ final class System_Tests: XCTestCase
 {
     func test_system_init()
     {
-        let system = System<Double>()
+        let system = System<Double>(stocks: [], flows: [])
         XCTAssertNotNil(system)
     }
     
     func test_system_leastBalancedStock()
     {
-        let system = System<Double>()
-        system.stocks = [
+        let system = System<Double>(stocks: [
             .init(current: 50, ideal: 100, min: 0, max: 100, unit: UnitArea.acres),
             .init(current: 75, ideal: 100, min: 0, max: 100, unit: UnitArea.acres)
-        ]
+        ], flows: [])
         let leastBalanced = system.leastBalanced
         XCTAssertEqual(leastBalanced?.current, 50)
     }
@@ -51,9 +50,9 @@ final class System_Tests: XCTestCase
             amount: 4,
             duration: 1)
         
-        let system = System<Double>()
-        system.stocks = [stockA, stockB]
-        system.flows = [flowA, flowB]
+        let system = System<Double>(
+            stocks: [stockA, stockB],
+            flows: [flowA, flowB])
         
         let nextFlow = system.nextFlow
         XCTAssertEqual(nextFlow, flowB)
@@ -61,33 +60,36 @@ final class System_Tests: XCTestCase
     
     func test_system_balance_allStocksInBalance()
     {
-        let system = System<Double>()
-        system.stocks = [
-            .init(current: 1, ideal: 1, min: 0, max: 1),
-            .init(current: 1, ideal: 1, min: 0, max: 1)
-        ]
+        let system = System<Double>(
+            stocks: [
+                .init(current: 1, ideal: 1, min: 0, max: 1),
+                .init(current: 1, ideal: 1, min: 0, max: 1)
+            ],
+            flows: [])
         let balance = system.balance
         XCTAssertEqual(balance, 1)
     }
     
     func test_system_balance_halfStocksInBalance()
     {
-        let system = System<Double>()
-        system.stocks = [
-            .init(current: 1, ideal: 1, min: 0, max: 1),
-            .init(current: 0, ideal: 1, min: 0, max: 1)
-        ]
+        let system = System<Double>(
+            stocks: [
+                .init(current: 1, ideal: 1, min: 0, max: 1),
+                .init(current: 0, ideal: 1, min: 0, max: 1)
+            ],
+            flows: [])
         let balance = system.balance
         XCTAssertEqual(balance, 0.5)
     }
     
     func test_system_balance_noStocksInBalance()
     {
-        let system = System<Double>()
-        system.stocks = [
-            .init(current: 0, ideal: 1, min: 0, max: 1),
-            .init(current: 0, ideal: 1, min: 0, max: 1)
-        ]
+        let system = System<Double>(
+            stocks: [
+                .init(current: 0, ideal: 1, min: 0, max: 1),
+                .init(current: 0, ideal: 1, min: 0, max: 1)
+            ],
+            flows: [])
         let balance = system.balance
         XCTAssertEqual(balance, 0)
     }

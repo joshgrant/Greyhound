@@ -1,14 +1,24 @@
-#  Notes
+#  Heartbeat
 
-What are the consequences of decoupling stocks from flows?
+Example implementation:
 
-Let's say a flow doesn't have any stocks and is just an amount... a delay... a duration, etc.
+```
+let stockA = Stock(current: 100, ideal: 100, minimum: 0, maximum: 100)
+let stockB = Stock(current: 0, ideal: 100, minimum: 0, maximum: 100)
+let flow = Flow(from: stockA, to: stockB, amount: 1)
+let system = System(stocks: [stockA, stockB], flows: [flow])
+let world = World(
+    system: system,
+    iterations: 0)
 
-1. The system would find unbalanced stocks
-2. The system would then... create flows out of thin air???
-3. No, there needs to be piping... i.e just because I'm thirsty doesn't mean that 
-water is transfered to my stomach from a cloud
+var app = App(
+    state: world,
+    input: World.input,
+    update: World.update,
+    display: World.display,
+    shouldExit: World.shouldExit)
 
-Is there any other way?
+app.run()
 
-What about 
+RunLoop.current.run()
+```

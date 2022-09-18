@@ -10,7 +10,7 @@ import Foundation
 class App<T>
 {
     // MARK: - Variables
-    
+
     var state: T
     var start: ((T) -> Void)?
     var input: (T, String) -> T
@@ -18,7 +18,7 @@ class App<T>
     var display: (T) -> Void
     var shouldExit: (T) -> Bool
     var exit: ((T) -> Void)?
-    
+
     private lazy var inputThread: Thread = {
         Thread { [self] in
             while !shouldExit(state)
@@ -28,16 +28,16 @@ class App<T>
             }
         }
     }()
-    
+
     private lazy var eventTimer: Timer = {
-        return Timer(timeInterval: 1, repeats: true) { [self] _ in
+        return Timer(timeInterval: 0.001, repeats: true) { [self] _ in
             state = update(state)
             display(state)
         }
     }()
-    
+
     // MARK: - Initialization
-    
+
     init(
         state: T,
         start: ((T) -> Void)? = nil,
@@ -55,9 +55,9 @@ class App<T>
         self.shouldExit = shouldExit
         self.exit = exit
     }
-    
+
     // MARK: - Functions
-    
+
     func run()
     {
         start?(state)
@@ -65,12 +65,12 @@ class App<T>
         startUpdateLoop()
         exit?(state)
     }
-    
+
     private func startInputLoop()
     {
         inputThread.start()
     }
-    
+
     private func startUpdateLoop()
     {
         RunLoop.current.add(eventTimer, forMode: .common)

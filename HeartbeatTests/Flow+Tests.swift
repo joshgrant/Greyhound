@@ -14,10 +14,12 @@ final class Flow_Tests: XCTestCase
     {
         let source: Stock<Double> = Stock(current: .infinity, ideal: 0, min: 0, max: .infinity, unit: UnitVolume.liters)
         let sink: Stock<Double> = Stock(current: 0, ideal: 0, min: 0, max: 100, unit: UnitVolume.liters)
-        
+
         let flow = Flow<Double>(
             from: source,
-            to: sink)
+            to: sink,
+            amount: 1,
+            duration: 0)
         XCTAssertNotNil(flow)
     }
 }
