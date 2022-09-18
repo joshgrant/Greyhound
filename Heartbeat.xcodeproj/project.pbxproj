@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		030122E528D3DA2B008A9978 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E428D3DA2B008A9978 /* Algorithms */; };
-		030122E828D3DA4C008A9978 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E728D3DA4C008A9978 /* Collections */; };
-		030122EA28D3DA4C008A9978 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122E928D3DA4C008A9978 /* DequeModule */; };
-		030122EC28D3DA4C008A9978 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 030122EB28D3DA4C008A9978 /* OrderedCollections */; };
-		030122EF28D3DA9F008A9978 /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122EE28D3DA9F008A9978 /* ComplexModule */; };
-		030122F128D3DA9F008A9978 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 030122F028D3DA9F008A9978 /* Numerics */; };
-		030122F328D3DA9F008A9978 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 030122F228D3DA9F008A9978 /* RealModule */; };
 		030122F528D3DC2A008A9978 /* Stock1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F428D3DC2A008A9978 /* Stock1D+Tests.swift */; };
 		0301231628D3F702008A9978 /* System1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System1D+Tests.swift */; };
 		0301231828D3F70D008A9978 /* Flow1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow1D+Tests.swift */; };
@@ -62,13 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				030122EF28D3DA9F008A9978 /* ComplexModule in Frameworks */,
-				030122E828D3DA4C008A9978 /* Collections in Frameworks */,
-				030122F328D3DA9F008A9978 /* RealModule in Frameworks */,
-				030122E528D3DA2B008A9978 /* Algorithms in Frameworks */,
-				030122EC28D3DA4C008A9978 /* OrderedCollections in Frameworks */,
-				030122F128D3DA9F008A9978 /* Numerics in Frameworks */,
-				030122EA28D3DA4C008A9978 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,13 +151,6 @@
 			);
 			name = Heartbeat;
 			packageProductDependencies = (
-				030122E428D3DA2B008A9978 /* Algorithms */,
-				030122E728D3DA4C008A9978 /* Collections */,
-				030122E928D3DA4C008A9978 /* DequeModule */,
-				030122EB28D3DA4C008A9978 /* OrderedCollections */,
-				030122EE28D3DA9F008A9978 /* ComplexModule */,
-				030122F028D3DA9F008A9978 /* Numerics */,
-				030122F228D3DA9F008A9978 /* RealModule */,
 			);
 			productName = Heartbeat;
 			productReference = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */;
@@ -223,9 +202,6 @@
 			);
 			mainGroup = 03FF92AE28C3FCE400FC1956;
 			packageReferences = (
-				030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
-				030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = 03FF92B928C3FCE400FC1956 /* Products */;
 			projectDirPath = "";
@@ -553,71 +529,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-algorithms.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-numerics.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		030122E428D3DA2B008A9978 /* Algorithms */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122E328D3DA2B008A9978 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
-			productName = Algorithms;
-		};
-		030122E728D3DA4C008A9978 /* Collections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = Collections;
-		};
-		030122E928D3DA4C008A9978 /* DequeModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = DequeModule;
-		};
-		030122EB28D3DA4C008A9978 /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122E628D3DA4C008A9978 /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-		030122EE28D3DA9F008A9978 /* ComplexModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = ComplexModule;
-		};
-		030122F028D3DA9F008A9978 /* Numerics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = Numerics;
-		};
-		030122F228D3DA9F008A9978 /* RealModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 030122ED28D3DA9F008A9978 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = RealModule;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 03FF92AF28C3FCE400FC1956 /* Project object */;
 }
