@@ -6,22 +6,22 @@
 //
 
 import Foundation
-import Spatial
+import Numerics
 
-class System<T: Primitive3D>
+class System
 {
-    typealias StocksModifier = ([Stock<T>]) -> [Stock<T>]
-    typealias FlowsModifier = ([Flow<T>]) -> [Flow<T>]
+    typealias StocksModifier = ([any Stock]) -> [any Stock]
+    typealias FlowsModifier = ([any Flow]) -> [any Flow]
     
     // MARK: - Variables
     
-    var stocks: [Stock<T>]
-    var flows: [Flow<T>]
+    var stocks: [any Stock]
+    var flows: [any Flow]
     
-    var balance: T
+    var balance: Double?
     {
-        var total: T = 0
-        var ideal: T = 0
+        var total = Double.zero
+        var ideal = Double.zero
         
         for stock in stocks
         {
@@ -33,10 +33,10 @@ class System<T: Primitive3D>
         return total / ideal
     }
     
-    var leastBalanced: Stock<T>?
+    var leastBalanced: (any Stock)?
     {
-        var balance: T = .infinity
-        var stock: Stock<T>?
+        var balance = Double.infinity
+        var stock: (any Stock)?
         
         for s in stocks
         {
@@ -50,7 +50,7 @@ class System<T: Primitive3D>
         return stock
     }
     
-    var nextFlow: Flow<T>?
+    var nextFlow: (any Flow)?
     {
         guard let leastBalanced = leastBalanced else { return nil }
         
@@ -58,9 +58,9 @@ class System<T: Primitive3D>
             switch leastBalanced.sign
             {
             case .positive:
-                return flow.from === leastBalanced
+                return flow.from == leastBalanced
             case .negative:
-                return flow.to === leastBalanced
+                return flow.to == leastBalanced
             case .neither:
                 return false
             }
@@ -69,16 +69,16 @@ class System<T: Primitive3D>
     
     // MARK: - Initialization
     
-    init(stocks: [Stock<T>], flows: [Flow<T>])
+    init(stocks: [any Stock], flows: [any Flow])
     {
         self.stocks = stocks
         self.flows = flows
     }
     
     convenience init(
-        system: System<T>,
-        stocks: [Stock<T>]? = nil,
-        flows: [Flow<T>]? = nil)
+        system: System,
+        stocks: [any Stock]? = nil,
+        flows: [any Flow]? = nil)
     {
         self.init(
             stocks: stocks ?? system.stocks,
@@ -86,7 +86,7 @@ class System<T: Primitive3D>
     }
     
     convenience init(
-        system: System<T>,
+        system: System,
         stocksModifier: StocksModifier? = nil,
         flowsModifier: FlowsModifier? = nil)
     {
@@ -98,12 +98,19 @@ class System<T: Primitive3D>
     
     // MARK: - Modifiers
     
-    static func modifier(system: System<T>) -> System<T>
+    static func modifier(system: System) -> System
     {
         guard let flow = system.nextFlow else { return system }
         
-        flow.from.current -= flow.amount
-        flow.to.current += flow.amount
+        if let from = flow.from as? any Stock, let to = flow.to as? any Stock
+        {
+            from.remove(amount: flow.amount)
+            to.add(amount: flow.amount)
+        }
+        else
+        {
+            fatalError("Failed to unwrap the flow's stocks.")
+        }
         
         return system
     }

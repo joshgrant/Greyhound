@@ -8,24 +8,33 @@
 import Foundation
 import Spatial
 
-class Flow<T: Primitive3D>
+protocol Flow: AnyObject, CustomStringConvertible, Equatable
 {
-    typealias StockModifier = (Stock<T>) -> Stock<T>
+    associatedtype Stock
+    
+    var from: Stock { get set }
+    var to: Stock { get set }
+    
+    var amount: Double { get set }
+    var duration: TimeInterval { get set }
+}
+
+class Flow1D: Flow
+{
+    typealias StockModifier = (Stock1D) -> Stock1D
     
     // MARK: - Variables
     
-    var from: Stock<T>
-    var to: Stock<T>
+    var from: Stock1D
+    var to: Stock1D
     
-    var amount: T
+    var amount: Double
     var duration: TimeInterval
     
     // MARK: - Initialization
     
-    init(from: Stock<T>, to: Stock<T>, amount: T, duration: TimeInterval)
+    init(from: Stock1D, to: Stock1D, amount: Double, duration: TimeInterval)
     {
-        precondition(amount > .zero)
-        
         self.from = from
         self.to = to
         self.amount = amount
@@ -33,10 +42,10 @@ class Flow<T: Primitive3D>
     }
     
     convenience init(
-        flow: Flow,
-        from: Stock<T>? = nil,
-        to: Stock<T>? = nil,
-        amount: T? = nil,
+        flow: Flow1D,
+        from: Stock1D? = nil,
+        to: Stock1D? = nil,
+        amount: Double? = nil,
         duration: TimeInterval? = nil)
     {
         self.init(
@@ -47,10 +56,10 @@ class Flow<T: Primitive3D>
     }
     
     convenience init(
-        flow: Flow,
+        flow: Flow1D,
         fromModifier: StockModifier,
         toModifier: StockModifier,
-        amount: T? = nil)
+        amount: Double? = nil)
     {
         self.init(
             flow: flow,
@@ -60,7 +69,15 @@ class Flow<T: Primitive3D>
     }
 }
 
-extension Flow: CustomStringConvertible
+extension Flow1D: Equatable
+{
+    static func ==(lhs: Flow1D, rhs: Flow1D) -> Bool
+    {
+        lhs === rhs
+    }
+}
+
+extension Flow1D: CustomStringConvertible
 {
     var description: String
     {

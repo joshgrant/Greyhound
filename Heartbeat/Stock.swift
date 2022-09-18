@@ -1,41 +1,33 @@
 //
-//  Stock.swift
-//  Client
+//  ClassStock3D.swift
+//  Heartbeat
 //
-//  Created by Joshua Grant on 9/16/22.
+//  Created by Joshua Grant on 9/18/22.
 //
 
 import Foundation
 import Spatial
 
-enum Sign
+protocol Stock: AnyObject, CustomStringConvertible, Equatable
 {
-    case positive
-    case negative
-    case neither
+    associatedtype T: Comparable
+    
+    var current: T { get }
+    var ideal: T { get set }
+    var min: T { get set }
+    var max: T { get set }
+    
+    var unit: Unit? { get set }
+    
+    var balance: Double { get }
+    var sign: Sign { get }
+    
+    func remove(amount: T)
+    func add(amount: T)
 }
 
-class Stock<T: Primitive3D>
+extension Stock
 {
-    typealias CurrentModifier = (T) -> T
-    
-    // MARK: - Variables
-    
-    var current: T
-    var ideal: T
-    
-    var min: T
-    var max: T
-    
-    var unit: Unit?
-    
-    var balance: T
-    {
-        let delta = abs(current - ideal)
-        let scale = Swift.max(max - ideal, ideal - min)
-        return 1 - delta / scale
-    }
-    
     var sign: Sign
     {
         if current > ideal
@@ -50,47 +42,5 @@ class Stock<T: Primitive3D>
         {
             return .neither
         }
-    }
-    
-    // MARK: - Initialization
-    
-    init(current: T, ideal: T, min: T, max: T, unit: Unit? = nil)
-    {
-        self.current = current
-        self.ideal = ideal
-        self.min = min
-        self.max = max
-        self.unit = unit
-    }
-    
-    convenience init(
-        stock: Stock,
-        current: T? = nil,
-        ideal: T? = nil,
-        min: T? = nil,
-        max: T? = nil,
-        unit: Unit? = nil)
-    {
-        self.init(
-            current: current ?? stock.current,
-            ideal: ideal ?? stock.ideal,
-            min: min ?? stock.min,
-            max: max ?? stock.max,
-            unit: unit ?? stock.unit)
-    }
-    
-    convenience init(stock: Stock, modifier: CurrentModifier? = nil)
-    {
-        self.init(
-            stock: stock,
-            current: modifier?(stock.current) ?? stock.current)
-    }
-}
-
-extension Stock: CustomStringConvertible
-{
-    var description: String
-    {
-        "Current: \(current)"
     }
 }

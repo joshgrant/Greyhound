@@ -12,7 +12,7 @@ final class Stock_Tests: XCTestCase
 {
     func test_stock_init()
     {
-        let stock = Stock<Double>(
+        let stock = Stock(
             current: 0,
             ideal: 50,
             min: 0,
@@ -23,7 +23,7 @@ final class Stock_Tests: XCTestCase
     
     func test_stock_balance()
     {
-        let stock = Stock<Double>(
+        let stock = Stock(
             current: 25,
             ideal: 75,
             min: 0,
@@ -34,7 +34,7 @@ final class Stock_Tests: XCTestCase
     
     func test_stock_balanceZero()
     {
-        let stock = Stock<Double>(
+        let stock = Stock(
             current: 0,
             ideal: 100,
             min: 0,
@@ -45,7 +45,7 @@ final class Stock_Tests: XCTestCase
     
     func test_stock_balanceOne()
     {
-        let stock = Stock<Double>(
+        let stock = Stock(
             current: 100,
             ideal: 100,
             min: 0,

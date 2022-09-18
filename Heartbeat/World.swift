@@ -15,13 +15,13 @@ class World
 
     // MARK: - Variables
 
-    var systems: [any System]
+    var systems: [AnyObject]
     let iterations: Int
 
     // MARK: - Initialization
 
     init(
-        systems: [any System],
+        systems: [AnyObject],
         iterations: Int)
     {
         self.systems = systems
@@ -30,7 +30,7 @@ class World
 
     convenience init(
         world: World,
-        systems: [any System]? = nil,
+        systems: [AnyObject]? = nil,
         iterations: Int? = nil)
     {
         self.init(
@@ -40,7 +40,7 @@ class World
 
     convenience init(
         world: World,
-        systems: [any System]? = nil,
+        systems: [AnyObject]? = nil,
         iterationsModifier: IterationsModifier? = nil)
     {
         self.init(
