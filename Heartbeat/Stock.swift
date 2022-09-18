@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Stock: AnyObject, CustomStringConvertible, Equatable
+public protocol Stock: AnyObject, CustomStringConvertible, Equatable
 {
     associatedtype T: Comparable
     
@@ -24,7 +24,7 @@ protocol Stock: AnyObject, CustomStringConvertible, Equatable
     var sign: ComparisonResult { get }
 }
 
-extension Stock
+public extension Stock
 {
     var sign: ComparisonResult
     {

@@ -9,8 +9,6 @@ import Foundation
 
 open class Stock1D: Stock
 {
-    public typealias CurrentModifier = (Double) -> Double
-    
     // MARK: - Variables
     
     public var name: String
@@ -23,6 +21,9 @@ open class Stock1D: Stock
     
     public var unit: Unit?
     
+    public static var source = Stock1D(name: "source", current: .infinity, ideal: -.infinity, min: -.infinity, max: .infinity)
+    public static var sink = Stock1D(name: "sink", current: -.infinity, ideal: .infinity, min: -.infinity, max: .infinity)
+    
     // MARK: - Initialization
     
     public init(name: String, current: Double, ideal: Double, min: Double, max: Double, unit: Unit? = nil)
@@ -34,38 +35,13 @@ open class Stock1D: Stock
         self.max = max
         self.unit = unit
     }
-    
-    public convenience init(
-        stock: Stock1D,
-        name: String? = nil,
-        current: Double? = nil,
-        ideal: Double? = nil,
-        min: Double? = nil,
-        max: Double? = nil,
-        unit: Unit? = nil)
-    {
-        self.init(
-            name: name ?? stock.name,
-            current: current ?? stock.current,
-            ideal: ideal ?? stock.ideal,
-            min: min ?? stock.min,
-            max: max ?? stock.max,
-            unit: unit ?? stock.unit)
-    }
-    
-    public convenience init(stock: Stock1D, modifier: CurrentModifier? = nil)
-    {
-        self.init(
-            stock: stock,
-            current: modifier?(stock.current) ?? stock.current)
-    }
 }
 
 // MARK: - Stock protocol
 
 extension Stock1D
 {
-    var balance: Double
+    public var balance: Double
     {
         let delta = abs(current - ideal)
         let scale = Swift.max(max - ideal, ideal - min)

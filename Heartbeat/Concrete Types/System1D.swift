@@ -12,15 +12,12 @@ open class System1D: System
     public typealias S = Stock1D
     public typealias F = Flow1D
     
-    public typealias StocksModifier = ([S]) -> [S]
-    public typealias FlowsModifier = ([F]) -> [F]
-    
     // MARK: - Variables
     
-    var stocks: [S]
-    var flows: [F]
+    public var stocks: [S]
+    public var flows: [F]
     
-    private var balance: Double?
+    public var balance: Double?
     {
         var total: Double = 0
         var ideal: Double = 0
@@ -35,7 +32,7 @@ open class System1D: System
         return total / ideal
     }
     
-    private var leastBalanced: S?
+    public var leastBalanced: S?
     {
         var balance = Double.infinity
         var stock: S?
@@ -52,7 +49,7 @@ open class System1D: System
         return stock
     }
     
-    private var nextFlow: F?
+    public var nextFlow: F?
     {
         guard let leastBalanced = leastBalanced else { return nil }
 
@@ -77,39 +74,15 @@ open class System1D: System
         self.flows = flows
     }
     
-    public convenience init(
-        system: System1D,
-        stocks: [S]? = nil,
-        flows: [F]? = nil)
-    {
-        self.init(
-            stocks: stocks ?? system.stocks,
-            flows: flows ?? system.flows)
-    }
-    
-    public convenience init(
-        system: System1D,
-        stocksModifier: StocksModifier? = nil,
-        flowsModifier: FlowsModifier? = nil)
-    {
-        self.init(
-            system: system,
-            stocks: stocksModifier?(system.stocks) ?? system.stocks,
-            flows: flowsModifier?(system.flows) ?? system.flows)
-    }
-    
     // MARK: - Modifiers
     
-    private static func modifier(system: System1D) -> System1D
+    public func update()
     {
-        guard let flow = system.nextFlow else { return system }
-        
-        // TODO: Write a unit test for this...
-        let amount = min(flow.amount, flow.to.max - flow.from.current, flow.from.current - flow.from.min)
+        guard let flow = nextFlow else { return }
+        let amount = flow.transferAmount
+        // These modifications have to come after calculating the flow amount
         flow.from.current -= amount
         flow.to.current += amount
-        
-        return system
     }
 }
 

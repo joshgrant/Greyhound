@@ -7,64 +7,40 @@
 
 import Foundation
 
-class App
+public class App
 {
     // MARK: - Variables
 
-    var state: World
-    var start: ((World) -> Void)?
-    var input: (World, String) -> World
-    var update: (World) -> World
-    var display: (World) -> Void
-    var shouldExit: (World) -> Bool
-    var exit: ((World) -> Void)?
+    public var world: World
 
     private lazy var inputThread: Thread = {
         Thread { [self] in
-            while !shouldExit(state)
+            while !world.shouldExit()
             {
-                guard let read = readLine() else { return }
-                state = input(state, read)
+                guard let line = readLine() else { return }
+                world.input(line)
             }
         }
     }()
 
     private lazy var eventTimer: Timer = {
-        return Timer(timeInterval: 0.001, repeats: true) { [self] _ in
-            state = update(state)
-            display(state)
+        return Timer(timeInterval: 0.001, repeats: true) { [self] timer in
+            world.update(Date.now.timeIntervalSince1970) // TODO: Implement a tick function
+            world.display()
         }
     }()
 
     // MARK: - Initialization
 
-    init(
-        state: World,
-        start: ((World) -> Void)? = nil,
-        input: @escaping (World, String) -> World,
-        update: @escaping (World) -> World,
-        display: @escaping (World) -> Void,
-        shouldExit: @escaping (World) -> Bool,
-        exit: ((World) -> Void)? = nil)
+    public init(world: World? = nil)
     {
-        self.state = state
-        self.start = start
-        self.input = input
-        self.update = update
-        self.display = display
-        self.shouldExit = shouldExit
-        self.exit = exit
+        self.world = world ?? World(systems: [])
+        
+        startInputLoop()
+        startUpdateLoop()
     }
 
     // MARK: - Functions
-
-    func run()
-    {
-        start?(state)
-        startInputLoop()
-        startUpdateLoop()
-        exit?(state)
-    }
 
     private func startInputLoop()
     {

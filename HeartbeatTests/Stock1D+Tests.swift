@@ -13,6 +13,7 @@ final class Stock1D_Tests: XCTestCase
     func test_stock1D_init()
     {
         let stock = Stock1D(
+            name: "stock",
             current: 0,
             ideal: 50,
             min: 0,
@@ -24,6 +25,7 @@ final class Stock1D_Tests: XCTestCase
     func test_stock1D_balance()
     {
         let stock = Stock1D(
+            name: "stock",
             current: 25,
             ideal: 75,
             min: 0,
@@ -35,6 +37,7 @@ final class Stock1D_Tests: XCTestCase
     func test_stock1D_balanceZero()
     {
         let stock = Stock1D(
+            name: "stock",
             current: 0,
             ideal: 100,
             min: 0,
@@ -46,6 +49,7 @@ final class Stock1D_Tests: XCTestCase
     func test_stock1D_balanceOne()
     {
         let stock = Stock1D(
+            name: "stock",
             current: 100,
             ideal: 100,
             min: 0,

@@ -14,14 +14,19 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
-    private var coordinateSystem = System1D(stocks: [
-        Stock1D(name: "x", current: 0, ideal: 100, min: 0, max: 100),
-        Stock1D(name: "y", current: 0, ideal: 100, min: 0, max: 100),
-    ], flows: [
+    private var coordinateSystem: System1D = {
+        let x = Stock1D(name: "x", current: 0, ideal: 100, min: 0, max: 100)
+        let y = Stock1D(name: "y", current: 0, ideal: 100, min: 0, max: 100)
         
-    ])
+        let moveX = Flow1D(name: "moveX", from: .source, to: x, amount: 1, duration: 1.0)
+        let moveY = Flow1D(name: "moveY", from: .source, to: y, amount: 1, duration: 1.0)
+        
+        return System1D(stocks: [x, y], flows: [moveX, moveY])
+    }()
     
     override func didMove(to view: SKView) {
+        
+        AppDelegate.app.world.systems.append(coordinateSystem)
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -46,6 +51,7 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
+        print(coordinateSystem)
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.green

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Flow: AnyObject, CustomStringConvertible, Equatable
+public protocol Flow: AnyObject, CustomStringConvertible, Equatable
 {
     associatedtype T: Stock
     
@@ -16,6 +16,8 @@ protocol Flow: AnyObject, CustomStringConvertible, Equatable
     var from: T { get set }
     var to: T { get set }
     
-    var amount: Double { get set }
+    var amount: T.T { get set }
     var duration: TimeInterval { get set }
+    
+    var transferAmount: T.T { get }
 }

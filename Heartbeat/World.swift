@@ -7,76 +7,45 @@
 
 import Foundation
 
-// A world should definetly not be genericized like this...
-class World
+public class World
 {
-    typealias IterationsModifier = (Int) -> Int
+    public typealias IterationsModifier = (Int) -> Int
 
     // MARK: - Variables
 
-    var systems: [any System]
-    let iterations: Int
+    public var systems: [any System]
+    public private(set) var iterations: Int
 
     // MARK: - Initialization
 
-    init(
+    public init(
         systems: [any System],
-        iterations: Int)
+        iterations: Int = 0)
     {
         self.systems = systems
         self.iterations = iterations
     }
 
-    convenience init(
-        world: World,
-        systems: [any System]? = nil,
-        iterations: Int? = nil)
-    {
-        self.init(
-            systems: systems ?? world.systems,
-            iterations: iterations ?? world.iterations)
-    }
-
-    convenience init(
-        world: World,
-        systems: [any System]? = nil,
-        iterationsModifier: IterationsModifier? = nil)
-    {
-        self.init(
-            world: world,
-            systems: systems ?? world.systems,
-            iterations: iterationsModifier?(world.iterations) ?? world.iterations)
-    }
-
     // MARK: - Updates
-
-    static func input(_ world: World, input: String) -> World
+    
+    func input(_ string: String)
     {
-        print(input)
-        return world
+        print(string)
     }
 
-    static func update(_ world: World) -> World
+    func update(_ timeInterval: TimeInterval)
     {
-        World(
-            world: world,
-            iterationsModifier: iterationsModifier)
+        systems.forEach { $0.update() }
+        iterations += 1
     }
-
-    static func display(_ world: World)
+    
+    func display()
     {
-        // This is where we want to render the world to the screen
+        
     }
-
-    static func shouldExit(_ world: World) -> Bool
+    
+    func shouldExit() -> Bool
     {
-        world.iterations >= 100
-    }
-
-    // MARK: - Modifiers
-
-    static func iterationsModifier(_ iterations: Int) -> Int
-    {
-        iterations + 1
+        iterations >= 100
     }
 }
