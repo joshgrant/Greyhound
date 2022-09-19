@@ -15,7 +15,7 @@ final class Stock_Tests: XCTestCase
         let stock = Stock(
             name: "stock",
             current: 0,
-            ideal: 50,
+            ideal: { 50 },
             min: 0,
             max: 100,
             unit: UnitArea.acres)
@@ -27,7 +27,7 @@ final class Stock_Tests: XCTestCase
         let stock = Stock(
             name: "stock",
             current: 25,
-            ideal: 75,
+            ideal: { 75 },
             min: 0,
             max: 100,
             unit: UnitArea.acres)
@@ -39,7 +39,7 @@ final class Stock_Tests: XCTestCase
         let stock = Stock(
             name: "stock",
             current: 0,
-            ideal: 100,
+            ideal: { 100 },
             min: 0,
             max: 100,
             unit: UnitArea.acres)
@@ -51,7 +51,7 @@ final class Stock_Tests: XCTestCase
         let stock = Stock(
             name: "stock",
             current: 100,
-            ideal: 100,
+            ideal: { 100 },
             min: 0,
             max: 100,
             unit: UnitArea.acres)

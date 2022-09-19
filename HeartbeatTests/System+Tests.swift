@@ -19,8 +19,8 @@ final class System_Tests: XCTestCase
     func test_system_leastBalancedStock()
     {
         let system = System(stocks: [
-            .init(name: "", current: 50, ideal: 100, min: 0, max: 100, unit: UnitArea.acres),
-            .init(name: "", current: 75, ideal: 100, min: 0, max: 100, unit: UnitArea.acres)
+            .init(name: "", current: 50, ideal: { 100 }, min: 0, max: 100, unit: UnitArea.acres),
+            .init(name: "", current: 75, ideal: { 100 }, min: 0, max: 100, unit: UnitArea.acres)
         ], flows: [])
         let leastBalanced = system.leastBalanced
         XCTAssertEqual(leastBalanced?.current, 50)
@@ -31,13 +31,13 @@ final class System_Tests: XCTestCase
         let stockA = Stock(
             name: "",
             current: 0,
-            ideal: 100,
+            ideal: { 100 },
             min: 0,
             max: 100)
         let stockB = Stock(
             name: "",
             current: 4,
-            ideal: 0,
+            ideal: { 0 },
             min: 0,
             max: 100)
         
@@ -66,8 +66,8 @@ final class System_Tests: XCTestCase
     {
         let system = System(
             stocks: [
-                .init(name: "", current: 1, ideal: 1, min: 0, max: 1),
-                .init(name: "", current: 1, ideal: 1, min: 0, max: 1)
+                .init(name: "", current: 1, ideal: { 1 }, min: 0, max: 1),
+                .init(name: "", current: 1, ideal: { 1 }, min: 0, max: 1)
             ],
             flows: [])
         let balance = system.balance
@@ -78,8 +78,8 @@ final class System_Tests: XCTestCase
     {
         let system = System(
             stocks: [
-                .init(name: "", current: 1, ideal: 1, min: 0, max: 1),
-                .init(name: "", current: 0, ideal: 1, min: 0, max: 1)
+                .init(name: "", current: 1, ideal: { 1 }, min: 0, max: 1),
+                .init(name: "", current: 0, ideal: { 1 }, min: 0, max: 1)
             ],
             flows: [])
         let balance = system.balance
@@ -90,8 +90,8 @@ final class System_Tests: XCTestCase
     {
         let system = System(
             stocks: [
-                .init(name: "", current: 0, ideal: 1, min: 0, max: 1),
-                .init(name: "", current: 0, ideal: 1, min: 0, max: 1)
+                .init(name: "", current: 0, ideal: { 1 }, min: 0, max: 1),
+                .init(name: "", current: 0, ideal: { 1 }, min: 0, max: 1)
             ],
             flows: [])
         let balance = system.balance
