@@ -9,13 +9,10 @@ import Foundation
 
 open class System
 {
-    public typealias S = Stock
-    public typealias F = Flow
-    
     // MARK: - Variables
     
-    public var stocks: [S]
-    public var flows: [F]
+    public var stocks: [Stock]
+    public var flows: [Flow]
     
     public var balance: Double?
     {
@@ -32,10 +29,10 @@ open class System
         return total / ideal
     }
     
-    public var leastBalanced: S?
+    public var leastBalanced: Stock?
     {
         var balance = Double.infinity
-        var stock: S?
+        var stock: Stock?
         
         for s in stocks
         {
@@ -49,7 +46,7 @@ open class System
         return stock
     }
     
-    public var nextFlow: F?
+    public var nextFlow: Flow?
     {
         guard let leastBalanced = leastBalanced else { return nil }
 
@@ -68,7 +65,7 @@ open class System
     
     // MARK: - Initialization
     
-    public init(stocks: [S], flows: [F])
+    public init(stocks: [Stock], flows: [Flow])
     {
         self.stocks = stocks
         self.flows = flows
