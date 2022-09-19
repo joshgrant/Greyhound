@@ -8,17 +8,17 @@
 import XCTest
 @testable import Heartbeat
 
-final class System1D_Tests: XCTestCase
+final class System_Tests: XCTestCase
 {
-    func test_system1D_init()
+    func test_system_init()
     {
-        let system = System1D(stocks: [], flows: [])
+        let system = System(stocks: [], flows: [])
         XCTAssertNotNil(system)
     }
     
     func test_system_leastBalancedStock()
     {
-        let system = System1D(stocks: [
+        let system = System(stocks: [
             .init(name: "", current: 50, ideal: 100, min: 0, max: 100, unit: UnitArea.acres),
             .init(name: "", current: 75, ideal: 100, min: 0, max: 100, unit: UnitArea.acres)
         ], flows: [])
@@ -28,33 +28,33 @@ final class System1D_Tests: XCTestCase
     
     func test_system_nextFlow()
     {
-        let stockA = Stock1D(
+        let stockA = Stock(
             name: "",
             current: 0,
             ideal: 100,
             min: 0,
             max: 100)
-        let stockB = Stock1D(
+        let stockB = Stock(
             name: "",
             current: 4,
             ideal: 0,
             min: 0,
             max: 100)
         
-        let flowA = Flow1D(
+        let flowA = Flow(
             name: "",
             from: stockA,
             to: stockB,
             amount: 4,
             duration: 1)
-        let flowB = Flow1D(
+        let flowB = Flow(
             name: "",
             from: stockB,
             to: stockA,
             amount: 4,
             duration: 1)
         
-        let system = System1D(
+        let system = System(
             stocks: [stockA, stockB],
             flows: [flowA, flowB])
         
@@ -64,7 +64,7 @@ final class System1D_Tests: XCTestCase
     
     func test_system_balance_allStocksInBalance()
     {
-        let system = System1D(
+        let system = System(
             stocks: [
                 .init(name: "", current: 1, ideal: 1, min: 0, max: 1),
                 .init(name: "", current: 1, ideal: 1, min: 0, max: 1)
@@ -76,7 +76,7 @@ final class System1D_Tests: XCTestCase
     
     func test_system_balance_halfStocksInBalance()
     {
-        let system = System1D(
+        let system = System(
             stocks: [
                 .init(name: "", current: 1, ideal: 1, min: 0, max: 1),
                 .init(name: "", current: 0, ideal: 1, min: 0, max: 1)
@@ -88,7 +88,7 @@ final class System1D_Tests: XCTestCase
     
     func test_system_balance_noStocksInBalance()
     {
-        let system = System1D(
+        let system = System(
             stocks: [
                 .init(name: "", current: 0, ideal: 1, min: 0, max: 1),
                 .init(name: "", current: 0, ideal: 1, min: 0, max: 1)

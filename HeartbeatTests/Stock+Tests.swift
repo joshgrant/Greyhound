@@ -1,5 +1,5 @@
 //
-//  Stock1D+Tests.swift
+//  Stock+Tests.swift
 //  HeartbeatTests
 //
 //  Created by Joshua Grant on 9/15/22.
@@ -8,11 +8,11 @@
 import XCTest
 @testable import Heartbeat
 
-final class Stock1D_Tests: XCTestCase
+final class Stock_Tests: XCTestCase
 {
     func test_stock1D_init()
     {
-        let stock = Stock1D(
+        let stock = Stock(
             name: "stock",
             current: 0,
             ideal: 50,
@@ -22,9 +22,9 @@ final class Stock1D_Tests: XCTestCase
         XCTAssertNotNil(stock)
     }
     
-    func test_stock1D_balance()
+    func test_stock_balance()
     {
-        let stock = Stock1D(
+        let stock = Stock(
             name: "stock",
             current: 25,
             ideal: 75,
@@ -34,9 +34,9 @@ final class Stock1D_Tests: XCTestCase
         XCTAssertEqual(stock.balance, 0.33, accuracy: 0.01)
     }
     
-    func test_stock1D_balanceZero()
+    func test_stock_balanceZero()
     {
-        let stock = Stock1D(
+        let stock = Stock(
             name: "stock",
             current: 0,
             ideal: 100,
@@ -46,9 +46,9 @@ final class Stock1D_Tests: XCTestCase
         XCTAssertEqual(stock.balance, 0)
     }
     
-    func test_stock1D_balanceOne()
+    func test_stock_balanceOne()
     {
-        let stock = Stock1D(
+        let stock = Stock(
             name: "stock",
             current: 100,
             ideal: 100,

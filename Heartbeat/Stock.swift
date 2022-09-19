@@ -1,32 +1,54 @@
 //
-//  ClassStock3D.swift
-//  Heartbeat
+//  Stock.swift
+//  Client
 //
-//  Created by Joshua Grant on 9/18/22.
+//  Created by Joshua Grant on 9/16/22.
 //
 
 import Foundation
 
-public protocol Stock: AnyObject, CustomStringConvertible, Equatable
+open class Stock
 {
-    associatedtype T: Comparable
+    // MARK: - Variables
     
-    var name: String { get }
+    public var name: String
     
-    var current: T { get }
-    var ideal: T { get set }
-    var min: T { get set }
-    var max: T { get set }
+    public var current: Double
+    public var ideal: Double
     
-    var unit: Unit? { get set }
+    public var min: Double
+    public var max: Double
     
-    var balance: Double { get }
-    var sign: ComparisonResult { get }
+    public var unit: Unit?
+    
+    public static var source = Stock(name: "source", current: .infinity, ideal: -.infinity, min: -.infinity, max: .infinity)
+    public static var sink = Stock(name: "sink", current: -.infinity, ideal: .infinity, min: -.infinity, max: .infinity)
+    
+    // MARK: - Initialization
+    
+    public init(name: String, current: Double, ideal: Double, min: Double, max: Double, unit: Unit? = nil)
+    {
+        self.name = name
+        self.current = current
+        self.ideal = ideal
+        self.min = min
+        self.max = max
+        self.unit = unit
+    }
 }
 
-public extension Stock
+// MARK: - Stock protocol
+
+extension Stock
 {
-    var sign: ComparisonResult
+    public var balance: Double
+    {
+        let delta = abs(current - ideal)
+        let scale = Swift.max(max - ideal, ideal - min)
+        return 1 - delta / scale
+    }
+    
+    public var sign: ComparisonResult
     {
         if current > ideal
         {
@@ -40,5 +62,21 @@ public extension Stock
         {
             return .orderedSame
         }
+    }
+}
+
+extension Stock: CustomStringConvertible
+{
+    public var description: String
+    {
+        "Stock (\(name)): \(current)"
+    }
+}
+
+extension Stock: Equatable
+{
+    public static func ==(lhs: Stock, rhs: Stock) -> Bool
+    {
+        lhs === rhs
     }
 }

@@ -13,15 +13,15 @@ class GameScene: SKScene
 {
     private var shape: SKShapeNode?
     
-    private var coordinateSystem: System1D =
+    private var coordinateSystem: System =
     {
-        let x = Stock1D(name: "x", current: 0, ideal: 300, min: 0, max: 300)
-        let y = Stock1D(name: "y", current: 0, ideal: 100, min: 0, max: 100)
+        let x = Stock(name: "x", current: 0, ideal: 300, min: 0, max: 300)
+        let y = Stock(name: "y", current: 0, ideal: 100, min: 0, max: 100)
         
-        let moveX = Flow1D(name: "moveX", from: .source, to: x, amount: 1, duration: 0.01)
-        let moveY = Flow1D(name: "moveY", from: .source, to: y, amount: 1, duration: 0.01)
+        let moveX = Flow(name: "moveX", from: .source, to: x, amount: 1, duration: 0.01)
+        let moveY = Flow(name: "moveY", from: .source, to: y, amount: 1, duration: 0.01)
         
-        return System1D(stocks: [x, y], flows: [moveX, moveY])
+        return System(stocks: [x, y], flows: [moveX, moveY])
     }()
     
     override func didMove(to view: SKView)
@@ -29,6 +29,7 @@ class GameScene: SKScene
         AppDelegate.world.systems.append(coordinateSystem)
         
         shape = SKShapeNode(circleOfRadius: 10)
+        shape?.fillColor = .orange
         addChild(shape!)
     }
     

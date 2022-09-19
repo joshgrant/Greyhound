@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		030122F528D3DC2A008A9978 /* Stock1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F428D3DC2A008A9978 /* Stock1D+Tests.swift */; };
-		0301231628D3F702008A9978 /* System1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System1D+Tests.swift */; };
-		0301231828D3F70D008A9978 /* Flow1D+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow1D+Tests.swift */; };
-		0301233728D7537E008A9978 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233128D53E4C008A9978 /* System.swift */; };
+		030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030122F428D3DC2A008A9978 /* Stock+Tests.swift */; };
+		0301231628D3F702008A9978 /* System+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231528D3F702008A9978 /* System+Tests.swift */; };
+		0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301231728D3F70D008A9978 /* Flow+Tests.swift */; };
 		0301233828D7537E008A9978 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233328D53E91008A9978 /* World.swift */; };
-		0301233928D7537E008A9978 /* Stock1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock1D.swift */; };
-		0301233A28D7537E008A9978 /* Flow1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow1D.swift */; };
-		0301233F28D7CF12008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233E28D7CF12008A9978 /* Stock.swift */; };
-		0301234128D7D4AC008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301234028D7D4AC008A9978 /* Flow.swift */; };
+		0301233928D7537E008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock.swift */; };
+		0301233A28D7537E008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow.swift */; };
 		03747B8828D7DBA50036678B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8728D7DBA50036678B /* AppDelegate.swift */; };
 		03747B8E28D7DBA50036678B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8D28D7DBA50036678B /* GameScene.swift */; };
 		03747B9028D7DBA50036678B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8F28D7DBA50036678B /* GameViewController.swift */; };
@@ -24,7 +21,7 @@
 		03747B9828D7DBA60036678B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9628D7DBA60036678B /* LaunchScreen.storyboard */; };
 		03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03C0858A28D7D6EC0087D0DC /* System1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System1D.swift */; };
+		03C0858A28D7D6EC0087D0DC /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -61,16 +58,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		030122F428D3DC2A008A9978 /* Stock1D+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock1D+Tests.swift"; sourceTree = "<group>"; };
-		0301231528D3F702008A9978 /* System1D+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System1D+Tests.swift"; sourceTree = "<group>"; };
-		0301231728D3F70D008A9978 /* Flow1D+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow1D+Tests.swift"; sourceTree = "<group>"; };
+		030122F428D3DC2A008A9978 /* Stock+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Tests.swift"; sourceTree = "<group>"; };
+		0301231528D3F702008A9978 /* System+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System+Tests.swift"; sourceTree = "<group>"; };
+		0301231728D3F70D008A9978 /* Flow+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flow+Tests.swift"; sourceTree = "<group>"; };
 		0301231B28D4291E008A9978 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0301232D28D53E31008A9978 /* Stock1D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock1D.swift; sourceTree = "<group>"; };
-		0301232F28D53E3C008A9978 /* Flow1D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow1D.swift; sourceTree = "<group>"; };
-		0301233128D53E4C008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		0301232D28D53E31008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		0301232F28D53E3C008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		0301233E28D7CF12008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		0301234028D7D4AC008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		03747B8528D7DBA50036678B /* HeartbeatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartbeatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03747B8728D7DBA50036678B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03747B8D28D7DBA50036678B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -78,7 +72,7 @@
 		03747B9228D7DBA50036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03747B9428D7DBA60036678B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03747B9728D7DBA60036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		03C0858928D7D6EC0087D0DC /* System1D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System1D.swift; sourceTree = "<group>"; };
+		03C0858928D7D6EC0087D0DC /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
 		03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartbeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,16 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0301234228D7D4B5008A9978 /* Concrete Types */ = {
-			isa = PBXGroup;
-			children = (
-				0301232F28D53E3C008A9978 /* Flow1D.swift */,
-				0301232D28D53E31008A9978 /* Stock1D.swift */,
-				03C0858928D7D6EC0087D0DC /* System1D.swift */,
-			);
-			path = "Concrete Types";
-			sourceTree = "<group>";
-		};
 		03747B8628D7DBA50036678B /* HeartbeatDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,11 +151,10 @@
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
 				0301231B28D4291E008A9978 /* README.md */,
-				0301234028D7D4AC008A9978 /* Flow.swift */,
-				0301233E28D7CF12008A9978 /* Stock.swift */,
-				0301233128D53E4C008A9978 /* System.swift */,
+				0301232F28D53E3C008A9978 /* Flow.swift */,
+				0301232D28D53E31008A9978 /* Stock.swift */,
+				03C0858928D7D6EC0087D0DC /* System.swift */,
 				0301233328D53E91008A9978 /* World.swift */,
-				0301234228D7D4B5008A9978 /* Concrete Types */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -179,9 +162,9 @@
 		03FF92C628C3FCE500FC1956 /* HeartbeatTests */ = {
 			isa = PBXGroup;
 			children = (
-				030122F428D3DC2A008A9978 /* Stock1D+Tests.swift */,
-				0301231528D3F702008A9978 /* System1D+Tests.swift */,
-				0301231728D3F70D008A9978 /* Flow1D+Tests.swift */,
+				030122F428D3DC2A008A9978 /* Stock+Tests.swift */,
+				0301231528D3F702008A9978 /* System+Tests.swift */,
+				0301231728D3F70D008A9978 /* Flow+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -342,13 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0301234128D7D4AC008A9978 /* Flow.swift in Sources */,
 				0301233828D7537E008A9978 /* World.swift in Sources */,
-				0301233A28D7537E008A9978 /* Flow1D.swift in Sources */,
-				03C0858A28D7D6EC0087D0DC /* System1D.swift in Sources */,
-				0301233F28D7CF12008A9978 /* Stock.swift in Sources */,
-				0301233728D7537E008A9978 /* System.swift in Sources */,
-				0301233928D7537E008A9978 /* Stock1D.swift in Sources */,
+				0301233A28D7537E008A9978 /* Flow.swift in Sources */,
+				03C0858A28D7D6EC0087D0DC /* System.swift in Sources */,
+				0301233928D7537E008A9978 /* Stock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,9 +336,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0301231628D3F702008A9978 /* System1D+Tests.swift in Sources */,
-				0301231828D3F70D008A9978 /* Flow1D+Tests.swift in Sources */,
-				030122F528D3DC2A008A9978 /* Stock1D+Tests.swift in Sources */,
+				0301231628D3F702008A9978 /* System+Tests.swift in Sources */,
+				0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */,
+				030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

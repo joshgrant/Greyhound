@@ -13,13 +13,13 @@ public class World
 
     // MARK: - Variables
 
-    public var systems: [any System]
+    public var systems: [System]
     public private(set) var iterations: Int
 
     // MARK: - Initialization
 
     public init(
-        systems: [any System],
+        systems: [System],
         iterations: Int = 0)
     {
         self.systems = systems
@@ -37,7 +37,6 @@ public class World
 
     public func update(_ timeInterval: TimeInterval)
     {
-        print(timeInterval)
         systems.forEach { $0.update(timeInterval) }
         iterations += 1
     }
