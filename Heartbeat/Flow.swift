@@ -11,7 +11,7 @@ open class Flow
 {
     // MARK: - Variables
     
-    public var name: String
+    public var name: String?
     
     public var from: Stock
     public var to: Stock
@@ -30,7 +30,7 @@ open class Flow
     
     // MARK: - Initialization
     
-    public init(name: String, from: Stock, to: Stock, amount: Double, duration: TimeInterval)
+    public init(name: String? = nil, from: Stock, to: Stock, amount: Double, duration: TimeInterval)
     {
         self.name = name
         self.from = from

@@ -11,7 +11,7 @@ open class Stock
 {
     // MARK: - Variables
     
-    public var name: String
+    public var name: String?
     
     public var current: Double
     public var ideal: () -> Double
@@ -26,7 +26,7 @@ open class Stock
     
     // MARK: - Initialization
     
-    public init(name: String, current: Double, ideal: @escaping () -> Double, min: Double, max: Double, unit: Unit? = nil)
+    public init(name: String? = nil, current: Double, ideal: @escaping () -> Double, min: Double, max: Double, unit: Unit? = nil)
     {
         self.name = name
         self.current = current
@@ -69,7 +69,7 @@ extension Stock: CustomStringConvertible
 {
     public var description: String
     {
-        "Stock (\(name)): \(current)"
+        "Stock (\(name ?? "")): \(current)"
     }
 }
 

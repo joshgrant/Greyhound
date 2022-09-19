@@ -21,6 +21,7 @@
 		03747B9828D7DBA60036678B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9628D7DBA60036678B /* LaunchScreen.storyboard */; };
 		03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		03747BAA28D828D20036678B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BA928D828D20036678B /* PositionSystem.swift */; };
 		03C0858A28D7D6EC0087D0DC /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,6 +73,7 @@
 		03747B9228D7DBA50036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03747B9428D7DBA60036678B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03747B9728D7DBA60036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03747BA928D828D20036678B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		03C0858928D7D6EC0087D0DC /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
@@ -111,9 +113,10 @@
 				03747B8728D7DBA50036678B /* AppDelegate.swift */,
 				03747B8D28D7DBA50036678B /* GameScene.swift */,
 				03747B8F28D7DBA50036678B /* GameViewController.swift */,
-				03747B9128D7DBA50036678B /* Main.storyboard */,
+				03747BA928D828D20036678B /* PositionSystem.swift */,
 				03747B9428D7DBA60036678B /* Assets.xcassets */,
 				03747B9628D7DBA60036678B /* LaunchScreen.storyboard */,
+				03747B9128D7DBA50036678B /* Main.storyboard */,
 			);
 			path = HeartbeatDemo;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03747B8E28D7DBA50036678B /* GameScene.swift in Sources */,
+				03747BAA28D828D20036678B /* PositionSystem.swift in Sources */,
 				03747B9028D7DBA50036678B /* GameViewController.swift in Sources */,
 				03747B8828D7DBA50036678B /* AppDelegate.swift in Sources */,
 			);
