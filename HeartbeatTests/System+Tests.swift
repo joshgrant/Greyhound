@@ -51,4 +51,18 @@ final class System_Tests: XCTestCase
         let balance = system.balance
         XCTAssertEqual(balance, 0)
     }
+    
+    func test_system_balance_withBondedStocks()
+    {
+        let a = Stock(current: 8, ideal: { 10 }, min: 0, max: 10)
+        let b = Stock(current: 11, ideal: { 10 }, min: 0, max: 10)
+        let bond = Bond(a: a, b: b)
+        
+        let system = System(
+            stocks: [a, b],
+            flows: [])
+        system.bonds = [bond]
+        let balance = system.balance
+        XCTAssertEqual(balance, 0.95)
+    }
 }

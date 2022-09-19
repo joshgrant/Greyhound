@@ -13,7 +13,7 @@ open class System
     
     public var stocks: [Stock]
     public var flows: [Flow]
-    public var bonds: [Stock: Stock]
+    public var bonds: [Bond]
     public var subsystems: [System] = []
     
     public var balance: Double?
@@ -23,7 +23,19 @@ open class System
         
         for stock in stocks
         {
-            if let b = stock.balance
+            let bond = bonds.first { $0.a == stock || $0.b == stock }
+            
+            // Make the bond calculation more... functional and modular?
+            if let bond = bond
+            {
+                let other = bond.a == stock ? bond.b : bond.a
+                if let b = stock.balance(with: other)
+                {
+                    total += b
+                    ideal += 1
+                }
+            }
+            else if let b = stock.balance
             {
                 total += b
                 ideal += 1
@@ -33,24 +45,7 @@ open class System
         if ideal == 0 { return 1 }
         return total / ideal
     }
-    
-//    public var leastBalanced: Stock?
-//    {
-//        var balance = Double.infinity
-//        var stock: Stock?
-//        
-//        for s in stocks
-//        {
-//            if let b = s.balance, b < balance
-//            {
-//                balance = b
-//                stock = s
-//            }
-//        }
-//        
-//        return stock
-//    }
-//
+
     public var allUnbalanced: [Stock]
     {
         stocks
@@ -70,7 +65,7 @@ open class System
     {
         self.stocks = stocks
         self.flows = flows
-        self.bonds = [:]
+        self.bonds = []
         self.subsystems = subsystems
     }
     
