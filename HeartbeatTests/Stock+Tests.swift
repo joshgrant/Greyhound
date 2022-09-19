@@ -78,7 +78,10 @@ final class Stock_Tests: XCTestCase
         let balanceA = a.balance(with: b)
         let balanceB = b.balance(with: a)
         
-        XCTAssertEqual(balanceA, 0.2)
-        XCTAssertEqual(balanceB, 1)
+        XCTAssertNotNil(balanceA)
+        XCTAssertNotNil(balanceB)
+        
+        XCTAssertEqual(balanceA!, 0.2, accuracy: 0.000001)
+        XCTAssertEqual(balanceB!, 1)
     }
 }
