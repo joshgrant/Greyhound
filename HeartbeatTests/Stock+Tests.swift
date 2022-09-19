@@ -10,7 +10,7 @@ import XCTest
 
 final class Stock_Tests: XCTestCase
 {
-    func test_stock1D_init()
+    func test_stock_init()
     {
         let stock = Stock(
             name: "stock",
@@ -83,5 +83,11 @@ final class Stock_Tests: XCTestCase
         
         XCTAssertEqual(balanceA!, 0.2, accuracy: 0.000001)
         XCTAssertEqual(balanceB!, 1)
+    }
+    
+    func test_stock_balanceNoBounds()
+    {
+        let atom = Stock(current: 3, ideal: { 0 }, min: -.infinity, max: .infinity)
+        XCTAssertEqual(atom.balance, 0)
     }
 }
