@@ -14,19 +14,22 @@ open class Stock
     public var name: String?
     
     public var current: Double
-    public var ideal: () -> Double
+    public var ideal: () -> Double?
     
     public var min: Double
     public var max: Double
     
     public var unit: Unit?
     
-    public static var source = Stock(name: "source", current: .infinity, ideal: { -.infinity }, min: -.infinity, max: .infinity)
-    public static var sink = Stock(name: "sink", current: -.infinity, ideal: { .infinity }, min: -.infinity, max: .infinity)
-    
     // MARK: - Initialization
     
-    public init(name: String? = nil, current: Double, ideal: @escaping () -> Double, min: Double, max: Double, unit: Unit? = nil)
+    public init(
+        name: String? = nil,
+        current: Double,
+        ideal: @escaping () -> Double?,
+        min: Double,
+        max: Double,
+        unit: Unit? = nil)
     {
         self.name = name
         self.current = current
@@ -41,20 +44,23 @@ open class Stock
 
 extension Stock
 {
-    public var balance: Double
+    public var balance: Double?
     {
-        let delta = abs(current - ideal())
-        let scale = Swift.max(max - ideal(), ideal() - min)
+        guard let ideal = ideal() else { return nil }
+        
+        let delta = abs(current - ideal)
+        let scale = Swift.max(max - ideal, ideal - min)
         return 1 - delta / scale
     }
     
-    public var sign: ComparisonResult
+    public var sign: ComparisonResult?
     {
-        if current > ideal()
+        guard let ideal = ideal() else { return nil }
+        if current > ideal
         {
             return .orderedAscending
         }
-        else if current < ideal()
+        else if current < ideal
         {
             return .orderedDescending
         }
@@ -79,4 +85,23 @@ extension Stock: Equatable
     {
         lhs === rhs
     }
+}
+
+// MARK: - Global stocks
+
+extension Stock
+{
+    public static var source = Stock(
+        name: "source",
+        current: .infinity,
+        ideal: { -.infinity },
+        min: -.infinity,
+        max: .infinity)
+    
+    public static var sink = Stock(
+        name: "sink",
+        current: -.infinity,
+        ideal: { .infinity },
+        min: -.infinity,
+        max: .infinity)
 }

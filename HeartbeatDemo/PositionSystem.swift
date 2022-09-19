@@ -12,8 +12,8 @@ class PositionSystem: System
 {
     // MARK: - Variables
     
-    var xIdeal: () -> Double
-    var yIdeal: () -> Double
+    var xIdeal: () -> Double?
+    var yIdeal: () -> Double?
     
     var x: Stock
     var y: Stock
@@ -41,8 +41,8 @@ class PositionSystem: System
     init(
         x xVal: Double,
         y yVal: Double,
-        xIdeal: @escaping () -> Double,
-        yIdeal: @escaping () -> Double)
+        xIdeal: @escaping () -> Double?,
+        yIdeal: @escaping () -> Double?)
     {
         self.xIdeal = xIdeal
         self.yIdeal = yIdeal
@@ -55,6 +55,8 @@ class PositionSystem: System
         xNegative = Flow(from: x, to: .sink, amount: 1, duration: 0.01)
         yNegative = Flow(from: y, to: .sink, amount: 1, duration: 0.01)
         
-        super.init(stocks: [x, y], flows: [xPositive, yPositive, xNegative, yNegative])
+        super.init(
+            stocks: [x, y],
+            flows: [xPositive, yPositive, xNegative, yNegative])
     }
 }

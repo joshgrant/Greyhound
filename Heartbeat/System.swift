@@ -13,6 +13,7 @@ open class System
     
     public var stocks: [Stock]
     public var flows: [Flow]
+    public var subsystems: [System] = []
     
     public var balance: Double?
     {
@@ -21,8 +22,11 @@ open class System
         
         for stock in stocks
         {
-            total += stock.balance
-            ideal += 1
+            if let b = stock.balance
+            {
+                total += b
+                ideal += 1
+            }
         }
         
         if ideal == 0 { return 1 }
@@ -36,9 +40,9 @@ open class System
         
         for s in stocks
         {
-            if s.balance < balance
+            if let b = s.balance, b < balance
             {
-                balance = s.balance
+                balance = b
                 stock = s
             }
         }
@@ -49,16 +53,23 @@ open class System
     public var allUnbalanced: [Stock]
     {
         stocks
-            .filter { $0.balance < 1 }
-            .sorted { $0.balance > $1.balance}
+            .filter {
+                guard let balance = $0.balance else { return false }
+                return balance < 1
+            }
+            .sorted {
+                guard let b0 = $0.balance, let b1 = $1.balance else { return false }
+                return b0 > b1
+            }
     }
     
     // MARK: - Initialization
     
-    public init(stocks: [Stock], flows: [Flow])
+    public init(stocks: [Stock], flows: [Flow], subsystems: [System] = [])
     {
         self.stocks = stocks
         self.flows = flows
+        self.subsystems = subsystems
     }
     
     // MARK: - Modifiers
@@ -81,6 +92,8 @@ open class System
                     return flow.to == stock
                 case .orderedSame:
                     return false
+                case .none:
+                    return false
                 }
             })
             
@@ -94,6 +107,10 @@ open class System
         {
             flow.update(timeInterval)
         }
+        
+        // Now update all of the systems
+        
+        subsystems.forEach { $0.update(timeInterval) }
     }
 }
 
