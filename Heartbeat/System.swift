@@ -15,5 +15,5 @@ public protocol System: AnyObject, CustomStringConvertible
     var stocks: [S] { get set }
     var flows: [F] { get set }
     
-    func update()
+    func update(_ timeInterval: TimeInterval)
 }

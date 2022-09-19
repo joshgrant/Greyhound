@@ -19,6 +19,8 @@ open class Flow1D: Flow
     public var amount: Double
     public var duration: TimeInterval
     
+    private var lastFire: Date = .now
+    
     public var transferAmount: Double
     {
         min(amount,
@@ -35,6 +37,20 @@ open class Flow1D: Flow
         self.to = to
         self.amount = amount
         self.duration = duration
+    }
+    
+    // MARK: - Functions
+    
+    public func update(_ timeInterval: TimeInterval)
+    {
+        if abs(lastFire.timeIntervalSinceNow) > duration {
+            let amount = transferAmount
+            // These modifications have to come after calculating the flow amount
+            from.current -= amount
+            to.current += amount
+            
+            lastFire = .now
+        }
     }
 }
 

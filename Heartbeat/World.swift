@@ -28,23 +28,26 @@ public class World
 
     // MARK: - Updates
     
-    func input(_ string: String)
-    {
-        print(string)
-    }
+    // This would originally be used with keyboard input,
+    // but there's probably a better way...
+//    public func input(_ string: String)
+//    {
+//        print(string)
+//    }
 
-    func update(_ timeInterval: TimeInterval)
+    public func update(_ timeInterval: TimeInterval)
     {
-        systems.forEach { $0.update() }
+        print(timeInterval)
+        systems.forEach { $0.update(timeInterval) }
         iterations += 1
     }
     
-    func display()
+    public func display()
     {
-        
+        // TODO: Is this necessary in a SpriteKit scenario?
     }
     
-    func shouldExit() -> Bool
+    public func shouldExit() -> Bool
     {
         iterations >= 100
     }

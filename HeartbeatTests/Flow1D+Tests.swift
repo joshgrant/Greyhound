@@ -50,4 +50,15 @@ final class Flow1D_Tests: XCTestCase
         let flow = Flow1D(name: "flow", from: stockA, to: stockB, amount: 2, duration: 1.0)
         XCTAssertEqual(flow.transferAmount, 2)
     }
+    
+    func test_flow1D_elapsedTime()
+    {
+        let stockA = Stock1D(name: "from", current: 87, ideal: 48, min: 36, max: 94)
+        let stockB = Stock1D(name: "to", current: 17, ideal: 57, min: 0, max: 1000)
+        
+        let start = Date.now
+        let flow = Flow1D(name: "test", from: stockA, to: stockB, amount: 1, duration: 3)
+        
+        XCTFail()
+    }
 }

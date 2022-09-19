@@ -20,4 +20,6 @@ public protocol Flow: AnyObject, CustomStringConvertible, Equatable
     var duration: TimeInterval { get set }
     
     var transferAmount: T.T { get }
+    
+    func update(_ timeInterval: TimeInterval)
 }

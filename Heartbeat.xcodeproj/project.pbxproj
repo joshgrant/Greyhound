@@ -14,12 +14,9 @@
 		0301233828D7537E008A9978 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233328D53E91008A9978 /* World.swift */; };
 		0301233928D7537E008A9978 /* Stock1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock1D.swift */; };
 		0301233A28D7537E008A9978 /* Flow1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow1D.swift */; };
-		0301233B28D7537E008A9978 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233528D53EC0008A9978 /* App.swift */; };
 		0301233F28D7CF12008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233E28D7CF12008A9978 /* Stock.swift */; };
 		0301234128D7D4AC008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301234028D7D4AC008A9978 /* Flow.swift */; };
 		03747B8828D7DBA50036678B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8728D7DBA50036678B /* AppDelegate.swift */; };
-		03747B8A28D7DBA50036678B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03747B8928D7DBA50036678B /* GameScene.sks */; };
-		03747B8C28D7DBA50036678B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03747B8B28D7DBA50036678B /* Actions.sks */; };
 		03747B8E28D7DBA50036678B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8D28D7DBA50036678B /* GameScene.swift */; };
 		03747B9028D7DBA50036678B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747B8F28D7DBA50036678B /* GameViewController.swift */; };
 		03747B9328D7DBA50036678B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747B9128D7DBA50036678B /* Main.storyboard */; };
@@ -72,13 +69,10 @@
 		0301232F28D53E3C008A9978 /* Flow1D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow1D.swift; sourceTree = "<group>"; };
 		0301233128D53E4C008A9978 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		0301233528D53EC0008A9978 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0301233E28D7CF12008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		0301234028D7D4AC008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		03747B8528D7DBA50036678B /* HeartbeatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartbeatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03747B8728D7DBA50036678B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03747B8928D7DBA50036678B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		03747B8B28D7DBA50036678B /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		03747B8D28D7DBA50036678B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		03747B8F28D7DBA50036678B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		03747B9228D7DBA50036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,8 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				03747B8728D7DBA50036678B /* AppDelegate.swift */,
-				03747B8928D7DBA50036678B /* GameScene.sks */,
-				03747B8B28D7DBA50036678B /* Actions.sks */,
 				03747B8D28D7DBA50036678B /* GameScene.swift */,
 				03747B8F28D7DBA50036678B /* GameViewController.swift */,
 				03747B9128D7DBA50036678B /* Main.storyboard */,
@@ -175,7 +167,6 @@
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
 				0301231B28D4291E008A9978 /* README.md */,
-				0301233528D53EC0008A9978 /* App.swift */,
 				0301234028D7D4AC008A9978 /* Flow.swift */,
 				0301233E28D7CF12008A9978 /* Stock.swift */,
 				0301233128D53E4C008A9978 /* System.swift */,
@@ -315,10 +306,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03747B9328D7DBA50036678B /* Main.storyboard in Resources */,
-				03747B8A28D7DBA50036678B /* GameScene.sks in Resources */,
 				03747B9528D7DBA60036678B /* Assets.xcassets in Resources */,
 				03747B9828D7DBA60036678B /* LaunchScreen.storyboard in Resources */,
-				03747B8C28D7DBA50036678B /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +348,6 @@
 				03C0858A28D7D6EC0087D0DC /* System1D.swift in Sources */,
 				0301233F28D7CF12008A9978 /* Stock.swift in Sources */,
 				0301233728D7537E008A9978 /* System.swift in Sources */,
-				0301233B28D7537E008A9978 /* App.swift in Sources */,
 				0301233928D7537E008A9978 /* Stock1D.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

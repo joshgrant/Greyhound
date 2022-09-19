@@ -76,13 +76,13 @@ open class System1D: System
     
     // MARK: - Modifiers
     
-    public func update()
+    public func update(_ timeInterval: TimeInterval)
     {
+        // The problem with this is that only 1 flow gets to be resolved at a time.
+        // Is that really how the world works? No... a system doesn't only run one flow
+        // Maybe it makes one decision at a time, but runs things in parallel
         guard let flow = nextFlow else { return }
-        let amount = flow.transferAmount
-        // These modifications have to come after calculating the flow amount
-        flow.from.current -= amount
-        flow.to.current += amount
+        flow.update(timeInterval)
     }
 }
 
