@@ -17,13 +17,21 @@ class DigestiveSystem: System
     var eat: Flow
     var digest: Flow
     
+    var foodSource: () -> Stock
+    
     // MARK: - Initialization
     
-    init()
+    init(foodSource: @escaping () -> Stock)
     {
-        stomach = Stock(current: 0, ideal: { 100 }, min: 0, max: 100)
+        self.foodSource = foodSource
+        stomach = Stock(current: 0, ideal: { 100 }, min: 0, max: 100, unit: UnitFood.unit)
         
-        eat = Flow(from: .source, to: stomach, amount: 20, duration: 1)
+        // TODO: These can't come from `source` or go to `sink`... they
+        // have to come from something...
+        // So "digest" is really like a "sense"... where the
+        // food comes from the environment... right???
+        // So the square needs to have food...
+        eat = Flow(from: foodSource(), to: stomach, amount: 20, duration: 1)
         digest = Flow(from: stomach, to: .sink, amount: 0.1, duration: 1)
         
         super.init(stocks: [stomach], flows: [eat, digest])

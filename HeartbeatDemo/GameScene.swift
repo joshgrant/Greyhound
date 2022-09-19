@@ -13,15 +13,22 @@ class GameScene: SKScene
 {
     private var circle: SKShapeNode?
     private var square: SKShapeNode?
+    private var hunger: SKLabelNode?
     
-    lazy var squareSystem = PositionSystem(x: 1000, y: 1000, xIdeal: { 500 }, yIdeal: { 500 })
-    
-    lazy var circleBody = BodySystem(foodSensor: .init(value: foodSensorValue))
+    lazy var food = FoodSystem()
+    lazy var body = BodySystem(
+        foodSensor: .init(value: foodSensorValue),
+        foodSource: foodSource)
     
     override func didMove(to view: SKView)
     {
-        AppDelegate.world.systems.append(circleBody)
-        AppDelegate.world.systems.append(squareSystem)
+        AppDelegate.world.systems.append(body)
+        AppDelegate.world.systems.append(food)
+        
+        hunger = SKLabelNode(text: "Empty")
+        hunger?.fontColor = .white
+        hunger?.position = .init(x: 100, y: 30)
+        addChild(hunger!)
         
         circle = SKShapeNode(circleOfRadius: 10)
         circle?.fillColor = .orange
@@ -36,18 +43,24 @@ class GameScene: SKScene
     {
         AppDelegate.world.update(currentTime)
 
-        circle?.position = circleBody.positionSystem.position
-        square?.position = squareSystem.position
+        circle?.position = body.positionSystem.position
+        square?.position = food.positionSystem.position
+        hunger?.text = "\(body.digestive.stomach.current)"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         guard let position = touches.first?.location(in: self) else { return }
-        squareSystem.position = position
+        food.positionSystem.position = position
     }
     
     func foodSensorValue() -> CGPoint
     {
-        squareSystem.position
+        food.positionSystem.position
+    }
+    
+    func foodSource() -> Stock
+    {
+        food.resource
     }
 }
