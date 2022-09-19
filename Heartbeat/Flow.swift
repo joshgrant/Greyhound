@@ -13,8 +13,8 @@ open class Flow
     
     public var name: String?
     
-    public var from: Stock
-    public var to: Stock
+    public var from: Stock?
+    public var to: Stock?
     
     public var amount: Double
     public var duration: TimeInterval
@@ -23,14 +23,16 @@ open class Flow
     
     public var transferAmount: Double
     {
-        min(amount,
-            abs(to.max - to.current),
-            abs(from.current - from.min))
+        guard let from = from, let to = to else { return 0 }
+        
+        return min(amount,
+                   abs(to.max - to.current),
+                   abs(from.current - from.min))
     }
     
     // MARK: - Initialization
     
-    public init(name: String? = nil, from: Stock, to: Stock, amount: Double, duration: TimeInterval)
+    public init(name: String? = nil, from: Stock?, to: Stock?, amount: Double, duration: TimeInterval)
     {
         self.name = name
         self.from = from
@@ -43,6 +45,8 @@ open class Flow
     
     public func update(_ timeInterval: TimeInterval)
     {
+        guard let from = from, let to = to else { return }
+        
         if let last = lastTimeInterval
         {
             if timeInterval - last > duration
@@ -66,7 +70,7 @@ extension Flow: CustomStringConvertible
 {
     public var description: String
     {
-        "Flow \(name): \(amount)"
+        "Flow \(name ?? ""): \(amount)"
     }
 }
 

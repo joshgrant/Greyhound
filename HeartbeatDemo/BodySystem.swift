@@ -12,8 +12,8 @@ class BodySystem: System
 {
     // MARK: - Variables
     
-    public var foodSensor: Sensor<CGPoint>
-    public var foodSource: () -> Stock
+    public var eyes: Input<CGPoint>
+    public var mouth: Input<Stock>
     
     public lazy var positionSystem: PositionSystem = {
         PositionSystem(
@@ -23,26 +23,26 @@ class BodySystem: System
             yIdeal: yIdeal)
     }()
     
-    public lazy var digestive = DigestiveSystem(foodSource: foodSource)
+    public lazy var digestive = DigestiveSystem(mouth: mouth)
     
     // MARK: - Initialization
     
-    public init(foodSensor: Sensor<CGPoint>, foodSource: @escaping () -> Stock)
+    public init(eyes: Input<CGPoint>, mouth: Input<Stock>)
     {
-        self.foodSensor = foodSensor
-        self.foodSource = foodSource
+        self.eyes = eyes
+        self.mouth = mouth
         super.init(stocks: [], flows: [], subsystems: [])
         self.subsystems = [positionSystem, digestive] // Something about accessing self before super.init
     }
     
     private func xIdeal() -> Double?
     {
-        foodSensor.value?.x.doubleValue
+        eyes.source?.x.doubleValue
     }
     
     private func yIdeal() -> Double?
     {
-        foodSensor.value?.y.doubleValue
+        eyes.source?.y.doubleValue
     }
 }
 

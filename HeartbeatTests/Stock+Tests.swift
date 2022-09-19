@@ -31,7 +31,7 @@ final class Stock_Tests: XCTestCase
             min: 0,
             max: 100,
             unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance, 0.33, accuracy: 0.01)
+        XCTAssertEqual(stock.balance ?? -1, 0.33, accuracy: 0.01)
     }
     
     func test_stock_balanceZero()
@@ -43,7 +43,7 @@ final class Stock_Tests: XCTestCase
             min: 0,
             max: 100,
             unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance, 0)
+        XCTAssertEqual(stock.balance ?? -1, 0)
     }
     
     func test_stock_balanceOne()
@@ -55,6 +55,30 @@ final class Stock_Tests: XCTestCase
             min: 0,
             max: 100,
             unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance, 1)
+        XCTAssertEqual(stock.balance ?? -1, 1)
+    }
+    
+    func test_stockBalanceBondedMatching()
+    {
+        let a = Stock(current: 90, ideal: { 100 }, min: 0, max: 100)
+        let b = Stock(current: 110, ideal: { 100 }, min: 0, max: 100)
+        
+        let balanceA = a.balance(with: b)
+        let balanceB = b.balance(with: a)
+        
+        XCTAssertEqual(balanceA, 1)
+        XCTAssertEqual(balanceB, 1)
+    }
+    
+    func test_stockBalanceBondedNotMatching()
+    {
+        let a = Stock(current: 10, ideal: { 100 }, min: 0, max: 100)
+        let b = Stock(current: 110, ideal: { 100 }, min: 0, max: 100)
+        
+        let balanceA = a.balance(with: b)
+        let balanceB = b.balance(with: a)
+        
+        XCTAssertEqual(balanceA, 0.2)
+        XCTAssertEqual(balanceB, 1)
     }
 }

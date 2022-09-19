@@ -17,8 +17,8 @@ class GameScene: SKScene
     
     lazy var food = FoodSystem()
     lazy var body = BodySystem(
-        foodSensor: .init(value: foodSensorValue),
-        foodSource: foodSource)
+        eyes: .init(source: foodSensorValue),
+        mouth: .init(source: foodSource))
     
     override func didMove(to view: SKView)
     {

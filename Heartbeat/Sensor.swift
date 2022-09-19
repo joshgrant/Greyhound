@@ -13,17 +13,17 @@ import Foundation
 // These sensors have to tap into the "world stream"
 // and essentially receive a filtered version of the input...
 
-open class Sensor<T>
+open class Input<T>
 {
     // MARK: - Variables
     
-    private var _value: () -> T?
-    public var value: T? { _value() }
+    private var _source: () -> T?
+    public var source: T? { _source() }
     
     // MARK: - Initialization
     
-    public init(value: @escaping () -> T?)
+    public init(source: @escaping () -> T?)
     {
-        self._value = value
+        self._source = source
     }
 }

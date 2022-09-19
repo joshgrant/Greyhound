@@ -11,6 +11,8 @@ open class Stock
 {
     // MARK: - Variables
     
+    var uuid = UUID()
+    
     public var name: String?
     
     public var current: Double
@@ -51,6 +53,47 @@ extension Stock
         let delta = abs(current - ideal)
         let scale = Swift.max(max - ideal, ideal - min)
         return 1 - delta / scale
+    }
+    
+    public func balance(with bondedStock: Stock) -> Double?
+    {
+        guard let ideal = ideal() else { return nil }
+        guard let otherIdeal = bondedStock.ideal() else { return nil }
+        
+        // Calculate the respective deltas
+        let deltaSelf = current - ideal
+        let deltaOther = bondedStock.current - otherIdeal
+        
+        var newDelta = abs(deltaSelf)
+        
+        if deltaSelf.sign != deltaOther.sign
+        {
+            let amount = Swift.min(abs(deltaSelf), abs(deltaOther))
+            
+            print("AMOUNT: \(amount)")
+            
+            let newCurrent: Double
+            
+            if current < ideal
+            {
+                newCurrent = current + amount
+            }
+            else if current > ideal
+            {
+                newCurrent = current - amount
+            }
+            else
+            {
+                newCurrent = current
+            }
+            
+            newDelta = abs(newCurrent - ideal)
+        }
+        
+        let scale = Swift.max(max - ideal, ideal - min)
+        print("SCALE: \(scale)")
+        print("NEW DELTA: \(newDelta)")
+        return 1 - newDelta / scale
     }
     
     public var sign: ComparisonResult?
@@ -104,4 +147,12 @@ extension Stock
         ideal: { .infinity },
         min: -.infinity,
         max: .infinity)
+}
+
+extension Stock: Hashable
+{
+    public func hash(into hasher: inout Hasher)
+    {
+        hasher.combine(uuid)
+    }
 }
