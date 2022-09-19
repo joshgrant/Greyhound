@@ -14,11 +14,9 @@ class GameScene: SKScene
     private var circle: SKShapeNode?
     private var square: SKShapeNode?
     
-    func goalX() -> Double { squareSystem.position.x }
-    
     lazy var squareSystem = PositionSystem(x: 1000, y: 1000, xIdeal: { 500 }, yIdeal: { 500 })
     
-    lazy var circleBody = BodySystem()
+    lazy var circleBody = BodySystem(foodSensor: .init(value: foodSensorValue))
     
     override func didMove(to view: SKView)
     {
@@ -32,10 +30,6 @@ class GameScene: SKScene
         square = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 10, height: 10))
         square?.fillColor = .green
         addChild(square!)
-        
-        circleBody.foodSensor = { [unowned self] in
-            squareSystem.position
-        }
     }
     
     override func update(_ currentTime: TimeInterval)
@@ -50,5 +44,10 @@ class GameScene: SKScene
     {
         guard let position = touches.first?.location(in: self) else { return }
         squareSystem.position = position
+    }
+    
+    func foodSensorValue() -> CGPoint
+    {
+        squareSystem.position
     }
 }

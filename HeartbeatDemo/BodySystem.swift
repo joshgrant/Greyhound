@@ -12,7 +12,7 @@ class BodySystem: System
 {
     // MARK: - Variables
     
-    var foodSensor: (() -> CGPoint)?
+    var foodSensor: Sensor<CGPoint>
     
     lazy var positionSystem: PositionSystem = {
         PositionSystem(
@@ -26,15 +26,16 @@ class BodySystem: System
     
     // MARK: - Initialization
     
-    init()
+    init(foodSensor: Sensor<CGPoint>)
     {
+        self.foodSensor = foodSensor
         super.init(stocks: [], flows: [], subsystems: [])
         self.subsystems = [positionSystem, digestive] // Something about accessing self before super.init
     }
     
     func xIdeal() -> Double?
     {
-        if let x = foodSensor?().x
+        if let x = foodSensor.value?.x
         {
             return Double(x)
         }
@@ -46,7 +47,7 @@ class BodySystem: System
     
     func yIdeal() -> Double?
     {
-        if let y = foodSensor?().y
+        if let y = foodSensor.value?.y
         {
             return Double(y)
         }
