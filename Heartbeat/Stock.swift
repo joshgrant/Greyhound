@@ -23,9 +23,23 @@ open class Stock
     private var _maximum: ValueClosure
     private var _ideal: ValueClosure
     
-    public var current: Double { _current() }
-    public var maximum: Double { _maximum() }
-    public var ideal: Double { _ideal() }
+    public var current: Double
+    {
+        get { _current() }
+        set { _current = { newValue } }
+    }
+    
+    public var maximum: Double
+    {
+        get { _maximum() }
+        set { _maximum = { newValue } }
+    }
+    
+    public var ideal: Double
+    {
+        get { _ideal() }
+        set { _ideal = { newValue } }
+    }
     
     // MARK: - Initialization
     

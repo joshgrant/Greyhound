@@ -32,12 +32,12 @@ open class Flow
     
     public var transferAmount: Double
     {
-        min(amount, 100)
+        min(amount, from.maximumTransferAmount, to.maximumReceiveAmount)
     }
     
     // MARK: - Initialization
     
-    init(
+    public init(
         name: String? = nil,
         from: @escaping StockClosure,
         to: @escaping StockClosure,
@@ -50,42 +50,31 @@ open class Flow
         self._amount = amount
         self._duration = duration
     }
+    
+    public func update(_ timeInterval: TimeInterval)
+    {
+        // In the case where lastFireDate is nil,
+        // we should set it to a value so that we
+        // can start calculating the time delta
+        guard let lastFireDate = lastFireDate else
+        {
+            lastFireDate = timeInterval
+            return
+        }
+        
+        let delta = timeInterval - lastFireDate
+        
+        if delta >= duration
+        {
+            let amount = transferAmount
+            from.current -= amount
+            to.current += amount
+            
+            self.lastFireDate = timeInterval
+        }
+    }
 }
-//
-//open class Flow
-//{
-//    // MARK: - Variables
-//    
-//    public var name: String?
-//    
-//    public var from: Stock?
-//    public var to: Stock?
-//    
-//    public var amount: Double
-//    public var duration: TimeInterval
-//    
-//    private var lastTimeInterval: TimeInterval?
-//    
-//    public var transferAmount: Double
-//    {
-//        guard let from = from, let to = to else { return 0 }
-//        
-//        return min(amount,
-//                   abs(to.max - to.current),
-//                   abs(from.current - from.min))
-//    }
-//    
-//    // MARK: - Initialization
-//    
-//    public init(name: String? = nil, from: Stock?, to: Stock?, amount: Double, duration: TimeInterval)
-//    {
-//        self.name = name
-//        self.from = from
-//        self.to = to
-//        self.amount = amount
-//        self.duration = duration
-//    }
-//    
+
 //    // MARK: - Functions
 //    
 //    public func update(_ timeInterval: TimeInterval)

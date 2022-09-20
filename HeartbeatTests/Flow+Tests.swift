@@ -31,6 +31,112 @@ final class Flow_Tests: XCTestCase
         
         XCTAssertEqual(flow.transferAmount, 1)
     }
+    
+    func test_flow_transferAmount_limitedByFromAmount()
+    {
+        let from = Stock(
+            unit: UnitEnergy.calories,
+            current: { 87 },
+            maximum: { 100 },
+            ideal: { 0 })
+        let to = Stock(
+            unit: UnitEnergy.calories,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            from: { from },
+            to: { to },
+            amount: { .infinity },
+            duration: { 1 })
+        
+        XCTAssertEqual(flow.transferAmount, 87)
+    }
+    
+    func test_flow_transferAmount_limitedByToAmount()
+    {
+        let from = Stock(
+            unit: UnitEnergy.calories,
+            current: { 87 },
+            maximum: { 100 },
+            ideal: { 0 })
+        let to = Stock(
+            unit: UnitEnergy.calories,
+            current: { 96 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            from: { from },
+            to: { to },
+            amount: { .infinity },
+            duration: { 1 })
+        
+        XCTAssertEqual(flow.transferAmount, 4)
+    }
+    
+    func test_flow_update_elapsedTime()
+    {
+        let from = Stock(
+            unit: UnitArea.acres,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let to = Stock(
+            unit: UnitArea.acres,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            from: { from },
+            to: { to },
+            amount: { 1 },
+            duration: { 5 })
+        
+        flow.update(0)
+        XCTAssertEqual(from.current, 100)
+        XCTAssertEqual(to.current, 0)
+        
+        flow.update(4)
+        XCTAssertEqual(from.current, 100)
+        XCTAssertEqual(to.current, 0)
+        
+        flow.update(5)
+        XCTAssertEqual(from.current, 99)
+        XCTAssertEqual(to.current, 1)
+    }
+    
+    func test_flow_update_noElapsedTime()
+    {
+        let from = Stock(
+            unit: UnitArea.acres,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let to = Stock(
+            unit: UnitArea.acres,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            from: { from },
+            to: { to },
+            amount: { 1 },
+            duration: { 1 })
+        
+        flow.update(0)
+        XCTAssertEqual(from.current, 100)
+        XCTAssertEqual(to.current, 0)
+        
+        flow.update(0)
+        XCTAssertEqual(from.current, 100)
+        XCTAssertEqual(to.current, 0)
+    }
 }
 //    func test_flow_init()
 //    {
