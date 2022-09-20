@@ -10,84 +10,132 @@ import XCTest
 
 final class Stock_Tests: XCTestCase
 {
-    func test_stock_init()
+    func test_delta_noDelta()
     {
         let stock = Stock(
-            name: "stock",
-            current: 0,
-            ideal: { 50 },
-            min: 0,
-            max: 100,
-            unit: UnitArea.acres)
-        XCTAssertNotNil(stock)
+            unit: UnitEnergy.calories,
+            current: { 23 },
+            maximum: { 200 },
+            ideal: { 23 })
+        
+        XCTAssertEqual(stock.delta, 0)
     }
     
-    func test_stock_balance()
+    func test_delta_negativeDelta()
     {
         let stock = Stock(
-            name: "stock",
-            current: 25,
-            ideal: { 75 },
-            min: 0,
-            max: 100,
-            unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance ?? -1, 0.33, accuracy: 0.01)
+            unit: UnitEnergy.calories,
+            current: { 17 },
+            maximum: { 100 },
+            ideal: { 40 })
+        
+        XCTAssertEqual(stock.delta, -23)
     }
     
-    func test_stock_balanceZero()
+    func test_delta_positiveDelta()
     {
         let stock = Stock(
-            name: "stock",
-            current: 0,
-            ideal: { 100 },
-            min: 0,
-            max: 100,
-            unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance ?? -1, 0)
+            unit: UnitEnergy.calories,
+            current: { 91 },
+            maximum: { 1000 },
+            ideal: { 12 })
+        
+        XCTAssertEqual(stock.delta, 79)
     }
     
-    func test_stock_balanceOne()
+    func test_balance_zeroDelta()
     {
         let stock = Stock(
-            name: "stock",
-            current: 100,
-            ideal: { 100 },
-            min: 0,
-            max: 100,
-            unit: UnitArea.acres)
-        XCTAssertEqual(stock.balance ?? -1, 1)
+            unit: UnitEnergy.calories,
+            current: { 40 },
+            maximum: { 100 },
+            ideal: { 40 })
+        
+        XCTAssertEqual(stock.balance, 1)
     }
     
-    func test_stockBalanceBondedMatching()
+    func test_balance_maximumDelta()
     {
-        let a = Stock(current: 90, ideal: { 100 }, min: 0, max: 100)
-        let b = Stock(current: 110, ideal: { 100 }, min: 0, max: 100)
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
         
-        let balanceA = a.balance(with: b)
-        let balanceB = b.balance(with: a)
-        
-        XCTAssertEqual(balanceA, 1)
-        XCTAssertEqual(balanceB, 1)
+        XCTAssertEqual(stock.balance, 0)
     }
     
-    func test_stockBalanceBondedNotMatching()
+    func test_balance_thirdDelta()
     {
-        let a = Stock(current: 10, ideal: { 100 }, min: 0, max: 100)
-        let b = Stock(current: 110, ideal: { 100 }, min: 0, max: 100)
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 40 },
+            maximum: { 120 },
+            ideal: { 80 })
         
-        let balanceA = a.balance(with: b)
-        let balanceB = b.balance(with: a)
-        
-        XCTAssertNotNil(balanceA)
-        XCTAssertNotNil(balanceB)
-        
-        XCTAssertEqual(balanceA!, 0.2, accuracy: 0.000001)
-        XCTAssertEqual(balanceB!, 1)
+        XCTAssertEqual(stock.balance, 0.666, accuracy: 0.001)
     }
     
-    func test_stock_balanceNoBounds()
+    func test_maximumTransferAmount_zero()
     {
-        let atom = Stock(current: 3, ideal: { 0 }, min: -.infinity, max: .infinity)
-        XCTAssertEqual(atom.balance, 0)
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        XCTAssertEqual(stock.maximumTransferAmount, 0)
+    }
+    
+    func test_maximumTransferAmount()
+    {
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 8 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        XCTAssertEqual(stock.maximumTransferAmount, 8)
+    }
+    
+    func test_maximumTransferAmount_max()
+    {
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        XCTAssertEqual(stock.maximumTransferAmount, 100)
+    }
+    
+    func test_maximumReceiveAmount_zero()
+    {
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        XCTAssertEqual(stock.maximumReceiveAmount, 0)
+    }
+    
+    func test_maximumReceiveAmount()
+    {
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 87 },
+            maximum: { 100 },
+            ideal: { 100 })
+        XCTAssertEqual(stock.maximumReceiveAmount, 13)
+    }
+    
+    func test_maximumReceiveAmount_max()
+    {
+        let stock = Stock(
+            unit: UnitEnergy.calories,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        XCTAssertEqual(stock.maximumReceiveAmount, 100)
     }
 }

@@ -9,12 +9,33 @@ import Foundation
 
 public class Bond
 {
-    var a: Stock
-    var b: Stock
+    // MARK: - Variables
     
-    init(a: Stock, b: Stock)
+    public var lhs: Stock
+    public var rhs: Stock
+    
+    // MARK: - Initialization
+    
+    public init(lhs: Stock, rhs: Stock)
     {
-        self.a = a
-        self.b = b
+        self.lhs = lhs
+        self.rhs = rhs
+    }
+    
+    // MARK: - Functions
+    
+    public var delta: Double
+    {
+        lhs.delta + rhs.delta
+    }
+    
+    public var maximum: Double
+    {
+        lhs.maximum + rhs.maximum
+    }
+    
+    public var balance: Double
+    {
+        1 - abs(delta) / maximum
     }
 }

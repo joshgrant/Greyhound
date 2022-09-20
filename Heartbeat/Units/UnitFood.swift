@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class UnitFood: Dimension
-{
-    public override class func baseUnit() -> Self
-    {
-        return Self(symbol: "food")
-    }
-    
-    public static var unit: Dimension
-    {
-        return baseUnit()
-    }
-}
+//public class UnitFood: Dimension
+//{
+//    public override class func baseUnit() -> Self
+//    {
+//        return Self(symbol: "food", conver)
+//    }
+//    
+//    public static var unit: Dimension
+//    {
+//        return baseUnit()
+//    }
+//}
