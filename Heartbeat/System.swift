@@ -26,6 +26,29 @@ open class System
         bonds = []
         systems = []
     }
+    
+    // MARK: - Functions
+    
+    public func update(_ timeInterval: TimeInterval)
+    {
+        // Update all flows that increase the balance of the system
+    }
+    
+    public var balance: Double
+    {
+        guard stocks.count > 0 else { return 1 }
+        
+        var totalDelta: Double = 0
+        var totalMaximum: Double = 0
+        
+        for stock in stocks
+        {
+            totalDelta += stock.delta
+            totalMaximum += stock.maximum
+        }
+        
+        return 1 - abs(totalDelta) / totalMaximum
+    }
 }
 
 //import Foundation

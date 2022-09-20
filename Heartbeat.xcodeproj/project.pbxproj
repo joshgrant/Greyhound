@@ -27,9 +27,7 @@
 		03747BB028D8C6660036678B /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BAF28D8C6660036678B /* Sensor.swift */; };
 		03747BB328D8CB2F0036678B /* UnitFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BB228D8CB2F0036678B /* UnitFood.swift */; };
 		03747BB528D8D2550036678B /* FoodSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BB428D8D2550036678B /* FoodSystem.swift */; };
-		03747BB928D8FF370036678B /* Bond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BB828D8FF370036678B /* Bond.swift */; };
 		03747BC128D900760036678B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BC028D900760036678B /* main.swift */; };
-		03747BCA28D9296F0036678B /* Bond+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BC928D9296F0036678B /* Bond+Tests.swift */; };
 		03C0858A28D7D6EC0087D0DC /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System.swift */; };
 		03FF92C328C3FCE500FC1956 /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03FF92C928C3FCE500FC1956 /* Heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FF92BB28C3FCE400FC1956 /* Heartbeat.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,10 +94,8 @@
 		03747BAF28D8C6660036678B /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		03747BB228D8CB2F0036678B /* UnitFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFood.swift; sourceTree = "<group>"; };
 		03747BB428D8D2550036678B /* FoodSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSystem.swift; sourceTree = "<group>"; };
-		03747BB828D8FF370036678B /* Bond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bond.swift; sourceTree = "<group>"; };
 		03747BBE28D900760036678B /* HeartbeatCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HeartbeatCL; sourceTree = BUILT_PRODUCTS_DIR; };
 		03747BC028D900760036678B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		03747BC928D9296F0036678B /* Bond+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bond+Tests.swift"; sourceTree = "<group>"; };
 		03C0858928D7D6EC0087D0DC /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		03FF92B828C3FCE400FC1956 /* Heartbeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Heartbeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03FF92BB28C3FCE400FC1956 /* Heartbeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heartbeat.h; sourceTree = "<group>"; };
@@ -212,7 +208,6 @@
 				0301232F28D53E3C008A9978 /* Flow.swift */,
 				0301232D28D53E31008A9978 /* Stock.swift */,
 				03C0858928D7D6EC0087D0DC /* System.swift */,
-				03747BB828D8FF370036678B /* Bond.swift */,
 				0301233328D53E91008A9978 /* World.swift */,
 				03747BAF28D8C6660036678B /* Sensor.swift */,
 			);
@@ -225,7 +220,6 @@
 				030122F428D3DC2A008A9978 /* Stock+Tests.swift */,
 				0301231528D3F702008A9978 /* System+Tests.swift */,
 				0301231728D3F70D008A9978 /* Flow+Tests.swift */,
-				03747BC928D9296F0036678B /* Bond+Tests.swift */,
 			);
 			path = HeartbeatTests;
 			sourceTree = "<group>";
@@ -422,7 +416,6 @@
 				0301233828D7537E008A9978 /* World.swift in Sources */,
 				03747BB028D8C6660036678B /* Sensor.swift in Sources */,
 				0301233A28D7537E008A9978 /* Flow.swift in Sources */,
-				03747BB928D8FF370036678B /* Bond.swift in Sources */,
 				03C0858A28D7D6EC0087D0DC /* System.swift in Sources */,
 				0301233928D7537E008A9978 /* Stock.swift in Sources */,
 				03747BB328D8CB2F0036678B /* UnitFood.swift in Sources */,
@@ -433,7 +426,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03747BCA28D9296F0036678B /* Bond+Tests.swift in Sources */,
 				0301231628D3F702008A9978 /* System+Tests.swift in Sources */,
 				0301231828D3F70D008A9978 /* Flow+Tests.swift in Sources */,
 				030122F528D3DC2A008A9978 /* Stock+Tests.swift in Sources */,
