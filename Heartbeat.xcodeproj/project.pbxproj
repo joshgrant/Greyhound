@@ -15,7 +15,6 @@
 		0301233A28D7537E008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow.swift */; };
 		03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03747BB028D8C6660036678B /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BAF28D8C6660036678B /* Sensor.swift */; };
 		03747BC128D900760036678B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BC028D900760036678B /* main.swift */; };
 		03747BCD28DA42E50036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
 		03747BCE28DA42E50036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,7 +132,6 @@
 		0301232F28D53E3C008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		03747B8528D7DBA50036678B /* HeartbeatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartbeatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BAF28D8C6660036678B /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		03747BBE28D900760036678B /* HeartbeatCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HeartbeatCL; sourceTree = BUILT_PRODUCTS_DIR; };
 		03747BC028D900760036678B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		03747BD628DCE7710036678B /* Greyhound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greyhound.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,7 +291,6 @@
 				0301232D28D53E31008A9978 /* Stock.swift */,
 				03C0858928D7D6EC0087D0DC /* System.swift */,
 				0301233328D53E91008A9978 /* World.swift */,
-				03747BAF28D8C6660036678B /* Sensor.swift */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0301233828D7537E008A9978 /* World.swift in Sources */,
-				03747BB028D8C6660036678B /* Sensor.swift in Sources */,
 				0301233A28D7537E008A9978 /* Flow.swift in Sources */,
 				03C0858A28D7D6EC0087D0DC /* System.swift in Sources */,
 				0301233928D7537E008A9978 /* Stock.swift in Sources */,
