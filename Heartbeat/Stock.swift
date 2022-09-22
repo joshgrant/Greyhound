@@ -17,7 +17,7 @@ open class Stock
     
     public var name: String? = nil
     
-    public var unit: Unit
+    public var unit: Unit?
     
     private var _current: ValueClosure
     private var _maximum: ValueClosure
@@ -43,9 +43,9 @@ open class Stock
     
     // MARK: - Initialization
     
-    init(
+    public init(
         name: String? = nil,
-        unit: Unit,
+        unit: Unit?,
         current: @escaping ValueClosure,
         maximum: @escaping ValueClosure,
         ideal: @escaping ValueClosure)
@@ -96,40 +96,23 @@ extension Stock: Hashable
     }
 }
 
-//open class Stock
-//{
-//    // MARK: - Variables
-//
-//    var uuid = UUID()
-//
-//    public var name: String?
-//
-//    public var current: UInt64
-//    public var ideal: () -> Double?
-//
-//    public var min: Double
-//    public var max: Double
-//
-//    public var unit: Unit?
-//
-//    // MARK: - Initialization
-//
-//    public init(
-//        name: String? = nil,
-//        current: Double,
-//        ideal: @escaping () -> Double?,
-//        min: Double,
-//        max: Double,
-//        unit: Unit? = nil)
-//    {
-//        self.name = name
-//        self.current = current
-//        self.ideal = ideal
-//        self.min = min
-//        self.max = max
-//        self.unit = unit
-//    }
-//}
+public extension Stock
+{
+    static let source = Stock(
+        name: "source",
+        unit: nil,
+        current: { .infinity },
+        maximum: { .infinity },
+        ideal: { -.infinity })
+    
+    static let sink = Stock(
+        name: "sink",
+        unit: nil,
+        current: { -.infinity },
+        maximum: { .infinity },
+        ideal: { .infinity })
+}
+
 //
 //// MARK: - Stock protocol
 //
@@ -200,48 +183,5 @@ extension Stock: Hashable
 //        {
 //            return .orderedSame
 //        }
-//    }
-//}
-//
-//extension Stock: CustomStringConvertible
-//{
-//    public var description: String
-//    {
-//        "Stock (\(name ?? "")): \(current)"
-//    }
-//}
-//
-//extension Stock: Equatable
-//{
-//    public static func ==(lhs: Stock, rhs: Stock) -> Bool
-//    {
-//        lhs === rhs
-//    }
-//}
-//
-//// MARK: - Global stocks
-//
-//extension Stock
-//{
-//    public static var source = Stock(
-//        name: "source",
-//        current: .infinity,
-//        ideal: { -.infinity },
-//        min: -.infinity,
-//        max: .infinity)
-//
-//    public static var sink = Stock(
-//        name: "sink",
-//        current: -.infinity,
-//        ideal: { .infinity },
-//        min: -.infinity,
-//        max: .infinity)
-//}
-//
-//extension Stock: Hashable
-//{
-//    public func hash(into hasher: inout Hasher)
-//    {
-//        hasher.combine(uuid)
 //    }
 //}

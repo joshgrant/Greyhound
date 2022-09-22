@@ -13,18 +13,22 @@ open class System
     
     public var stocks: [Stock]
     public var flows: [Flow]
-    public var bonds: [Bond]
     
+    // TODO: I think that subsystems aren't actually a thing. Rather,
+    // I think that subsystems can be systems, if they are wrapped into a
+    // stock... but I need to check this...
     public var systems: [System]
     
     // MARK: - Initialization
     
-    public init()
+    public init(
+        stocks: [Stock]? = nil,
+        flows: [Flow]? = nil,
+        systems: [System]? = nil)
     {
-        stocks = []
-        flows = []
-        bonds = []
-        systems = []
+        self.stocks = stocks ?? []
+        self.flows = flows ?? []
+        self.systems = systems ?? []
     }
     
     // MARK: - Functions
@@ -32,6 +36,8 @@ open class System
     public func update(_ timeInterval: TimeInterval)
     {
         // Update all flows that increase the balance of the system
+        // TODO: This is NOT correct
+        flows.forEach { $0.update(timeInterval) }
     }
     
     public var balance: Double

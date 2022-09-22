@@ -10,6 +10,28 @@ import XCTest
 
 final class Flow_Tests: XCTestCase
 {
+    func test_flow_transferAmount_zeroBecauseOfUnitIncompatability()
+    {
+        let from = Stock(
+            unit: UnitArea.acres,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 0 })
+        let to = Stock(
+            unit: UnitEnergy.calories,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            from: { from },
+            to: { to },
+            amount: { 1 },
+            duration: { 1 })
+        
+        XCTAssertEqual(flow.transferAmount, 0)
+    }
+    
     func test_flow_transferAmount_limitedByFlowAmount()
     {
         let from = Stock(

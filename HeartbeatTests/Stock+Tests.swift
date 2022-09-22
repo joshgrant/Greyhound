@@ -10,6 +10,16 @@ import XCTest
 
 final class Stock_Tests: XCTestCase
 {
+    func test_stock_unitCanBeNil()
+    {
+        let stock = Stock(
+            unit: nil,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 50 })
+        XCTAssertEqual(stock.unit, nil)
+    }
+    
     func test_delta_noDelta()
     {
         let stock = Stock(
