@@ -18,21 +18,27 @@ open class Flow
     
     public var name: String? = nil
     
-    private var _from: StockClosure
-    private var _to: StockClosure
-    private var _amount: ValueClosure
-    private var _duration: ValueClosure
-    
     public var from: Stock { _from() }
     public var to: Stock { _to() }
-    public var amount: Double { _amount() }
-    public var duration: Double { _duration() }
     
-    private var lastFireDate: TimeInterval?
-    
-    public var transferAmount: Double
+    /// Units/second
+    public var rate: Double
     {
-        min(amount, from.maximumTransferAmount, to.maximumReceiveAmount)
+        get { _rate() }
+        set { _rate = { newValue } }
+    }
+    
+    private var _from: StockClosure
+    private var _to: StockClosure
+    private var _rate: ValueClosure
+    
+    private var pTimeInterval: TimeInterval?
+    
+    public func transferAmount(elapsedTime: TimeInterval) -> Double
+    {        
+        min(rate * elapsedTime,
+            from.maximumTransferAmount,
+            to.maximumReceiveAmount)
     }
     
     // MARK: - Initialization
@@ -41,36 +47,27 @@ open class Flow
         name: String? = nil,
         from: @escaping StockClosure,
         to: @escaping StockClosure,
-        amount: @escaping ValueClosure,
-        duration: @escaping ValueClosure)
+        rate: @escaping ValueClosure)
     {
         self.name = name
         self._from = from
         self._to = to
-        self._amount = amount
-        self._duration = duration
+        self._rate = rate
     }
     
     public func update(_ timeInterval: TimeInterval)
     {
-        // In the case where lastFireDate is nil,
-        // we should set it to a value so that we
-        // can start calculating the time delta
-        guard let lastFireDate = lastFireDate else
-        {
-            lastFireDate = timeInterval
-            return
-        }
+        let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
+        let amountToTransfer = transferAmount(elapsedTime: elapsedTime)
         
-        let delta = timeInterval - lastFireDate
+        from.current -= amountToTransfer // Based on the ratio to the flow Dimension
+        to.current += amountToTransfer // Based on the ratio to the flow Dimension
         
-        if delta >= duration
-        {
-            let amount = transferAmount
-            from.current -= amount
-            to.current += amount
-            
-            self.lastFireDate = timeInterval
-        }
+        // Can a flow change dimensinons?
+        // No, because then the stocks wouldn't work...
+        
+        print(amountToTransfer)
+        
+        pTimeInterval = timeInterval
     }
 }

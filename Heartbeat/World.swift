@@ -42,7 +42,6 @@ private extension World
         Flow(
             from: { .source },
             to: { iterations },
-            amount: { 1 },
-            duration: { 0 })
+            rate: { 1 })
     }
 }

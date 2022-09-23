@@ -11,43 +11,24 @@ import Heartbeat
 
 class GameScene: SKScene
 {
-    private var circle: SKShapeNode?
-    private var square: SKShapeNode?
-    private var hunger: SKLabelNode?
+    // MARK: - Initialization
     
     override func didMove(to view: SKView)
     {
-        hunger = SKLabelNode(text: "Empty")
-        hunger?.fontColor = .white
-        hunger?.position = .init(x: 100, y: 30)
-        addChild(hunger!)
+        // Box
+        let boxRect = CGRect(x: 500, y: 500, width: 20, height: 20)
+        let box = SKShapeNode(rect: boxRect)
+        let boxBody = SKPhysicsBody(rectangleOf: boxRect.size)
+        box.physicsBody = boxBody
+        addChild(box)
         
-        circle = SKShapeNode(circleOfRadius: 10)
-        circle?.fillColor = .orange
-        addChild(circle!)
         
-        square = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 10, height: 10))
-        square?.fillColor = .green
-        addChild(square!)
+        // Ground
+        let groundRect = CGRect(x: 0, y: 20, width: 1000, height: 10)
+        let ground = SKShapeNode(rect: groundRect)
+        let groundBody = SKPhysicsBody(rectangleOf: groundRect.size)
+        groundBody.isDynamic = false
+        ground.physicsBody = groundBody
+        addChild(ground)
     }
-    
-    override func update(_ currentTime: TimeInterval)
-    {
-        AppDelegate.world.update(currentTime)
-        print(AppDelegate.world.iterations.current)
-
-//        circle?.position = body.positionSystem.position
-//        square?.position = food.positionSystem.position
-//        hunger?.text = "\(body.digestive.stomach.current)"
-    }
-    
-//    func foodSensorValue() -> CGPoint
-//    {
-////        food.positionSystem.position
-//    }
-//
-//    func foodSource() -> Stock
-//    {
-////        food.resource
-//    }
 }

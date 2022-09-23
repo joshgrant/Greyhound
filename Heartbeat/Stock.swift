@@ -17,7 +17,7 @@ open class Stock
     
     public var name: String? = nil
     
-    public var unit: Unit?
+    public var unit: Dimension?
     
     private var _current: ValueClosure
     private var _maximum: ValueClosure
@@ -41,11 +41,17 @@ open class Stock
         set { _ideal = { newValue } }
     }
     
+    public var currentMeasurement: Measurement<Dimension>?
+    {
+        guard let unit = unit else { return nil }
+        return Measurement<Dimension>.init(value: current, unit: unit)
+    }
+    
     // MARK: - Initialization
     
     public init(
         name: String? = nil,
-        unit: Unit?,
+        unit: Dimension?,
         current: @escaping ValueClosure,
         maximum: @escaping ValueClosure,
         ideal: @escaping ValueClosure)

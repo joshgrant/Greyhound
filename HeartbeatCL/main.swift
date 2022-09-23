@@ -247,7 +247,7 @@ class Universe: System
     }
 }
 
-let energy = Stock(unit: UnitEnergy.photon, current: { 10e80 }, maximum: { 10e100 }, ideal: { 0 })
-let universe = Universe(energy: energy)
-
-print(energy.current)
+//let energy = Stock(unit: UnitEnergy.photon, current: { 10e80 }, maximum: { 10e100 }, ideal: { 0 })
+//let universe = Universe(energy: energy)
+//
+//print(energy.current)

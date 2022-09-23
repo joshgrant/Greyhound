@@ -148,4 +148,17 @@ final class Stock_Tests: XCTestCase
             ideal: { 100 })
         XCTAssertEqual(stock.maximumReceiveAmount, 100)
     }
+    
+    func test_current_measurement()
+    {
+        let stock = Stock(
+            unit: UnitMass.carats,
+            current: { 2 },
+            maximum: { 24 },
+            ideal: { 24 })
+        
+        XCTAssertEqual(
+            stock.currentMeasurement,
+            Measurement<UnitMass>.init(value: 2, unit: UnitMass.carats))
+    }
 }
