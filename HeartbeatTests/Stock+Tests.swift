@@ -17,13 +17,13 @@ final class Stock_Tests: XCTestCase
             current: { 0 },
             maximum: { 100 },
             ideal: { 50 })
-        XCTAssertEqual(stock.unit, nil)
+        XCTAssertNil(stock.unit)
     }
     
     func test_delta_noDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 23 },
             maximum: { 200 },
             ideal: { 23 })
@@ -34,7 +34,7 @@ final class Stock_Tests: XCTestCase
     func test_delta_negativeDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 17 },
             maximum: { 100 },
             ideal: { 40 })
@@ -45,7 +45,7 @@ final class Stock_Tests: XCTestCase
     func test_delta_positiveDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 91 },
             maximum: { 1000 },
             ideal: { 12 })
@@ -56,7 +56,7 @@ final class Stock_Tests: XCTestCase
     func test_balance_zeroDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 40 },
             maximum: { 100 },
             ideal: { 40 })
@@ -67,7 +67,7 @@ final class Stock_Tests: XCTestCase
     func test_balance_maximumDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 0 },
             maximum: { 100 },
             ideal: { 100 })
@@ -78,7 +78,7 @@ final class Stock_Tests: XCTestCase
     func test_balance_thirdDelta()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 40 },
             maximum: { 120 },
             ideal: { 80 })
@@ -89,7 +89,7 @@ final class Stock_Tests: XCTestCase
     func test_maximumTransferAmount_zero()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 0 },
             maximum: { 100 },
             ideal: { 100 })
@@ -100,7 +100,7 @@ final class Stock_Tests: XCTestCase
     func test_maximumTransferAmount()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 8 },
             maximum: { 100 },
             ideal: { 100 })
@@ -111,7 +111,7 @@ final class Stock_Tests: XCTestCase
     func test_maximumTransferAmount_max()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 100 },
             maximum: { 100 },
             ideal: { 100 })
@@ -122,7 +122,7 @@ final class Stock_Tests: XCTestCase
     func test_maximumReceiveAmount_zero()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 100 },
             maximum: { 100 },
             ideal: { 100 })
@@ -132,7 +132,7 @@ final class Stock_Tests: XCTestCase
     func test_maximumReceiveAmount()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 87 },
             maximum: { 100 },
             ideal: { 100 })
@@ -142,23 +142,10 @@ final class Stock_Tests: XCTestCase
     func test_maximumReceiveAmount_max()
     {
         let stock = Stock(
-            unit: UnitEnergy.calories,
+            unit: .joules,
             current: { 0 },
             maximum: { 100 },
             ideal: { 100 })
         XCTAssertEqual(stock.maximumReceiveAmount, 100)
-    }
-    
-    func test_current_measurement()
-    {
-        let stock = Stock(
-            unit: UnitMass.carats,
-            current: { 2 },
-            maximum: { 24 },
-            ideal: { 24 })
-        
-        XCTAssertEqual(
-            stock.currentMeasurement,
-            Measurement<UnitMass>.init(value: 2, unit: UnitMass.carats))
     }
 }

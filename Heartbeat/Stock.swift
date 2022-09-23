@@ -17,7 +17,7 @@ open class Stock
     
     public var name: String? = nil
     
-    public var unit: Dimension?
+    public var unit: Unit
     
     private var _current: ValueClosure
     private var _maximum: ValueClosure
@@ -41,17 +41,11 @@ open class Stock
         set { _ideal = { newValue } }
     }
     
-    public var currentMeasurement: Measurement<Dimension>?
-    {
-        guard let unit = unit else { return nil }
-        return Measurement<Dimension>.init(value: current, unit: unit)
-    }
-    
     // MARK: - Initialization
     
     public init(
         name: String? = nil,
-        unit: Dimension?,
+        unit: Unit,
         current: @escaping ValueClosure,
         maximum: @escaping ValueClosure,
         ideal: @escaping ValueClosure)
@@ -106,88 +100,15 @@ public extension Stock
 {
     static let source = Stock(
         name: "source",
-        unit: nil,
+        unit: .any,
         current: { .infinity },
         maximum: { .infinity },
         ideal: { -.infinity })
     
     static let sink = Stock(
         name: "sink",
-        unit: nil,
+        unit: .any,
         current: { -.infinity },
         maximum: { .infinity },
         ideal: { .infinity })
 }
-
-//
-//// MARK: - Stock protocol
-//
-//extension Stock
-//{
-//    public var balance: Double?
-//    {
-//        guard let ideal = ideal() else { return nil }
-//
-//        let delta = abs(current - ideal)
-//        let scale = Swift.max(max - ideal, ideal - min)
-//        return 1 - delta / scale
-//    }
-//
-//    public func balance(with bondedStock: Stock) -> Double?
-//    {
-//        guard let ideal = ideal() else { return nil }
-//        guard let otherIdeal = bondedStock.ideal() else { return nil }
-//
-//        // Calculate the respective deltas
-//        let deltaSelf = current - ideal
-//        let deltaOther = bondedStock.current - otherIdeal
-//
-//        var newDelta = abs(deltaSelf)
-//
-//        if deltaSelf.sign != deltaOther.sign
-//        {
-//            let amount = Swift.min(abs(deltaSelf), abs(deltaOther))
-//
-//            print("AMOUNT: \(amount)")
-//
-//            let newCurrent: Double
-//
-//            if current < ideal
-//            {
-//                newCurrent = current + amount
-//            }
-//            else if current > ideal
-//            {
-//                newCurrent = current - amount
-//            }
-//            else
-//            {
-//                newCurrent = current
-//            }
-//
-//            newDelta = abs(newCurrent - ideal)
-//        }
-//
-//        let scale = Swift.max(max - ideal, ideal - min)
-//        print("SCALE: \(scale)")
-//        print("NEW DELTA: \(newDelta)")
-//        return 1 - newDelta / scale
-//    }
-//
-//    public var sign: ComparisonResult?
-//    {
-//        guard let ideal = ideal() else { return nil }
-//        if current > ideal
-//        {
-//            return .orderedAscending
-//        }
-//        else if current < ideal
-//        {
-//            return .orderedDescending
-//        }
-//        else
-//        {
-//            return .orderedSame
-//        }
-//    }
-//}

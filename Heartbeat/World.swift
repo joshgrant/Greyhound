@@ -31,7 +31,7 @@ private extension World
     private static func makeIterations() -> Stock
     {
         Stock(
-            unit: nil,
+            unit: .any,
             current: { 0 },
             maximum: { .infinity },
             ideal: { .infinity })
@@ -40,6 +40,7 @@ private extension World
     private static func makeTick(with iterations: Stock) -> Flow
     {
         Flow(
+            unit: .any,
             from: { .source },
             to: { iterations },
             rate: { 1 })

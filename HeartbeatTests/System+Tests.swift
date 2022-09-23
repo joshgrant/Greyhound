@@ -21,7 +21,7 @@ final class System_Tests: XCTestCase
         let system = System()
         system.stocks = [
             .init(
-                unit: UnitArea.ares,
+                unit: .acres,
                 current: { 5 },
                 maximum: { 100 },
                 ideal: { 20 })
@@ -35,12 +35,12 @@ final class System_Tests: XCTestCase
         let system = System()
         system.stocks = [
             .init(
-                unit: UnitArea.ares,
+                unit: .acres,
                 current: { 5 },
                 maximum: { 100 },
                 ideal: { 20 }),
             .init(
-                unit: UnitArea.ares,
+                unit: .acres,
                 current: { 20 },
                 maximum: { 100 },
                 ideal: { 50 })

@@ -7,6 +7,11 @@
 
 import Foundation
 
+public enum FlowError: Error
+{
+    case incompatibleDimensions(_ a: Dimension, _ b: Dimension)
+}
+
 open class Flow
 {
     // MARK: - Defined types
@@ -17,6 +22,8 @@ open class Flow
     // MARK: - Variables
     
     public var name: String? = nil
+
+    public let unit: Unit
     
     public var from: Stock { _from() }
     public var to: Stock { _to() }
@@ -35,7 +42,10 @@ open class Flow
     private var pTimeInterval: TimeInterval?
     
     public func transferAmount(elapsedTime: TimeInterval) -> Double
-    {        
+    {
+        // TODO: This transfer amount is not based on the Dimension
+        //
+        
         min(rate * elapsedTime,
             from.maximumTransferAmount,
             to.maximumReceiveAmount)
@@ -45,11 +55,27 @@ open class Flow
     
     public init(
         name: String? = nil,
+        unit: Unit,
         from: @escaping StockClosure,
         to: @escaping StockClosure,
-        rate: @escaping ValueClosure)
+        rate: @escaping ValueClosure) throws
     {
+        guard unit.canConvert(to: from().unit) else
+        {
+            throw FlowError.incompatibleDimensions(
+                unit.dimension,
+                from().unit.dimension)
+        }
+        
+        guard unit.canConvert(to: to().unit) else
+        {
+            throw FlowError.incompatibleDimensions(
+                unit.dimension,
+                to().unit.dimension)
+        }
+        
         self.name = name
+        self.unit = unit
         self._from = from
         self._to = to
         self._rate = rate
@@ -60,13 +86,8 @@ open class Flow
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
         let amountToTransfer = transferAmount(elapsedTime: elapsedTime)
         
-        from.current -= amountToTransfer // Based on the ratio to the flow Dimension
-        to.current += amountToTransfer // Based on the ratio to the flow Dimension
-        
-        // Can a flow change dimensinons?
-        // No, because then the stocks wouldn't work...
-        
-        print(amountToTransfer)
+        from.current -= amountToTransfer
+        to.current += amountToTransfer
         
         pTimeInterval = timeInterval
     }
