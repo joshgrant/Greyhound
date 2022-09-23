@@ -12,14 +12,14 @@ open class Unit
     // MARK: - Variables
     
     public var dimension: Dimension
-    public var ratio: Double // TODO: Is this the best way of doing it?
+    public var ratioToBase: Double
     
     // MARK: - Initialization
     
-    public init(dimension: Dimension, ratio: Double)
+    public init(dimension: Dimension, ratioToBase: Double)
     {
         self.dimension = dimension
-        self.ratio = ratio
+        self.ratioToBase = ratioToBase
     }
     
     public func canConvert(to unit: Unit) -> Bool
@@ -35,7 +35,7 @@ open class Unit
             return 0
         }
         
-        let ratio = unit.ratio / self.ratio
+        let ratio = unit.ratioToBase / self.ratioToBase
         return ratio * value
     }
 }
@@ -43,23 +43,23 @@ open class Unit
 public extension Unit
 {
     // Volume
-    static let liters = Unit(dimension: .volume, ratio: 1.0)
-    static let gallons = Unit(dimension: .volume, ratio: 0.26417205)
+    static let liters = Unit(dimension: .volume, ratioToBase: 1.0)
+    static let gallons = Unit(dimension: .volume, ratioToBase: 0.26417205)
     
     // Length
-    static let meters = Unit(dimension: .length, ratio: 1.0)
-    static let feet = Unit(dimension: .length, ratio: 3.28084)
+    static let meters = Unit(dimension: .length, ratioToBase: 1.0)
+    static let feet = Unit(dimension: .length, ratioToBase: 3.28084)
     
     // Energy
-    static let joules = Unit(dimension: .energy, ratio: 1.0)
-    static let calories = Unit(dimension: .energy, ratio: 0.238846)
+    static let joules = Unit(dimension: .energy, ratioToBase: 1.0)
+    static let calories = Unit(dimension: .energy, ratioToBase: 0.238846)
     
     // Area
-    static let metersSquared = Unit(dimension: .area, ratio: 1.0)
-    static let acres = Unit(dimension: .area, ratio: 2.471052e-4)
+    static let metersSquared = Unit(dimension: .area, ratioToBase: 1.0)
+    static let acres = Unit(dimension: .area, ratioToBase: 2.471052e-4)
     
     // Numeric
-    static let any = Unit(dimension: .utility, ratio: 1.0)
+    static let any = Unit(dimension: .utility, ratioToBase: 1.0)
 }
 
 extension Unit: Equatable
@@ -67,6 +67,6 @@ extension Unit: Equatable
     public static func == (lhs: Unit, rhs: Unit) -> Bool
     {
         lhs.dimension == rhs.dimension &&
-        lhs.ratio == rhs.ratio
+        lhs.ratioToBase == rhs.ratioToBase
     }
 }
