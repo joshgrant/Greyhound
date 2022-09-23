@@ -69,4 +69,32 @@ final class System_Tests: XCTestCase
         XCTAssertEqual(stock.ideal, 70)
         XCTAssertEqual(stock.balance, 0.775)
     }
+    
+    func test_updateSystem()
+    {
+        let system = System()
+        let stock = Stock(unit: .liters, current: { 50 }, maximum: { 100 }, ideal: { 75 })
+        let flow = Flow(unit: .liters, from: { stock }, to: { .sink }, rate: { 1 })
+        system.stocks = [stock]
+        system.flows = [flow]
+        
+        system.update(0)
+        system.update(1)
+        XCTAssertEqual(stock.current, 49)
+        
+        system.update(49)
+        XCTAssertEqual(stock.current, 1)
+        
+        system.update(50)
+        XCTAssertEqual(stock.current, 0)
+    }
+    
+    // Rules for systems:
+    // 1. Either stocks tend toward their ideal
+    // 2. Or, flows run until exhaustion
+    // 3. Is there the concept of a homeostatic system?
+    // 4. Or do have certain flows have more pressure?
+    // 5. How, essentially, can we simulate this properly?
+    // 6. What about non-unit systems?
+    // 7. What about the game code?
 }

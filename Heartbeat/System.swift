@@ -28,6 +28,7 @@ open class System
     
     public func update(_ timeInterval: TimeInterval)
     {
+        flows.forEach { $0.update(timeInterval) }
     }
     
     func stocksTotalCurrent() -> Double
