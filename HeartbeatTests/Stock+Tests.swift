@@ -138,4 +138,54 @@ final class Stock_Tests: XCTestCase
             ideal: { 100 })
         XCTAssertEqual(stock.maximumReceiveAmount, 100)
     }
+    
+    func test_subtract_sameUnit()
+    {
+        let stock = Stock(
+            unit: .joules,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        stock.subtract(amount: 5, unit: .joules)
+        XCTAssertEqual(stock.current, 95)
+    }
+    
+    func test_subtract_differentUnit()
+    {
+        let stock = Stock(
+            unit: .joules,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 100 })
+        stock.subtract(amount: 5, unit: .calories)
+        XCTAssertEqual(
+            stock.current,
+            79.06,
+            accuracy: 0.01)
+    }
+    
+    func test_add_sameUnit()
+    {
+        let stock = Stock(
+            unit: .joules,
+            current: { 50 },
+            maximum: { 100 },
+            ideal: { 100 })
+        stock.add(amount: 5, unit: .joules)
+        XCTAssertEqual(stock.current, 55)
+    }
+    
+    func test_add_differentUnit()
+    {
+        let stock = Stock(
+            unit: .joules,
+            current: { 50 },
+            maximum: { 100 },
+            ideal: { 100 })
+        stock.add(amount: 6, unit: .calories)
+        XCTAssertEqual(
+            stock.current,
+            75.12,
+            accuracy: 0.01)
+    }
 }

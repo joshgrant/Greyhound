@@ -60,6 +60,9 @@ public extension Unit
     
     // Numeric
     static let any = Unit(dimension: .utility, ratioToBase: 1.0)
+    
+    // System
+    static let system = Unit(dimension: .system, ratioToBase: 1.0)
 }
 
 extension Unit: Equatable
@@ -70,3 +73,8 @@ extension Unit: Equatable
         lhs.ratioToBase == rhs.ratioToBase
     }
 }
+
+//public class SystemUnit: Unit
+//{
+//    static let
+//}

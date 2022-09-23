@@ -14,6 +14,7 @@ public enum Dimension
     case energy
     case area
     case utility
+    case system
     
     var baseUnit: Unit
     {
@@ -24,6 +25,7 @@ public enum Dimension
         case .energy: return .joules
         case .area: return .metersSquared
         case .utility: return .any
+        case .system: return .any
         }
     }
 }

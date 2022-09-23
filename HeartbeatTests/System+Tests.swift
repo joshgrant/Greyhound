@@ -47,4 +47,26 @@ final class System_Tests: XCTestCase
         ]
         XCTAssertEqual(system.balance, 0.775)
     }
+    
+    func test_convertToStock()
+    {
+        let system = System()
+        system.stocks = [
+            .init(
+                unit: .gallons,
+                current: { 5 },
+                maximum: { 100 },
+                ideal: { 20 }),
+            .init(
+                unit: .acres,
+                current: { 20 },
+                maximum: { 100 },
+                ideal: { 50 })
+        ]
+        let stock = system.convertToStock()
+        XCTAssertEqual(stock.current, 25)
+        XCTAssertEqual(stock.maximum, 200)
+        XCTAssertEqual(stock.ideal, 70)
+        XCTAssertEqual(stock.balance, 0.775)
+    }
 }

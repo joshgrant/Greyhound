@@ -17,9 +17,7 @@ open class Flow
     // MARK: - Variables
     
     public var name: String? = nil
-
     public let unit: Unit
-    
     public var from: Stock { _from() }
     public var to: Stock { _to() }
     
@@ -36,16 +34,6 @@ open class Flow
     
     private var pTimeInterval: TimeInterval?
     
-    public func transferAmount(elapsedTime: TimeInterval) -> Double
-    {
-        let flowAmount = rate * elapsedTime
-        
-        let fromAmount = from.maximumTransferAmount(in: unit)
-        let toAmount = to.maximumReceiveAmount(in: unit)
-        
-        return min(flowAmount, fromAmount, toAmount)
-    }
-    
     // MARK: - Initialization
     
     public init(
@@ -60,6 +48,18 @@ open class Flow
         self._from = from
         self._to = to
         self._rate = rate
+    }
+    
+    // MARK: - Functions
+    
+    public func transferAmount(elapsedTime: TimeInterval) -> Double
+    {
+        let flowAmount = rate * elapsedTime
+        
+        let fromAmount = from.maximumTransferAmount(in: unit)
+        let toAmount = to.maximumReceiveAmount(in: unit)
+        
+        return min(flowAmount, fromAmount, toAmount)
     }
     
     public func update(_ timeInterval: TimeInterval)
