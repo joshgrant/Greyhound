@@ -20,7 +20,7 @@ final class Flow_Tests: XCTestCase
         let to = Stock(
             unit: .gallons,
             current: { 3 },
-            maximum: { 3 },
+            maximum: { 10 },
             ideal: { 3 })
         
         let flow = Flow(
@@ -31,7 +31,10 @@ final class Flow_Tests: XCTestCase
         
         // The constraining value is the amount of liters in the "from" stock
         // 3 liters = 0.79 gallons
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 2), 0.79)
+        XCTAssertEqual(
+            flow.transferAmount(elapsedTime: 2),
+            0.79,
+            accuracy: 0.01)
     }
     
     func test_flow_transferAmount_zeroBecauseOfUnitIncompatability_all()
@@ -195,8 +198,8 @@ final class Flow_Tests: XCTestCase
         XCTAssertEqual(to.current, 4)
         
         flow.update(5)
-        XCTAssertEqual(from.current, 91)
-        XCTAssertEqual(to.current, 6)
+        XCTAssertEqual(from.current, 95)
+        XCTAssertEqual(to.current, 5)
     }
     
     func test_flow_update_noElapsedTime()
@@ -264,7 +267,8 @@ final class Flow_Tests: XCTestCase
         
         let to = Stock(
             unit: .gallons,
-            current: { 0 }, maximum: { .infinity },
+            current: { 0 },
+            maximum: { .infinity },
             ideal: { 0 })
         
         let flow = Flow(
@@ -276,9 +280,7 @@ final class Flow_Tests: XCTestCase
         flow.update(0)
         flow.update(1)
         
-        XCTFail("We need to represent different units here")
-        
         XCTAssertEqual(from.current, 95)
-        XCTAssertEqual(to.current, 1.3)
+        XCTAssertEqual(to.current, 1.32, accuracy: 0.01)
     }
 }

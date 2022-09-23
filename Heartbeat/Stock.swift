@@ -79,6 +79,32 @@ open class Stock
     {
         maximum - current
     }
+    
+    public func maximumTransferAmount(in unit: Unit) -> Double
+    {
+        self.unit.convert(
+            value: maximumTransferAmount,
+            to: unit)
+    }
+    
+    public func maximumReceiveAmount(in unit: Unit) -> Double
+    {
+        self.unit.convert(
+            value: maximumReceiveAmount,
+            to: unit)
+    }
+    
+    public func subtract(amount: Double, unit: Unit)
+    {
+        let unitAmount = unit.convert(value: amount, to: self.unit)
+        current -= unitAmount
+    }
+    
+    public func add(amount: Double, unit: Unit)
+    {
+        let unitAmount = unit.convert(value: amount, to: self.unit)
+        current += unitAmount
+    }
 }
 
 extension Stock: Identifiable { }

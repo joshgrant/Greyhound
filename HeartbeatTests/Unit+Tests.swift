@@ -29,4 +29,20 @@ final class Unit_Tests: XCTestCase
     {
         XCTAssertFalse(Unit.meters.canConvert(to: .liters))
     }
+    
+    func test_unit_convertsCorrectlyFromAToB()
+    {
+        XCTAssertEqual(
+            Unit.liters.convert(value: 5, to: .gallons),
+            1.32,
+            accuracy: 0.01)
+    }
+    
+    func test_unit_convertsCorrectlyFromBToA()
+    {
+        XCTAssertEqual(
+            Unit.gallons.convert(value: 5, to: .liters),
+            18.93,
+            accuracy: 0.01)
+    }
 }

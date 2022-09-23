@@ -7,11 +7,6 @@
 
 import Foundation
 
-public enum FlowError: Error
-{
-    case incompatibleDimensions(_ a: Dimension, _ b: Dimension)
-}
-
 open class Flow
 {
     // MARK: - Defined types
@@ -43,12 +38,12 @@ open class Flow
     
     public func transferAmount(elapsedTime: TimeInterval) -> Double
     {
-        // TODO: This transfer amount is not based on the Dimension
-        //
+        let flowAmount = rate * elapsedTime
         
-        min(rate * elapsedTime,
-            from.maximumTransferAmount,
-            to.maximumReceiveAmount)
+        let fromAmount = from.maximumTransferAmount(in: unit)
+        let toAmount = to.maximumReceiveAmount(in: unit)
+        
+        return min(flowAmount, fromAmount, toAmount)
     }
     
     // MARK: - Initialization
@@ -58,22 +53,8 @@ open class Flow
         unit: Unit,
         from: @escaping StockClosure,
         to: @escaping StockClosure,
-        rate: @escaping ValueClosure) throws
+        rate: @escaping ValueClosure)
     {
-        guard unit.canConvert(to: from().unit) else
-        {
-            throw FlowError.incompatibleDimensions(
-                unit.dimension,
-                from().unit.dimension)
-        }
-        
-        guard unit.canConvert(to: to().unit) else
-        {
-            throw FlowError.incompatibleDimensions(
-                unit.dimension,
-                to().unit.dimension)
-        }
-        
         self.name = name
         self.unit = unit
         self._from = from
@@ -86,8 +67,8 @@ open class Flow
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
         let amountToTransfer = transferAmount(elapsedTime: elapsedTime)
         
-        from.current -= amountToTransfer
-        to.current += amountToTransfer
+        from.subtract(amount: amountToTransfer, unit: unit)
+        to.add(amount: amountToTransfer, unit: unit)
         
         pTimeInterval = timeInterval
     }
