@@ -33,13 +33,13 @@ private extension World
         Stock(
             unit: .any,
             current: { .zero },
-            maximum: { .infinity },
-            ideal: { .infinity })
+            maximum: { .greatestFiniteMagnitude },
+            ideal: { .greatestFiniteMagnitude })
     }
     
     private static func makeTick(with iterations: Stock) -> Flow
     {
-        Flow(
+        try! Flow(
             unit: .any,
             stockA: { .source },
             stockB: { iterations },

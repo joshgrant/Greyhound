@@ -23,18 +23,17 @@ final class Flow_Tests: XCTestCase
             maximum: { 10 },
             ideal: { 10 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .gallons,
             stockA: { from },
             stockB: { to },
             limit: { 1 })
         
-        // The constraining value is the amount of liters in the "from" stock
-        // 3 liters = 0.79 gallons
-        XCTAssertEqual(
-            flow.transferAmount(elapsedTime: 2),
-            0.79,
-            accuracy: 0.01)
+        flow.update(0)
+        flow.update(2)
+        
+        XCTAssertEqual(from.current, 0)
+        XCTAssertEqual(to.current, 3.79, accuracy: 0.01)
     }
     
     func test_flow_transferAmount_zeroBecauseOfUnitIncompatability_all()
@@ -50,13 +49,13 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try? Flow(
             unit: .feet,
             stockA: { from },
             stockB: { to },
             limit: { 1 })
-        
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
+
+        XCTAssertNil(flow)
     }
     
     func test_flow_transferAmount_zeroBecauseOfUnitIncompatability_stocks()
@@ -72,13 +71,13 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try? Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
             limit: { 1 })
         
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
+        XCTAssertNil(flow)
     }
     
     func test_flow_transferAmount_zeroBecauseOfUnitIncompatability_flow()
@@ -94,13 +93,13 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try? Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
             limit: { 1 })
         
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
+        XCTAssertNil(flow)
     }
     
     func test_flow_transferAmount_limitedByFlowAmount()
@@ -116,13 +115,17 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .calories,
             stockA: { from },
             stockB: { to },
             limit: { 1 })
         
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 1)
+        flow.update(0)
+        flow.update(1)
+        
+        XCTAssertEqual(from.current, 99)
+        XCTAssertEqual(to.current, 1)
     }
     
     func test_flow_transferAmount_limitedByFromAmount()
@@ -138,13 +141,17 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .calories,
             stockA: { from },
             stockB: { to },
-            limit: { .infinity })
+            limit: { .greatestFiniteMagnitude })
         
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 87)
+        flow.update(0)
+        flow.update(1)
+        
+        XCTAssertEqual(from.current, 0)
+        XCTAssertEqual(to.current, 87)
     }
     
     func test_flow_transferAmount_limitedByToAmount()
@@ -160,13 +167,17 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .joules,
             stockA: { from },
             stockB: { to },
-            limit: { .infinity })
+            limit: { .greatestFiniteMagnitude })
         
-        XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 4)
+        flow.update(0)
+        flow.update(1)
+        
+        XCTAssertEqual(from.current, 83)
+        XCTAssertEqual(to.current, 100)
     }
     
     func test_flow_update_elapsedTime()
@@ -183,7 +194,7 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
@@ -199,7 +210,7 @@ final class Flow_Tests: XCTestCase
         
         flow.update(5)
         XCTAssertEqual(from.current, 95)
-        XCTAssertEqual(to.current, 5)
+        XCTAssertEqual(to.current, 5, accuracy: 0.01)
     }
     
     func test_flow_update_noElapsedTime()
@@ -216,7 +227,7 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
@@ -245,7 +256,7 @@ final class Flow_Tests: XCTestCase
             maximum: { .greatestFiniteMagnitude },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
@@ -255,7 +266,7 @@ final class Flow_Tests: XCTestCase
         flow.update(3)
         
         XCTAssertEqual(from.current, 85)
-        XCTAssertEqual(to.current, 15)
+        XCTAssertEqual(to.current, 15, accuracy: 0.01)
     }
     
     func test_flow_transferFromDifferentUnitsInSameunit()
@@ -272,7 +283,7 @@ final class Flow_Tests: XCTestCase
             maximum: { .greatestFiniteMagnitude },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .liters,
             stockA: { from },
             stockB: { to },
@@ -298,14 +309,17 @@ final class Flow_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .liters,
             stockA: { from },
             stockB: { to },
             limit: { 10 })
         
-        let amount = flow.transferAmount(elapsedTime: 3)
-        XCTAssertEqual(amount, 30)
+        flow.update(0)
+        flow.update(3)
+        
+        XCTAssertEqual(from.current, 70)
+        XCTAssertEqual(to.current, 30)
     }
     
     func test_flow_update_correctPressureEqualization()
@@ -322,7 +336,7 @@ final class Flow_Tests: XCTestCase
             maximum: { 1 },
             ideal: { 99 })
         
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .acres,
             stockA: { from },
             stockB: { to },
@@ -336,5 +350,31 @@ final class Flow_Tests: XCTestCase
         flow.update(5)
         XCTAssertEqual(from.current, 94)
         XCTAssertEqual(to.current, 1)
+    }
+    
+    func test_flow_update_reversePressureEqualizatoin()
+    {
+        let from = Stock(
+            unit: .acres,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 95 })
+        
+        let to = Stock(
+            unit: .acres,
+            current: { 3 },
+            maximum: { 3 },
+            ideal: { 0 })
+        
+        let flow = try! Flow(
+            unit: .acres,
+            stockA: { from },
+            stockB: { to },
+            limit: { 1 })
+        
+        flow.update(0)
+        flow.update(8)
+        XCTAssertEqual(from.current, 3)
+        XCTAssertEqual(to.current, 0)
     }
 }

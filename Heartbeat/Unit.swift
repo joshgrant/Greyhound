@@ -57,7 +57,7 @@ public extension Unit
     
     // Area
     static let metersSquared = Unit(dimension: .area, ratioToBase: 1.0)
-    static let acres = Unit(dimension: .area, ratioToBase: 2.471052e-4)
+    static let acres = Unit(dimension: .area, ratioToBase: 0.0002471053815)
     
     // Numeric
     static let any = Unit(dimension: .utility, ratioToBase: 1.0)

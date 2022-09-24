@@ -36,14 +36,14 @@ open class System
         stocks.reduce(0) { $0 + $1.current }
     }
     
-    func stocksTotalDelta() -> Double
+    func stocksTotalPressure() -> Double
     {
-        stocks.reduce(0) { $0 + $1.delta }
+        stocks.reduce(0) { $0 + $1.pressure }
     }
     
-    func stocksTotalMaximum() -> Double
+    func stocksTotalMaximum() -> Double?
     {
-        stocks.reduce(0) { $0 + $1.maximum }
+        stocks.compactMap { $0.maximum }.reduce(0, +)
     }
     
     func stocksTotalIdeal() -> Double
@@ -51,20 +51,34 @@ open class System
         stocks.reduce(0) { $0 + $1.ideal }
     }
     
-    public var balance: Double
+    public var pressure: Double
     {
-        guard stocks.count > 0 else { return 1 }
-        let delta = stocksTotalDelta()
-        let maximum = stocksTotalMaximum()
-        return 1 - abs(delta) / maximum
+        guard stocks.count > 0 else { return 0 }
+        let current = stocksTotalCurrent()
+        let ideal = stocksTotalIdeal()
+        if let maximum = stocksTotalMaximum()
+        {
+            return current - min(ideal, maximum)
+        }
+        else
+        {
+            return current - ideal
+        }
     }
     
     public func convertToStock() -> Stock
     {
-        Stock(
+        var maximumClosure: Stock.ValueClosure?
+        
+        if let totalMaximum = stocksTotalMaximum()
+        {
+            maximumClosure = { totalMaximum }
+        }
+        
+        return Stock(
             unit: .system,
             current: stocksTotalCurrent,
-            maximum: stocksTotalMaximum,
+            maximum: maximumClosure,
             ideal: stocksTotalIdeal)
     }
 }

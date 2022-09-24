@@ -10,13 +10,13 @@ import XCTest
 
 final class System_Tests: XCTestCase
 {
-    func test_balance_noStocks()
+    func test_pressure_noStocks()
     {
         let system = System()
-        XCTAssertEqual(system.balance, 1)
+        XCTAssertEqual(system.pressure, 1)
     }
     
-    func test_balance_oneStock()
+    func test_pressure_oneStock()
     {
         let system = System()
         system.stocks = [
@@ -27,10 +27,10 @@ final class System_Tests: XCTestCase
                 ideal: { 20 })
         ]
         
-        XCTAssertEqual(system.balance, 0.85)
+        XCTAssertEqual(system.pressure, 0.85)
     }
     
-    func test_balance_twoStocks()
+    func test_pressure_twoStocks()
     {
         let system = System()
         system.stocks = [
@@ -45,7 +45,7 @@ final class System_Tests: XCTestCase
                 maximum: { 100 },
                 ideal: { 50 })
         ]
-        XCTAssertEqual(system.balance, 0.775)
+        XCTAssertEqual(system.pressure, 0.775)
     }
     
     func test_convertToStock()
@@ -67,7 +67,7 @@ final class System_Tests: XCTestCase
         XCTAssertEqual(stock.current, 25)
         XCTAssertEqual(stock.maximum, 200)
         XCTAssertEqual(stock.ideal, 70)
-        XCTAssertEqual(stock.pressure, -0.225)
+        XCTAssertEqual(stock.pressure, -45)
     }
     
     func test_updateSystem()
@@ -78,7 +78,7 @@ final class System_Tests: XCTestCase
             current: { 50 },
             maximum: { 100 },
             ideal: { 75 })
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .liters,
             stockA: { stock },
             stockB: { .sink },
@@ -86,6 +86,9 @@ final class System_Tests: XCTestCase
         
         system.stocks = [stock]
         system.flows = [flow]
+        
+        print(stock.pressure)
+        print(Stock.sink.pressure)
         
         system.update(0)
         system.update(1)

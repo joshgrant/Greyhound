@@ -10,7 +10,7 @@ import Foundation
 open class Stock
 {
     // MARK: - Defined types
- 
+    
     public typealias ValueClosure = () -> Double
     
     // MARK: - Variables
@@ -20,7 +20,7 @@ open class Stock
     public var unit: Unit
     
     private var _current: ValueClosure
-    private var _maximum: ValueClosure
+    private var _maximum: ValueClosure?
     private var _ideal: ValueClosure
     
     public var current: Double
@@ -29,10 +29,17 @@ open class Stock
         set { _current = { newValue } }
     }
     
-    public var maximum: Double
+    public var maximum: Double?
     {
-        get { _maximum() }
-        set { _maximum = { newValue } }
+        get { _maximum?() ?? nil }
+        set {
+            guard let newValue = newValue else
+            {
+                _maximum = nil
+                return
+            }
+            _maximum = { newValue }
+        }
     }
     
     public var ideal: Double
@@ -47,7 +54,7 @@ open class Stock
         name: String? = nil,
         unit: Unit,
         current: @escaping ValueClosure,
-        maximum: @escaping ValueClosure,
+        maximum: ValueClosure?,
         ideal: @escaping ValueClosure)
     {
         self.name = name
@@ -60,60 +67,54 @@ open class Stock
     
     // MARK: - Functions
     
-    public var delta: Double
-    {
-        // Ideal cannot be greater than maximum
-        // Should I enforce it here or should I enforce it at runtime?
-        // If ideal > maximum, return maximum
-        // Else, return ideal
-        current - min(ideal, maximum)
-    }
-    
     public var pressure: Double
     {
+        if let maximum = maximum
+        {
+            return current - min(ideal, maximum)
+        }
+        else
+        {
+            return current - ideal
+        }
+    }
+    
+    public var pressureInBase: Double
+    {
         unit.convert(
-            value: delta,
+            value: pressure,
             to: unit.dimension.baseUnit)
     }
     
-    public var maximumTransferAmount: Double
+    public var currentInBase: Double
     {
-//        current
-        return 0
+        get
+        {
+            unit.convert(
+                value: current,
+                to: unit.dimension.baseUnit)
+        }
+        set
+        {
+            current = unit
+                .dimension
+                .baseUnit
+                .convert(value: newValue, to: unit)
+        }
     }
-
-    public var maximumReceiveAmount: Double
+    
+    public var capacityInBase: Double
     {
-//        ideal - current
-        return 0
-    }
-//
-    public func maximumTransferAmount(in unit: Unit) -> Double
-    {
-        return 0
-//        self.unit.convert(
-//            value: maximumTransferAmount,
-//            to: unit)
-    }
-
-    public func maximumReceiveAmount(in unit: Unit) -> Double
-    {
-        return 0
-//        self.unit.convert(
-//            value: maximumReceiveAmount,
-//            to: unit)
-    }
-
-    public func subtract(amount: Double, unit: Unit)
-    {
-//        let unitAmount = unit.convert(value: amount, to: self.unit)
-//        current -= unitAmount
-    }
-
-    public func add(amount: Double, unit: Unit)
-    {
-//        let unitAmount = unit.convert(value: amount, to: self.unit)
-//        current += unitAmount
+        if let maximum = maximum
+        {
+            return unit.convert(
+                value: maximum - current,
+                to: unit.dimension.baseUnit)
+        }
+        else
+        {
+            return .greatestFiniteMagnitude
+        }
     }
 }
 
@@ -137,25 +138,73 @@ public extension Stock
     static let source: Stock = ImmutableStock(
         name: "source",
         unit: .any,
-        current: { .greatestFiniteMagnitude },
-        maximum: { .greatestFiniteMagnitude },
-        ideal: { 0 })
+        current: .greatestFiniteMagnitude,
+        maximum: nil,
+        ideal: 0)
     
     static let sink: Stock = ImmutableStock(
         name: "sink",
         unit: .any,
-        current: { 0 },
-        maximum: { .greatestFiniteMagnitude },
-        ideal: { .greatestFiniteMagnitude })
+        current: 0,
+        maximum: nil,
+        ideal: .greatestFiniteMagnitude)
 }
 
 private class ImmutableStock: Stock
 {
-//    override func add(amount: Double, unit: Unit) {
-//
-//    }
-//
-//    override func subtract(amount: Double, unit: Unit) {
-//
-//    }
+    var fixedUnit: Unit
+    var fixedCurrent: Double
+    var fixedMaximum: Double?
+    var fixedIdeal: Double
+    
+    override var unit: Unit
+    {
+        get { fixedUnit }
+        set { }
+    }
+    
+    override var current: Double
+    {
+        get { fixedCurrent }
+        set { }
+    }
+    
+    override var maximum: Double?
+    {
+        get { fixedMaximum }
+        set { }
+    }
+    
+    override var ideal: Double
+    {
+        get { fixedIdeal }
+        set { }
+    }
+    
+    init(
+        name: String? = nil,
+        unit: Unit,
+        current: Double,
+        maximum: Double?,
+        ideal: Double)
+    {
+        self.fixedUnit = unit
+        self.fixedCurrent = current
+        self.fixedMaximum = maximum
+        self.fixedIdeal = ideal
+        
+        var maximumClosure: ValueClosure?
+        
+        if let maximum = maximum
+        {
+            maximumClosure = { maximum }
+        }
+        
+        super.init(
+            name: name,
+            unit: unit,
+            current: { current },
+            maximum: maximumClosure,
+            ideal: { ideal })
+    }
 }

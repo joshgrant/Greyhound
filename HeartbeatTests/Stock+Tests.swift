@@ -18,7 +18,7 @@ final class Stock_Tests: XCTestCase
             maximum: { 200 },
             ideal: { 23 })
         
-        XCTAssertEqual(stock.delta, 0)
+        XCTAssertEqual(stock.pressure, 0)
     }
     
     func test_delta_negativeDelta()
@@ -29,7 +29,7 @@ final class Stock_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 40 })
         
-        XCTAssertEqual(stock.delta, -23)
+        XCTAssertEqual(stock.pressure, -23)
     }
     
     func test_delta_positiveDelta()
@@ -40,7 +40,7 @@ final class Stock_Tests: XCTestCase
             maximum: { 1000 },
             ideal: { 12 })
         
-        XCTAssertEqual(stock.delta, 79)
+        XCTAssertEqual(stock.pressure, 79)
     }
     
     func test_pressure_zeroDelta()
@@ -54,152 +54,6 @@ final class Stock_Tests: XCTestCase
         XCTAssertEqual(stock.pressure, 0)
     }
     
-    func test_pressure_maximumDelta()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 0 },
-            maximum: { 100 },
-            ideal: { 100 })
-        
-        XCTAssertEqual(stock.pressure, -1)
-    }
-    
-    func test_pressure_thirdDelta()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 40 },
-            maximum: { 120 },
-            ideal: { 80 })
-        
-        XCTAssertEqual(stock.pressure, -0.333, accuracy: 0.001)
-    }
-    
-    func test_pressure_positive()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 80 },
-            maximum: { 120 },
-            ideal: { 40 })
-        
-        XCTAssertEqual(stock.pressure, 0.333, accuracy: 0.001)
-    }
-    
-    func test_maximumTransferAmount_zero()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 0 },
-            maximum: { 100 },
-            ideal: { 100 })
-        
-        XCTAssertEqual(stock.maximumTransferAmount, 0)
-    }
-    
-    func test_maximumTransferAmount()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 8 },
-            maximum: { 100 },
-            ideal: { 100 })
-        
-        XCTAssertEqual(stock.maximumTransferAmount, 8)
-    }
-    
-    func test_maximumTransferAmount_max()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 100 },
-            maximum: { 100 },
-            ideal: { 100 })
-        
-        XCTAssertEqual(stock.maximumTransferAmount, 100)
-    }
-    
-    func test_maximumReceiveAmount_zero()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 100 },
-            maximum: { 100 },
-            ideal: { 100 })
-        XCTAssertEqual(stock.maximumReceiveAmount, 0)
-    }
-    
-    func test_maximumReceiveAmount()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 87 },
-            maximum: { 100 },
-            ideal: { 100 })
-        XCTAssertEqual(stock.maximumReceiveAmount, 13)
-    }
-    
-    func test_maximumReceiveAmount_max()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 0 },
-            maximum: { 100 },
-            ideal: { 100 })
-        XCTAssertEqual(stock.maximumReceiveAmount, 100)
-    }
-    
-    func test_subtract_sameUnit()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 100 },
-            maximum: { 100 },
-            ideal: { 100 })
-        stock.subtract(amount: 5, unit: .joules)
-        XCTAssertEqual(stock.current, 95)
-    }
-    
-    func test_subtract_differentUnit()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 100 },
-            maximum: { 100 },
-            ideal: { 100 })
-        stock.subtract(amount: 5, unit: .calories)
-        XCTAssertEqual(
-            stock.current,
-            79.06,
-            accuracy: 0.01)
-    }
-    
-    func test_add_sameUnit()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 50 },
-            maximum: { 100 },
-            ideal: { 100 })
-        stock.add(amount: 5, unit: .joules)
-        XCTAssertEqual(stock.current, 55)
-    }
-    
-    func test_add_differentUnit()
-    {
-        let stock = Stock(
-            unit: .joules,
-            current: { 50 },
-            maximum: { 100 },
-            ideal: { 100 })
-        stock.add(amount: 6, unit: .calories)
-        XCTAssertEqual(
-            stock.current,
-            75.12,
-            accuracy: 0.01)
-    }
-    
     func test_compare_pressureMagnitude_equalUnits()
     {
         let stockA = Stock(unit: .joules, current: { 5 }, maximum: { 10 }, ideal: { 10 })
@@ -210,25 +64,35 @@ final class Stock_Tests: XCTestCase
     
     func test_compare_pressure_unequalUnits()
     {
-        let stockA = Stock(unit: .calories, current: { 5 }, maximum: { 10 }, ideal: { 10 })
-        let stockB = Stock(unit: .joules, current: { 0 }, maximum: { 10 }, ideal: { 10 })
+        let stockA = Stock(
+            unit: .calories,
+            current: { 5 },
+            maximum: { 10 },
+            ideal: { 10 })
+        let stockB = Stock(
+            unit: .joules,
+            current: { 0 },
+            maximum: { 10 },
+            ideal: { 10 })
         
-        XCTAssertGreaterThan(abs(stockA.pressure), abs(stockB.pressure))
+        XCTAssertGreaterThan(
+            abs(stockA.pressureInBase),
+            abs(stockB.pressureInBase))
     }
     
     func test_sink_pressure()
     {
-        XCTAssertEqual(Stock.sink.pressure, -1)
+        XCTAssertEqual(Stock.sink.pressure, -.greatestFiniteMagnitude)
     }
     
     func test_source_pressure()
     {
-        XCTAssertEqual(Stock.source.pressure, 1)
+        XCTAssertEqual(Stock.source.pressure, .greatestFiniteMagnitude)
     }
     
     func test_sink_source_equalizedPressure()
     {
-        let flow = Flow(
+        let flow = try! Flow(
             unit: .any,
             stockA: { .sink },
             stockB: { .source },
@@ -237,8 +101,8 @@ final class Stock_Tests: XCTestCase
         flow.update(0)
         flow.update(1)
         
-        XCTAssertEqual(Stock.sink.pressure, -1)
-        XCTAssertEqual(Stock.source.pressure, 1)
+        XCTAssertEqual(Stock.sink.pressure, -.greatestFiniteMagnitude)
+        XCTAssertEqual(Stock.source.pressure, .greatestFiniteMagnitude)
         
         XCTAssertEqual(Stock.sink.current, 0)
         XCTAssertEqual(Stock.source.current, .greatestFiniteMagnitude)

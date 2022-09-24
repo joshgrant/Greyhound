@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum FlowError: Error
+{
+    case incompatibleDimensions
+}
+
 open class Flow
 {
     // MARK: - Defined types
@@ -22,15 +27,30 @@ open class Flow
     public var stockB: Stock { _stockB() }
     
     /// Units/second
-    public var limit: Double
+    public var limit: Double?
     {
-        get { _limit() }
-        set { _limit = { newValue } }
+        get { _limit?() ?? nil }
+        set {
+            guard let newValue = newValue else
+            {
+                _limit = nil
+                return
+            }
+            _limit = { newValue }
+        }
+    }
+    
+    var limitInBase: Double?
+    {
+        guard let limit = limit else { return nil }
+        return unit.convert(
+            value: limit,
+            to: unit.dimension.baseUnit)
     }
     
     private var _stockA: StockClosure
     private var _stockB: StockClosure
-    private var _limit: ValueClosure
+    private var _limit: ValueClosure?
     
     private var pTimeInterval: TimeInterval?
     
@@ -41,90 +61,93 @@ open class Flow
         unit: Unit,
         stockA: @escaping StockClosure,
         stockB: @escaping StockClosure,
-        limit: @escaping ValueClosure)
+        limit: ValueClosure?) throws
     {
         self.name = name
         self.unit = unit
         self._stockA = stockA
         self._stockB = stockB
         self._limit = limit
+        
+        guard self.stockA.unit.canConvert(to: self.unit) &&
+                self.stockB.unit.canConvert(to: self.unit)
+        else
+        {
+            throw FlowError.incompatibleDimensions
+        }
     }
     
     // MARK: - Functions
-    
-    public func transferAmount(elapsedTime: TimeInterval) -> Double
-    {
-//        let flowAmount = rate * elapsedTime
-//
-//        let transferAmount: Double
-//        let receiveAmount: Double
-//
-//        if stockA.pressure > stockB.pressure
-//        {
-//            transferAmount = stockA.maximumTransferAmount(in: unit)
-//            receiveAmount = stockB.maximumReceiveAmount(in: unit)
-//        }
-//        else
-//        {
-//            transferAmount = stockB.maximumTransferAmount(in: unit)
-//            receiveAmount = stockA.maximumReceiveAmount(in: unit)
-//        }
-//
-//        return min(
-//            flowAmount,
-//            transferAmount,
-//            receiveAmount)
-        return 0
-    }
     
     public func update(_ timeInterval: TimeInterval)
     {
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
         
-        let amountA = unit
-            .dimension
-            .baseUnit
-            .convert(
-                value: stockA.pressure,
-                to: stockA.unit)
+        let flowLimit = min(limitInBase ?? .greatestFiniteMagnitude, .greatestFiniteMagnitude)
         
-        let amountB = unit
-            .dimension
-            .baseUnit
-            .convert(
-                value: stockB.pressure,
-                to: stockB.unit)
+        if stockA.pressureInBase > stockB.pressureInBase
+        {
+            let amount = min(
+                flowLimit,
+                stockA.currentInBase,
+                stockB.capacityInBase)
+            stockA.currentInBase -= amount
+            stockB.currentInBase += amount
+        }
+        else
+        {
+            let amount = min(
+                flowLimit,
+                stockA.capacityInBase,
+                stockB.currentInBase)
+            stockA.currentInBase += amount
+            stockB.currentInBase -= amount
+        }
         
-        let totalLimit = limit * elapsedTime
-        let mint = min(
-            abs(amountA),
-            abs(amountB),
-            totalLimit)
-        let signA: Double = amountA < 0 ? -1 : 1 // Flips signs?
-        let signB: Double = amountB < 0 ? -1 : 1 // Flips signs?
-        let plusA = mint * signA
-        let plusB = mint * signB
-        
-        print(amountA, amountB, mint, plusA, plusB)
-        
-        // AmountA needs to be constrained to the limit of the stock
-        // AmountB needs to be constrainted to the limit of the stock
-        
-        stockA.current -= plusA
-        stockB.current -= plusB
-
         
         pTimeInterval = timeInterval
     }
 }
 
-//fileprivate extension Stock
-//{
-//    // Returns the remainder trying to add the given amount
-//    func add(amount: Double) -> Double
-//    {
-//        let remainder = min(0, maximum - (current + amount))
-//        current += amount - remainder
-//        return remainder
-//    }
-//}
+/// ARGH!!!!!
+/// Multiplying .greatestFiniteMagnitude by anything gives you infinity
+/// How can I avoid this???
+
+
+/*
+ let amountA = unit
+     .dimension
+     .baseUnit
+     .convert(
+         value: stockA.pressure,
+         to: unit)
+ 
+ let amountB = unit
+     .dimension
+     .baseUnit
+     .convert(
+         value: stockB.pressure,
+         to: unit)
+ 
+ let totalLimit = limit * elapsedTime
+ let mint = min(
+     abs(amountA),
+     abs(amountB),
+     totalLimit)
+ let signA: Double = amountA < 0 ? -1 : 1 // Flips signs?
+ let signB: Double = amountB < 0 ? -1 : 1 // Flips signs?
+ let plusA = mint * signA
+ let plusB = mint * signB
+ 
+ print(amountA, amountB, mint, plusA, plusB)
+ 
+ let plusAUnit = unit.convert(value: plusA, to: stockA.unit)
+ 
+ 
+ let plusBUnit = unit.convert(value: plusB, to: stockB.unit)
+ // AmountA needs to be constrained to the limit of the stock
+ // AmountB needs to be constrainted to the limit of the stock
+ 
+ stockA.current -= plusAUnit
+ stockB.current -= plusBUnit
+ */
