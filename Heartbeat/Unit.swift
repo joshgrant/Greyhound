@@ -24,8 +24,9 @@ open class Unit
     
     public func canConvert(to unit: Unit) -> Bool
     {
-        if unit == .any || self == .any { return true }
-        return unit.dimension == dimension
+        self == .any ||
+        unit == .any ||
+        unit.dimension == dimension
     }
     
     public func convert(value: Double, to unit: Unit) -> Double
@@ -73,8 +74,3 @@ extension Unit: Equatable
         lhs.ratioToBase == rhs.ratioToBase
     }
 }
-
-//public class SystemUnit: Unit
-//{
-//    static let
-//}

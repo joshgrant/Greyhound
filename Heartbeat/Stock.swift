@@ -62,55 +62,58 @@ open class Stock
     
     public var delta: Double
     {
-        current - ideal
-    }
-    
-    private var selfPressure: Double
-    {
-        (current - ideal) / maximum
+        // Ideal cannot be greater than maximum
+        // Should I enforce it here or should I enforce it at runtime?
+        // If ideal > maximum, return maximum
+        // Else, return ideal
+        current - min(ideal, maximum)
     }
     
     public var pressure: Double
     {
         unit.convert(
-            value: selfPressure,
+            value: delta,
             to: unit.dimension.baseUnit)
     }
     
     public var maximumTransferAmount: Double
     {
-        current
+//        current
+        return 0
     }
-    
+
     public var maximumReceiveAmount: Double
     {
-        ideal - current
+//        ideal - current
+        return 0
     }
-    
+//
     public func maximumTransferAmount(in unit: Unit) -> Double
     {
-        self.unit.convert(
-            value: maximumTransferAmount,
-            to: unit)
+        return 0
+//        self.unit.convert(
+//            value: maximumTransferAmount,
+//            to: unit)
     }
-    
+
     public func maximumReceiveAmount(in unit: Unit) -> Double
     {
-        self.unit.convert(
-            value: maximumReceiveAmount,
-            to: unit)
+        return 0
+//        self.unit.convert(
+//            value: maximumReceiveAmount,
+//            to: unit)
     }
-    
+
     public func subtract(amount: Double, unit: Unit)
     {
-        let unitAmount = unit.convert(value: amount, to: self.unit)
-        current -= unitAmount
+//        let unitAmount = unit.convert(value: amount, to: self.unit)
+//        current -= unitAmount
     }
-    
+
     public func add(amount: Double, unit: Unit)
     {
-        let unitAmount = unit.convert(value: amount, to: self.unit)
-        current += unitAmount
+//        let unitAmount = unit.convert(value: amount, to: self.unit)
+//        current += unitAmount
     }
 }
 
@@ -148,11 +151,11 @@ public extension Stock
 
 private class ImmutableStock: Stock
 {
-    override func add(amount: Double, unit: Unit) {
-        
-    }
-    
-    override func subtract(amount: Double, unit: Unit) {
-        
-    }
+//    override func add(amount: Double, unit: Unit) {
+//
+//    }
+//
+//    override func subtract(amount: Double, unit: Unit) {
+//
+//    }
 }

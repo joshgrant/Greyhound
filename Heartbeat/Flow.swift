@@ -22,15 +22,15 @@ open class Flow
     public var stockB: Stock { _stockB() }
     
     /// Units/second
-    public var rate: Double
+    public var limit: Double
     {
-        get { _rate() }
-        set { _rate = { newValue } }
+        get { _limit() }
+        set { _limit = { newValue } }
     }
     
     private var _stockA: StockClosure
     private var _stockB: StockClosure
-    private var _rate: ValueClosure
+    private var _limit: ValueClosure
     
     private var pTimeInterval: TimeInterval?
     
@@ -41,57 +41,90 @@ open class Flow
         unit: Unit,
         stockA: @escaping StockClosure,
         stockB: @escaping StockClosure,
-        rate: @escaping ValueClosure)
+        limit: @escaping ValueClosure)
     {
         self.name = name
         self.unit = unit
         self._stockA = stockA
         self._stockB = stockB
-        self._rate = rate
+        self._limit = limit
     }
     
     // MARK: - Functions
     
     public func transferAmount(elapsedTime: TimeInterval) -> Double
     {
-        let flowAmount = rate * elapsedTime
-        
-        let transferAmount: Double
-        let receiveAmount: Double
-        
-        if stockA.pressure > stockB.pressure
-        {
-            transferAmount = stockA.maximumTransferAmount(in: unit)
-            receiveAmount = stockB.maximumReceiveAmount(in: unit)
-        }
-        else
-        {
-            transferAmount = stockB.maximumTransferAmount(in: unit)
-            receiveAmount = stockA.maximumReceiveAmount(in: unit)
-        }
-
-        return min(
-            flowAmount,
-            transferAmount,
-            receiveAmount)
+//        let flowAmount = rate * elapsedTime
+//
+//        let transferAmount: Double
+//        let receiveAmount: Double
+//
+//        if stockA.pressure > stockB.pressure
+//        {
+//            transferAmount = stockA.maximumTransferAmount(in: unit)
+//            receiveAmount = stockB.maximumReceiveAmount(in: unit)
+//        }
+//        else
+//        {
+//            transferAmount = stockB.maximumTransferAmount(in: unit)
+//            receiveAmount = stockA.maximumReceiveAmount(in: unit)
+//        }
+//
+//        return min(
+//            flowAmount,
+//            transferAmount,
+//            receiveAmount)
+        return 0
     }
     
     public func update(_ timeInterval: TimeInterval)
     {
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
-        let amountToTransfer = transferAmount(elapsedTime: elapsedTime)
         
-        if stockA.pressure > stockB.pressure
-        {
-            stockA.subtract(amount: amountToTransfer, unit: unit)
-            stockB.add(amount: amountToTransfer, unit: unit)
-        }
-        else
-        {
-            stockA.add(amount: amountToTransfer, unit: unit)
-            stockB.subtract(amount: amountToTransfer, unit: unit)
-        }
+        let amountA = unit
+            .dimension
+            .baseUnit
+            .convert(
+                value: stockA.pressure,
+                to: stockA.unit)
+        
+        let amountB = unit
+            .dimension
+            .baseUnit
+            .convert(
+                value: stockB.pressure,
+                to: stockB.unit)
+        
+        let totalLimit = limit * elapsedTime
+        let mint = min(
+            abs(amountA),
+            abs(amountB),
+            totalLimit)
+        let signA: Double = amountA < 0 ? -1 : 1 // Flips signs?
+        let signB: Double = amountB < 0 ? -1 : 1 // Flips signs?
+        let plusA = mint * signA
+        let plusB = mint * signB
+        
+        print(amountA, amountB, mint, plusA, plusB)
+        
+        // AmountA needs to be constrained to the limit of the stock
+        // AmountB needs to be constrainted to the limit of the stock
+        
+        stockA.current -= plusA
+        stockB.current -= plusB
+
         
         pTimeInterval = timeInterval
     }
 }
+
+//fileprivate extension Stock
+//{
+//    // Returns the remainder trying to add the given amount
+//    func add(amount: Double) -> Double
+//    {
+//        let remainder = min(0, maximum - (current + amount))
+//        current += amount - remainder
+//        return remainder
+//    }
+//}

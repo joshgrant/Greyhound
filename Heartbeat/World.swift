@@ -43,6 +43,6 @@ private extension World
             unit: .any,
             stockA: { .source },
             stockB: { iterations },
-            rate: { 1 })
+            limit: { 1 })
     }
 }

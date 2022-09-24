@@ -27,7 +27,7 @@ final class Flow_Tests: XCTestCase
             unit: .gallons,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         // The constraining value is the amount of liters in the "from" stock
         // 3 liters = 0.79 gallons
@@ -54,7 +54,7 @@ final class Flow_Tests: XCTestCase
             unit: .feet,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
     }
@@ -76,7 +76,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
     }
@@ -98,7 +98,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
     }
@@ -120,7 +120,7 @@ final class Flow_Tests: XCTestCase
             unit: .calories,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 1)
     }
@@ -142,7 +142,7 @@ final class Flow_Tests: XCTestCase
             unit: .calories,
             stockA: { from },
             stockB: { to },
-            rate: { .infinity })
+            limit: { .infinity })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 87)
     }
@@ -164,7 +164,7 @@ final class Flow_Tests: XCTestCase
             unit: .joules,
             stockA: { from },
             stockB: { to },
-            rate: { .infinity })
+            limit: { .infinity })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 4)
     }
@@ -187,7 +187,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         flow.update(0)
         XCTAssertEqual(from.current, 100)
@@ -220,7 +220,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             stockA: { from },
             stockB: { to },
-            rate: { 1 })
+            limit: { 1 })
         
         flow.update(0)
         XCTAssertEqual(from.current, 100)
@@ -249,7 +249,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             stockA: { from },
             stockB: { to },
-            rate: { 5 })
+            limit: { 5 })
         
         flow.update(0)
         flow.update(3)
@@ -276,7 +276,7 @@ final class Flow_Tests: XCTestCase
             unit: .liters,
             stockA: { from },
             stockB: { to },
-            rate: { 5 })
+            limit: { 5 })
         
         flow.update(0)
         flow.update(1)
@@ -302,9 +302,39 @@ final class Flow_Tests: XCTestCase
             unit: .liters,
             stockA: { from },
             stockB: { to },
-            rate: { 10 })
+            limit: { 10 })
         
         let amount = flow.transferAmount(elapsedTime: 3)
         XCTAssertEqual(amount, 30)
+    }
+    
+    func test_flow_update_correctPressureEqualization()
+    {
+        let from = Stock(
+            unit: .acres,
+            current: { 95 },
+            maximum: { 100 },
+            ideal: { 0 })
+        
+        let to = Stock(
+            unit: .acres,
+            current: { 0 },
+            maximum: { 1 },
+            ideal: { 99 })
+        
+        let flow = Flow(
+            unit: .acres,
+            stockA: { from },
+            stockB: { to },
+            limit: { 1 })
+        
+        flow.update(0)
+        flow.update(3)
+        XCTAssertEqual(from.current, 94)
+        XCTAssertEqual(to.current, 1)
+        
+        flow.update(5)
+        XCTAssertEqual(from.current, 94)
+        XCTAssertEqual(to.current, 1)
     }
 }

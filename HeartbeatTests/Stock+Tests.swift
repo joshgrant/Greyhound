@@ -232,7 +232,7 @@ final class Stock_Tests: XCTestCase
             unit: .any,
             stockA: { .sink },
             stockB: { .source },
-            rate: { 1000 })
+            limit: { 1000 })
         
         flow.update(0)
         flow.update(1)

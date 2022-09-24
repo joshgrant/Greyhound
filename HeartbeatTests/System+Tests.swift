@@ -82,7 +82,7 @@ final class System_Tests: XCTestCase
             unit: .liters,
             stockA: { stock },
             stockB: { .sink },
-            rate: { 1 })
+            limit: { 1 })
         
         system.stocks = [stock]
         system.flows = [flow]
