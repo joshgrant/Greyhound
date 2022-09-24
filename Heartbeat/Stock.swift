@@ -65,9 +65,9 @@ open class Stock
         current - ideal
     }
     
-    public var balance: Double
+    public var pressure: Double
     {
-        1 - abs(delta) / maximum
+        (current - ideal) / maximum
     }
     
     public var maximumTransferAmount: Double

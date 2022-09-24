@@ -43,7 +43,7 @@ final class Stock_Tests: XCTestCase
         XCTAssertEqual(stock.delta, 79)
     }
     
-    func test_balance_zeroDelta()
+    func test_pressure_zeroDelta()
     {
         let stock = Stock(
             unit: .joules,
@@ -51,10 +51,10 @@ final class Stock_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 40 })
         
-        XCTAssertEqual(stock.balance, 1)
+        XCTAssertEqual(stock.pressure, 0)
     }
     
-    func test_balance_maximumDelta()
+    func test_pressure_maximumDelta()
     {
         let stock = Stock(
             unit: .joules,
@@ -62,10 +62,10 @@ final class Stock_Tests: XCTestCase
             maximum: { 100 },
             ideal: { 100 })
         
-        XCTAssertEqual(stock.balance, 0)
+        XCTAssertEqual(stock.pressure, -1)
     }
     
-    func test_balance_thirdDelta()
+    func test_pressure_thirdDelta()
     {
         let stock = Stock(
             unit: .joules,
@@ -73,7 +73,18 @@ final class Stock_Tests: XCTestCase
             maximum: { 120 },
             ideal: { 80 })
         
-        XCTAssertEqual(stock.balance, 0.666, accuracy: 0.001)
+        XCTAssertEqual(stock.pressure, -0.333, accuracy: 0.001)
+    }
+    
+    func test_pressure_positive()
+    {
+        let stock = Stock(
+            unit: .joules,
+            current: { 80 },
+            maximum: { 120 },
+            ideal: { 40 })
+        
+        XCTAssertEqual(stock.pressure, 0.333, accuracy: 0.001)
     }
     
     func test_maximumTransferAmount_zero()
