@@ -73,8 +73,17 @@ final class System_Tests: XCTestCase
     func test_updateSystem()
     {
         let system = System()
-        let stock = Stock(unit: .liters, current: { 50 }, maximum: { 100 }, ideal: { 75 })
-        let flow = Flow(unit: .liters, stockA: { stock }, stockB: { .sink }, rate: { 1 })
+        let stock = Stock(
+            unit: .liters,
+            current: { 50 },
+            maximum: { 100 },
+            ideal: { 75 })
+        let flow = Flow(
+            unit: .liters,
+            stockA: { stock },
+            stockB: { .sink },
+            rate: { 1 })
+        
         system.stocks = [stock]
         system.flows = [flow]
         
@@ -86,6 +95,9 @@ final class System_Tests: XCTestCase
         XCTAssertEqual(stock.current, 1)
         
         system.update(50)
+        XCTAssertEqual(stock.current, 0)
+        
+        system.update(51)
         XCTAssertEqual(stock.current, 0)
     }
 }

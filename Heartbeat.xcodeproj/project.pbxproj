@@ -13,21 +13,6 @@
 		0301233828D7537E008A9978 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233328D53E91008A9978 /* World.swift */; };
 		0301233928D7537E008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock.swift */; };
 		0301233A28D7537E008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow.swift */; };
-		03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
-		03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03747BC128D900760036678B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BC028D900760036678B /* main.swift */; };
-		03747BCD28DA42E50036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
-		03747BCE28DA42E50036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03747BD928DCE7710036678B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BD828DCE7710036678B /* AppDelegate.swift */; };
-		03747BDF28DCE7710036678B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BDE28DCE7710036678B /* GameScene.swift */; };
-		03747BE128DCE7710036678B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BE028DCE7710036678B /* ViewController.swift */; };
-		03747BE328DCE7730036678B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03747BE228DCE7730036678B /* Assets.xcassets */; };
-		03747BE628DCE7730036678B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03747BE428DCE7730036678B /* Main.storyboard */; };
-		03747BF128DCE7730036678B /* GreyhoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BF028DCE7730036678B /* GreyhoundTests.swift */; };
-		03747BFB28DCE7730036678B /* GreyhoundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BFA28DCE7730036678B /* GreyhoundUITests.swift */; };
-		03747BFD28DCE7730036678B /* GreyhoundUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747BFC28DCE7730036678B /* GreyhoundUITestsLaunchTests.swift */; };
-		03747C0728DCE7E80036678B /* Heartbeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; };
-		03747C0828DCE7E80036678B /* Heartbeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03FF92B828C3FCE400FC1956 /* Heartbeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03747C0D28DE23E40036678B /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C0C28DE23E40036678B /* Dimension.swift */; };
 		03747C1128DE57020036678B /* Unit+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C1028DE57020036678B /* Unit+Tests.swift */; };
 		03747C1328DE616D0036678B /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C1228DE616D0036678B /* Unit.swift */; };
@@ -37,41 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03747B9F28D7DBB20036678B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03FF92B728C3FCE400FC1956;
-			remoteInfo = Heartbeat;
-		};
-		03747BCF28DA42E50036678B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03FF92B728C3FCE400FC1956;
-			remoteInfo = Heartbeat;
-		};
-		03747BED28DCE7730036678B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03747BD528DCE7710036678B;
-			remoteInfo = Greyhound;
-		};
-		03747BF728DCE7730036678B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03747BD528DCE7710036678B;
-			remoteInfo = Greyhound;
-		};
-		03747C0928DCE7E80036678B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03FF92B728C3FCE400FC1956;
-			remoteInfo = Heartbeat;
-		};
 		03FF92C428C3FCE500FC1956 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03FF92AF28C3FCE400FC1956 /* Project object */;
@@ -81,51 +31,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		03747BA128D7DBB20036678B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03747B9E28D7DBB20036678B /* Heartbeat.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BBC28D900760036678B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		03747BD128DA42E50036678B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03747BCE28DA42E50036678B /* Heartbeat.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747C0B28DCE7E80036678B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				03747C0828DCE7E80036678B /* Heartbeat.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		030122F428D3DC2A008A9978 /* Stock+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+Tests.swift"; sourceTree = "<group>"; };
 		0301231528D3F702008A9978 /* System+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System+Tests.swift"; sourceTree = "<group>"; };
@@ -134,21 +39,6 @@
 		0301232D28D53E31008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		0301232F28D53E3C008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		03747B8528D7DBA50036678B /* HeartbeatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartbeatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BBE28D900760036678B /* HeartbeatCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HeartbeatCL; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BC028D900760036678B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		03747BD628DCE7710036678B /* Greyhound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greyhound.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BD828DCE7710036678B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03747BDE28DCE7710036678B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		03747BE028DCE7710036678B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		03747BE228DCE7730036678B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03747BE528DCE7730036678B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		03747BE728DCE7730036678B /* Greyhound.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Greyhound.entitlements; sourceTree = "<group>"; };
-		03747BEC28DCE7730036678B /* GreyhoundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreyhoundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BF028DCE7730036678B /* GreyhoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyhoundTests.swift; sourceTree = "<group>"; };
-		03747BF628DCE7730036678B /* GreyhoundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreyhoundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03747BFA28DCE7730036678B /* GreyhoundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyhoundUITests.swift; sourceTree = "<group>"; };
-		03747BFC28DCE7730036678B /* GreyhoundUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyhoundUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		03747C0C28DE23E40036678B /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		03747C1028DE57020036678B /* Unit+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+Tests.swift"; sourceTree = "<group>"; };
 		03747C1228DE616D0036678B /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -159,44 +49,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03747B8228D7DBA50036678B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747B9D28D7DBB20036678B /* Heartbeat.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BBB28D900760036678B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BCD28DA42E50036678B /* Heartbeat.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BD328DCE7710036678B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747C0728DCE7E80036678B /* Heartbeat.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BE928DCE7730036678B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BF328DCE7730036678B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		03FF92B528C3FCE400FC1956 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,53 +74,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		03747BBF28D900760036678B /* HeartbeatCL */ = {
-			isa = PBXGroup;
-			children = (
-				03747BC028D900760036678B /* main.swift */,
-			);
-			path = HeartbeatCL;
-			sourceTree = "<group>";
-		};
-		03747BD728DCE7710036678B /* Greyhound */ = {
-			isa = PBXGroup;
-			children = (
-				03747BD828DCE7710036678B /* AppDelegate.swift */,
-				03747BDE28DCE7710036678B /* GameScene.swift */,
-				03747BE028DCE7710036678B /* ViewController.swift */,
-				03747BE228DCE7730036678B /* Assets.xcassets */,
-				03747BE428DCE7730036678B /* Main.storyboard */,
-				03747BE728DCE7730036678B /* Greyhound.entitlements */,
-			);
-			path = Greyhound;
-			sourceTree = "<group>";
-		};
-		03747BEF28DCE7730036678B /* GreyhoundTests */ = {
-			isa = PBXGroup;
-			children = (
-				03747BF028DCE7730036678B /* GreyhoundTests.swift */,
-			);
-			path = GreyhoundTests;
-			sourceTree = "<group>";
-		};
-		03747BF928DCE7730036678B /* GreyhoundUITests */ = {
-			isa = PBXGroup;
-			children = (
-				03747BFA28DCE7730036678B /* GreyhoundUITests.swift */,
-				03747BFC28DCE7730036678B /* GreyhoundUITestsLaunchTests.swift */,
-			);
-			path = GreyhoundUITests;
-			sourceTree = "<group>";
-		};
 		03FF92AE28C3FCE400FC1956 = {
 			isa = PBXGroup;
 			children = (
 				03FF92BA28C3FCE400FC1956 /* Heartbeat */,
 				03FF92C628C3FCE500FC1956 /* HeartbeatTests */,
-				03747BBF28D900760036678B /* HeartbeatCL */,
-				03747BD728DCE7710036678B /* Greyhound */,
-				03747BEF28DCE7730036678B /* GreyhoundTests */,
-				03747BF928DCE7730036678B /* GreyhoundUITests */,
 				03FF92B928C3FCE400FC1956 /* Products */,
 				03747B9C28D7DBB20036678B /* Frameworks */,
 			);
@@ -279,11 +89,6 @@
 			children = (
 				03FF92B828C3FCE400FC1956 /* Heartbeat.framework */,
 				03FF92C228C3FCE500FC1956 /* HeartbeatTests.xctest */,
-				03747B8528D7DBA50036678B /* HeartbeatDemo.app */,
-				03747BBE28D900760036678B /* HeartbeatCL */,
-				03747BD628DCE7710036678B /* Greyhound.app */,
-				03747BEC28DCE7730036678B /* GreyhoundTests.xctest */,
-				03747BF628DCE7730036678B /* GreyhoundUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,99 +133,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		03747B8428D7DBA50036678B /* HeartbeatDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03747B9B28D7DBA60036678B /* Build configuration list for PBXNativeTarget "HeartbeatDemo" */;
-			buildPhases = (
-				03747B8128D7DBA50036678B /* Sources */,
-				03747B8228D7DBA50036678B /* Frameworks */,
-				03747B8328D7DBA50036678B /* Resources */,
-				03747BA128D7DBB20036678B /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03747BA028D7DBB20036678B /* PBXTargetDependency */,
-			);
-			name = HeartbeatDemo;
-			productName = HeartbeatDemo;
-			productReference = 03747B8528D7DBA50036678B /* HeartbeatDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		03747BBD28D900760036678B /* HeartbeatCL */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03747BC228D900760036678B /* Build configuration list for PBXNativeTarget "HeartbeatCL" */;
-			buildPhases = (
-				03747BBA28D900760036678B /* Sources */,
-				03747BBB28D900760036678B /* Frameworks */,
-				03747BBC28D900760036678B /* CopyFiles */,
-				03747BD128DA42E50036678B /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03747BD028DA42E50036678B /* PBXTargetDependency */,
-			);
-			name = HeartbeatCL;
-			productName = HeartbeatCL;
-			productReference = 03747BBE28D900760036678B /* HeartbeatCL */;
-			productType = "com.apple.product-type.tool";
-		};
-		03747BD528DCE7710036678B /* Greyhound */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03747BFE28DCE7730036678B /* Build configuration list for PBXNativeTarget "Greyhound" */;
-			buildPhases = (
-				03747BD228DCE7710036678B /* Sources */,
-				03747BD328DCE7710036678B /* Frameworks */,
-				03747BD428DCE7710036678B /* Resources */,
-				03747C0B28DCE7E80036678B /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03747C0A28DCE7E80036678B /* PBXTargetDependency */,
-			);
-			name = Greyhound;
-			productName = Greyhound;
-			productReference = 03747BD628DCE7710036678B /* Greyhound.app */;
-			productType = "com.apple.product-type.application";
-		};
-		03747BEB28DCE7730036678B /* GreyhoundTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03747C0128DCE7730036678B /* Build configuration list for PBXNativeTarget "GreyhoundTests" */;
-			buildPhases = (
-				03747BE828DCE7730036678B /* Sources */,
-				03747BE928DCE7730036678B /* Frameworks */,
-				03747BEA28DCE7730036678B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03747BEE28DCE7730036678B /* PBXTargetDependency */,
-			);
-			name = GreyhoundTests;
-			productName = GreyhoundTests;
-			productReference = 03747BEC28DCE7730036678B /* GreyhoundTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		03747BF528DCE7730036678B /* GreyhoundUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03747C0428DCE7730036678B /* Build configuration list for PBXNativeTarget "GreyhoundUITests" */;
-			buildPhases = (
-				03747BF228DCE7730036678B /* Sources */,
-				03747BF328DCE7730036678B /* Frameworks */,
-				03747BF428DCE7730036678B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03747BF828DCE7730036678B /* PBXTargetDependency */,
-			);
-			name = GreyhoundUITests;
-			productName = GreyhoundUITests;
-			productReference = 03747BF628DCE7730036678B /* GreyhoundUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		03FF92B728C3FCE400FC1956 /* Heartbeat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03FF92CC28C3FCE500FC1956 /* Build configuration list for PBXNativeTarget "Heartbeat" */;
@@ -469,23 +181,6 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					03747B8428D7DBA50036678B = {
-						CreatedOnToolsVersion = 14.1;
-					};
-					03747BBD28D900760036678B = {
-						CreatedOnToolsVersion = 14.1;
-					};
-					03747BD528DCE7710036678B = {
-						CreatedOnToolsVersion = 14.1;
-					};
-					03747BEB28DCE7730036678B = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = 03747BD528DCE7710036678B;
-					};
-					03747BF528DCE7730036678B = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = 03747BD528DCE7710036678B;
-					};
 					03FF92B728C3FCE400FC1956 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -511,46 +206,11 @@
 			targets = (
 				03FF92B728C3FCE400FC1956 /* Heartbeat */,
 				03FF92C128C3FCE500FC1956 /* HeartbeatTests */,
-				03747B8428D7DBA50036678B /* HeartbeatDemo */,
-				03747BBD28D900760036678B /* HeartbeatCL */,
-				03747BD528DCE7710036678B /* Greyhound */,
-				03747BEB28DCE7730036678B /* GreyhoundTests */,
-				03747BF528DCE7730036678B /* GreyhoundUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03747B8328D7DBA50036678B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BD428DCE7710036678B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BE328DCE7730036678B /* Assets.xcassets in Resources */,
-				03747BE628DCE7730036678B /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BEA28DCE7730036678B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BF428DCE7730036678B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		03FF92B628C3FCE400FC1956 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -568,48 +228,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03747B8128D7DBA50036678B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BBA28D900760036678B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BC128D900760036678B /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BD228DCE7710036678B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BE128DCE7710036678B /* ViewController.swift in Sources */,
-				03747BDF28DCE7710036678B /* GameScene.swift in Sources */,
-				03747BD928DCE7710036678B /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BE828DCE7730036678B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BF128DCE7730036678B /* GreyhoundTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03747BF228DCE7730036678B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03747BFD28DCE7730036678B /* GreyhoundUITestsLaunchTests.swift in Sources */,
-				03747BFB28DCE7730036678B /* GreyhoundUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		03FF92B428C3FCE400FC1956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -637,31 +255,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03747BA028D7DBB20036678B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
-			targetProxy = 03747B9F28D7DBB20036678B /* PBXContainerItemProxy */;
-		};
-		03747BD028DA42E50036678B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
-			targetProxy = 03747BCF28DA42E50036678B /* PBXContainerItemProxy */;
-		};
-		03747BEE28DCE7730036678B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03747BD528DCE7710036678B /* Greyhound */;
-			targetProxy = 03747BED28DCE7730036678B /* PBXContainerItemProxy */;
-		};
-		03747BF828DCE7730036678B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03747BD528DCE7710036678B /* Greyhound */;
-			targetProxy = 03747BF728DCE7730036678B /* PBXContainerItemProxy */;
-		};
-		03747C0A28DCE7E80036678B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
-			targetProxy = 03747C0928DCE7E80036678B /* PBXContainerItemProxy */;
-		};
 		03FF92C528C3FCE500FC1956 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 03FF92B728C3FCE400FC1956 /* Heartbeat */;
@@ -669,249 +262,7 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		03747BE428DCE7730036678B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				03747BE528DCE7730036678B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		03747B9928D7DBA60036678B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		03747B9A28D7DBA60036678B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.HeartbeatDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		03747BC328D900760036678B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				ENABLE_HARDENED_RUNTIME = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		03747BC428D900760036678B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				ENABLE_HARDENED_RUNTIME = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		03747BFF28DCE7730036678B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = Greyhound/Greyhound.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Greyhound;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.Greyhound;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		03747C0028DCE7730036678B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = Greyhound/Greyhound.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Greyhound;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.Greyhound;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		03747C0228DCE7730036678B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.GreyhoundTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Greyhound.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Greyhound";
-			};
-			name = Debug;
-		};
-		03747C0328DCE7730036678B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.GreyhoundTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Greyhound.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Greyhound";
-			};
-			name = Release;
-		};
-		03747C0528DCE7730036678B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.GreyhoundUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Greyhound;
-			};
-			name = Debug;
-		};
-		03747C0628DCE7730036678B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 685257RUQP;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.joshgrant.GreyhoundUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Greyhound;
-			};
-			name = Release;
-		};
 		03FF92CA28C3FCE500FC1956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1146,51 +497,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03747B9B28D7DBA60036678B /* Build configuration list for PBXNativeTarget "HeartbeatDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03747B9928D7DBA60036678B /* Debug */,
-				03747B9A28D7DBA60036678B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03747BC228D900760036678B /* Build configuration list for PBXNativeTarget "HeartbeatCL" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03747BC328D900760036678B /* Debug */,
-				03747BC428D900760036678B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03747BFE28DCE7730036678B /* Build configuration list for PBXNativeTarget "Greyhound" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03747BFF28DCE7730036678B /* Debug */,
-				03747C0028DCE7730036678B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03747C0128DCE7730036678B /* Build configuration list for PBXNativeTarget "GreyhoundTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03747C0228DCE7730036678B /* Debug */,
-				03747C0328DCE7730036678B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03747C0428DCE7730036678B /* Build configuration list for PBXNativeTarget "GreyhoundUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03747C0528DCE7730036678B /* Debug */,
-				03747C0628DCE7730036678B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		03FF92B228C3FCE400FC1956 /* Build configuration list for PBXProject "Heartbeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
