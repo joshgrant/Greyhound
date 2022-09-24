@@ -74,7 +74,7 @@ final class System_Tests: XCTestCase
     {
         let system = System()
         let stock = Stock(unit: .liters, current: { 50 }, maximum: { 100 }, ideal: { 75 })
-        let flow = Flow(unit: .liters, from: { stock }, to: { .sink }, rate: { 1 })
+        let flow = Flow(unit: .liters, stockA: { stock }, stockB: { .sink }, rate: { 1 })
         system.stocks = [stock]
         system.flows = [flow]
         

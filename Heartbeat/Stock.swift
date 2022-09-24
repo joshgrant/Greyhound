@@ -65,9 +65,16 @@ open class Stock
         current - ideal
     }
     
-    public var pressure: Double
+    private var selfPressure: Double
     {
         (current - ideal) / maximum
+    }
+    
+    public var pressure: Double
+    {
+        unit.convert(
+            value: selfPressure,
+            to: unit.dimension.baseUnit)
     }
     
     public var maximumTransferAmount: Double
@@ -77,7 +84,7 @@ open class Stock
     
     public var maximumReceiveAmount: Double
     {
-        maximum - current
+        ideal - current
     }
     
     public func maximumTransferAmount(in unit: Unit) -> Double
@@ -94,17 +101,12 @@ open class Stock
             to: unit)
     }
     
-    // TODO: This doesn't prevent going negative
     public func subtract(amount: Double, unit: Unit)
     {
         let unitAmount = unit.convert(value: amount, to: self.unit)
         current -= unitAmount
     }
     
-    // TODO: This doesn't prevent going above the max
-    // the problem is that somehow, we aren't conserving energy
-    // unless we return the remaining, non-added amount and
-    // re-incorporate it back into the other stock
     public func add(amount: Double, unit: Unit)
     {
         let unitAmount = unit.convert(value: amount, to: self.unit)
@@ -129,17 +131,28 @@ extension Stock: Hashable
 
 public extension Stock
 {
-    static let source = Stock(
+    static let source: Stock = ImmutableStock(
         name: "source",
         unit: .any,
-        current: { .infinity },
-        maximum: { .infinity },
-        ideal: { -.infinity })
+        current: { .greatestFiniteMagnitude },
+        maximum: { .greatestFiniteMagnitude },
+        ideal: { 0 })
     
-    static let sink = Stock(
+    static let sink: Stock = ImmutableStock(
         name: "sink",
         unit: .any,
-        current: { -.infinity },
-        maximum: { .infinity },
-        ideal: { .infinity })
+        current: { 0 },
+        maximum: { .greatestFiniteMagnitude },
+        ideal: { .greatestFiniteMagnitude })
+}
+
+private class ImmutableStock: Stock
+{
+    override func add(amount: Double, unit: Unit) {
+        
+    }
+    
+    override func subtract(amount: Double, unit: Unit) {
+        
+    }
 }

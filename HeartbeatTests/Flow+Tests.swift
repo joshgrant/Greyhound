@@ -16,17 +16,17 @@ final class Flow_Tests: XCTestCase
             unit: .liters,
             current: { 3 },
             maximum: { 3 },
-            ideal: { 3 })
+            ideal: { 0 })
         let to = Stock(
             unit: .gallons,
             current: { 3 },
             maximum: { 10 },
-            ideal: { 3 })
+            ideal: { 10 })
         
         let flow = Flow(
             unit: .gallons,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         // The constraining value is the amount of liters in the "from" stock
@@ -52,8 +52,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .feet,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
@@ -74,8 +74,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .acres,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
@@ -96,8 +96,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .acres,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 0)
@@ -118,8 +118,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .calories,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 1)
@@ -140,8 +140,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .calories,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { .infinity })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 87)
@@ -162,8 +162,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .joules,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { .infinity })
         
         XCTAssertEqual(flow.transferAmount(elapsedTime: 1), 4)
@@ -175,7 +175,7 @@ final class Flow_Tests: XCTestCase
             unit: .acres,
             current: { 100 },
             maximum: { 100 },
-            ideal: { 100 })
+            ideal: { 0 })
         
         let to = Stock(
             unit: .acres,
@@ -185,8 +185,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .acres,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         flow.update(0)
@@ -218,8 +218,8 @@ final class Flow_Tests: XCTestCase
         
         let flow = Flow(
             unit: .acres,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 1 })
         
         flow.update(0)
@@ -236,18 +236,19 @@ final class Flow_Tests: XCTestCase
         let from = Stock(
             unit: .acres,
             current: { 100 },
-            maximum: { .infinity},
-            ideal: { 100 })
+            maximum: { .greatestFiniteMagnitude },
+            ideal: { 0 })
         
         let to = Stock(
             unit: .acres,
-            current: { 0 }, maximum: { .infinity },
-            ideal: { 0 })
+            current: { 0 },
+            maximum: { .greatestFiniteMagnitude },
+            ideal: { 100 })
         
         let flow = Flow(
             unit: .acres,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 5 })
         
         flow.update(0)
@@ -262,19 +263,19 @@ final class Flow_Tests: XCTestCase
         let from = Stock(
             unit: .liters,
             current: { 100 },
-            maximum: { .infinity},
-            ideal: { 100 })
+            maximum: { .greatestFiniteMagnitude },
+            ideal: { 0 })
         
         let to = Stock(
             unit: .gallons,
             current: { 0 },
-            maximum: { .infinity },
-            ideal: { 0 })
+            maximum: { .greatestFiniteMagnitude },
+            ideal: { 100 })
         
         let flow = Flow(
             unit: .liters,
-            from: { from },
-            to: { to },
+            stockA: { from },
+            stockB: { to },
             rate: { 5 })
         
         flow.update(0)
@@ -282,5 +283,28 @@ final class Flow_Tests: XCTestCase
         
         XCTAssertEqual(from.current, 95)
         XCTAssertEqual(to.current, 1.32, accuracy: 0.01)
+    }
+    
+    func test_transferAmount_isAbsoluteValue()
+    {
+        let from = Stock(
+            unit: .liters,
+            current: { 100 },
+            maximum: { 100 },
+            ideal: { 0 })
+        let to = Stock(
+            unit: .liters,
+            current: { 0 },
+            maximum: { 100 },
+            ideal: { 100 })
+        
+        let flow = Flow(
+            unit: .liters,
+            stockA: { from },
+            stockB: { to },
+            rate: { 10 })
+        
+        let amount = flow.transferAmount(elapsedTime: 3)
+        XCTAssertEqual(amount, 30)
     }
 }

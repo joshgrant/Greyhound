@@ -39,10 +39,10 @@ private extension World
     
     private static func makeTick(with iterations: Stock) -> Flow
     {
-        try! Flow(
+        Flow(
             unit: .any,
-            from: { .source },
-            to: { iterations },
+            stockA: { .source },
+            stockB: { iterations },
             rate: { 1 })
     }
 }

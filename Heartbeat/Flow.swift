@@ -18,8 +18,8 @@ open class Flow
     
     public var name: String? = nil
     public let unit: Unit
-    public var from: Stock { _from() }
-    public var to: Stock { _to() }
+    public var stockA: Stock { _stockA() }
+    public var stockB: Stock { _stockB() }
     
     /// Units/second
     public var rate: Double
@@ -28,8 +28,8 @@ open class Flow
         set { _rate = { newValue } }
     }
     
-    private var _from: StockClosure
-    private var _to: StockClosure
+    private var _stockA: StockClosure
+    private var _stockB: StockClosure
     private var _rate: ValueClosure
     
     private var pTimeInterval: TimeInterval?
@@ -39,14 +39,14 @@ open class Flow
     public init(
         name: String? = nil,
         unit: Unit,
-        from: @escaping StockClosure,
-        to: @escaping StockClosure,
+        stockA: @escaping StockClosure,
+        stockB: @escaping StockClosure,
         rate: @escaping ValueClosure)
     {
         self.name = name
         self.unit = unit
-        self._from = from
-        self._to = to
+        self._stockA = stockA
+        self._stockB = stockB
         self._rate = rate
     }
     
@@ -56,10 +56,24 @@ open class Flow
     {
         let flowAmount = rate * elapsedTime
         
-        let fromAmount = from.maximumTransferAmount(in: unit)
-        let toAmount = to.maximumReceiveAmount(in: unit)
+        let transferAmount: Double
+        let receiveAmount: Double
         
-        return min(flowAmount, fromAmount, toAmount)
+        if stockA.pressure > stockB.pressure
+        {
+            transferAmount = stockA.maximumTransferAmount(in: unit)
+            receiveAmount = stockB.maximumReceiveAmount(in: unit)
+        }
+        else
+        {
+            transferAmount = stockB.maximumTransferAmount(in: unit)
+            receiveAmount = stockA.maximumReceiveAmount(in: unit)
+        }
+
+        return min(
+            flowAmount,
+            transferAmount,
+            receiveAmount)
     }
     
     public func update(_ timeInterval: TimeInterval)
@@ -67,8 +81,16 @@ open class Flow
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
         let amountToTransfer = transferAmount(elapsedTime: elapsedTime)
         
-        from.subtract(amount: amountToTransfer, unit: unit)
-        to.add(amount: amountToTransfer, unit: unit)
+        if stockA.pressure > stockB.pressure
+        {
+            stockA.subtract(amount: amountToTransfer, unit: unit)
+            stockB.add(amount: amountToTransfer, unit: unit)
+        }
+        else
+        {
+            stockA.add(amount: amountToTransfer, unit: unit)
+            stockB.subtract(amount: amountToTransfer, unit: unit)
+        }
         
         pTimeInterval = timeInterval
     }

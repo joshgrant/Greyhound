@@ -199,4 +199,48 @@ final class Stock_Tests: XCTestCase
             75.12,
             accuracy: 0.01)
     }
+    
+    func test_compare_pressureMagnitude_equalUnits()
+    {
+        let stockA = Stock(unit: .joules, current: { 5 }, maximum: { 10 }, ideal: { 10 })
+        let stockB = Stock(unit: .joules, current: { 0 }, maximum: { 10 }, ideal: { 10 })
+        
+        XCTAssertGreaterThan(abs(stockB.pressure), abs(stockA.pressure))
+    }
+    
+    func test_compare_pressure_unequalUnits()
+    {
+        let stockA = Stock(unit: .calories, current: { 5 }, maximum: { 10 }, ideal: { 10 })
+        let stockB = Stock(unit: .joules, current: { 0 }, maximum: { 10 }, ideal: { 10 })
+        
+        XCTAssertGreaterThan(abs(stockA.pressure), abs(stockB.pressure))
+    }
+    
+    func test_sink_pressure()
+    {
+        XCTAssertEqual(Stock.sink.pressure, -1)
+    }
+    
+    func test_source_pressure()
+    {
+        XCTAssertEqual(Stock.source.pressure, 1)
+    }
+    
+    func test_sink_source_equalizedPressure()
+    {
+        let flow = Flow(
+            unit: .any,
+            stockA: { .sink },
+            stockB: { .source },
+            rate: { 1000 })
+        
+        flow.update(0)
+        flow.update(1)
+        
+        XCTAssertEqual(Stock.sink.pressure, -1)
+        XCTAssertEqual(Stock.source.pressure, 1)
+        
+        XCTAssertEqual(Stock.sink.current, 0)
+        XCTAssertEqual(Stock.source.current, .greatestFiniteMagnitude)
+    }
 }
