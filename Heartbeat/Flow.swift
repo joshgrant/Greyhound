@@ -48,54 +48,54 @@ open class Flow<DimensionType: Dimension>
     {
         let elapsedTime = timeInterval - (pTimeInterval ?? timeInterval)
         
-        // Find the stock with the most pressure
-        // Find the limiting factor (stock capacity, flow limit)
-        // Transfer the stock amounts
-        
         let pressureAInBase = stockA.pressure.valueInBase
         let pressureBInBase = stockB.pressure.valueInBase
         let limitInBase = limit?.valueInBase
         
-        /*
-         The direction is from high pressure to low pressure
-         So we just need to get the sign of flow
-         
-         Then, we need to figure out the limit, depending on the direction of flow
-         
-         So the low pressure system's limit is 0
-         And the high pressure system's limit is the max
-         
-         How can we do this? Can we do it without it statements?
-         */
-        
         if pressureAInBase > pressureBInBase
         {
-            let remainingAmount = stockA.remainingAmount.valueInBase
-            let remainingCapacity = stockB.remainingCapacity.valueInBase
-            
-            let limit: Double
-            
-            if let limitInBase = limitInBase
-            {
-                limit = min(limitInBase, remainingAmount, remainingCapacity)
-            }
-            else
-            {
-                limit = min(remainingAmount, remainingCapacity)
-            }
-            
-            let amountToRemoveFromStockA = Measurement(value: limit, unit: stockA.unit)
-            let amountToAddToStockB = Measurement(value: limit, unit: stockB.unit)
-            
-            stockA.current -= amountToRemoveFromStockA
-            stockB.current += amountToAddToStockB
+            _update(
+                highPressure: stockA,
+                lowPressure: stockB,
+                limitInBase: limitInBase,
+                elapsedTime: elapsedTime)
         }
         else
         {
-            
+            _update(
+                highPressure: stockB,
+                lowPressure: stockA,
+                limitInBase: limitInBase,
+                elapsedTime: elapsedTime)
         }
         
         
         pTimeInterval = timeInterval
+    }
+    
+    private func _update(highPressure: Stock<DimensionType>, lowPressure: Stock<DimensionType>, limitInBase: Double?, elapsedTime: TimeInterval)
+    {
+        let remainingAmount = highPressure.remainingAmount.valueInBase
+        let remainingCapacity = lowPressure.remainingCapacity.valueInBase
+        
+        let limit: Double
+        
+        if let limitInBase = limitInBase
+        {
+            limit = min(
+                limitInBase * elapsedTime,
+                remainingAmount,
+                remainingCapacity)
+        }
+        else
+        {
+            limit = min(remainingAmount, remainingCapacity)
+        }
+        
+        let amountToRemoveFromHighPressure = Measurement(value: limit, unit: highPressure.unit)
+        let amountToAddToLowPressure = Measurement(value: limit, unit: lowPressure.unit)
+        
+        highPressure.current -= amountToRemoveFromHighPressure
+        lowPressure.current += amountToAddToLowPressure
     }
 }

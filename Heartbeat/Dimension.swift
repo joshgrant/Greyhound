@@ -13,3 +13,4 @@ public class Number: Dimension {}
 public class Energy: Dimension {}
 public class Length: Dimension {}
 public class Volume: Dimension {}
+public class Area: Dimension {}

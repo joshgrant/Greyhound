@@ -10,4 +10,18 @@ import XCTest
 
 final class Flow_Tests: XCTestCase
 {
+    func test_update_stockA_lowPressure()
+    {
+        
+    }
+    
+    func test_update_stockA_highPressure()
+    {
+        
+    }
+    
+    func test_update_stockA_equalPressure()
+    {
+        
+    }
 }

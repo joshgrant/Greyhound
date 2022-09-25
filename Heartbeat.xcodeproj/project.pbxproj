@@ -104,10 +104,10 @@
 				0301231B28D4291E008A9978 /* README.md */,
 				030DE75028DFFDEB006DCC12 /* Dimension.swift */,
 				0301232F28D53E3C008A9978 /* Flow.swift */,
+				030DE75228E00D86006DCC12 /* Measurement.swift */,
 				0301232D28D53E31008A9978 /* Stock.swift */,
 				03C0858928D7D6EC0087D0DC /* System.swift */,
 				03747C1228DE616D0036678B /* Unit.swift */,
-				030DE75228E00D86006DCC12 /* Measurement.swift */,
 				0301233328D53E91008A9978 /* World.swift */,
 			);
 			path = Heartbeat;
