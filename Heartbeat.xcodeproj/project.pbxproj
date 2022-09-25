@@ -13,7 +13,8 @@
 		0301233828D7537E008A9978 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301233328D53E91008A9978 /* World.swift */; };
 		0301233928D7537E008A9978 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232D28D53E31008A9978 /* Stock.swift */; };
 		0301233A28D7537E008A9978 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0301232F28D53E3C008A9978 /* Flow.swift */; };
-		03747C0D28DE23E40036678B /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C0C28DE23E40036678B /* Dimension.swift */; };
+		030DE74F28DFF378006DCC12 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DE74E28DFF378006DCC12 /* Double+Extensions.swift */; };
+		030DE75128DFFDEB006DCC12 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DE75028DFFDEB006DCC12 /* Dimension.swift */; };
 		03747C1128DE57020036678B /* Unit+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C1028DE57020036678B /* Unit+Tests.swift */; };
 		03747C1328DE616D0036678B /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03747C1228DE616D0036678B /* Unit.swift */; };
 		03C0858A28D7D6EC0087D0DC /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0858928D7D6EC0087D0DC /* System.swift */; };
@@ -39,7 +40,8 @@
 		0301232D28D53E31008A9978 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		0301232F28D53E3C008A9978 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		0301233328D53E91008A9978 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
-		03747C0C28DE23E40036678B /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		030DE74E28DFF378006DCC12 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		030DE75028DFFDEB006DCC12 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		03747C1028DE57020036678B /* Unit+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+Tests.swift"; sourceTree = "<group>"; };
 		03747C1228DE616D0036678B /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		03C0858928D7D6EC0087D0DC /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
@@ -98,12 +100,13 @@
 			children = (
 				03FF92BB28C3FCE400FC1956 /* Heartbeat.h */,
 				0301231B28D4291E008A9978 /* README.md */,
-				03747C0C28DE23E40036678B /* Dimension.swift */,
 				03747C1228DE616D0036678B /* Unit.swift */,
+				030DE75028DFFDEB006DCC12 /* Dimension.swift */,
 				0301232F28D53E3C008A9978 /* Flow.swift */,
 				0301232D28D53E31008A9978 /* Stock.swift */,
 				03C0858928D7D6EC0087D0DC /* System.swift */,
 				0301233328D53E91008A9978 /* World.swift */,
+				030DE74E28DFF378006DCC12 /* Double+Extensions.swift */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -234,9 +237,10 @@
 			files = (
 				0301233828D7537E008A9978 /* World.swift in Sources */,
 				0301233A28D7537E008A9978 /* Flow.swift in Sources */,
+				030DE74F28DFF378006DCC12 /* Double+Extensions.swift in Sources */,
 				03C0858A28D7D6EC0087D0DC /* System.swift in Sources */,
+				030DE75128DFFDEB006DCC12 /* Dimension.swift in Sources */,
 				03747C1328DE616D0036678B /* Unit.swift in Sources */,
-				03747C0D28DE23E40036678B /* Dimension.swift in Sources */,
 				0301233928D7537E008A9978 /* Stock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,31 +2,14 @@
 //  Dimension.swift
 //  Heartbeat
 //
-//  Created by Joshua Grant on 9/23/22.
+//  Created by Joshua Grant on 9/24/22.
 //
 
 import Foundation
 
-public enum Dimension
-{
-    case volume
-    case length
-    case energy
-    case area
-    case utility
-    case system
-    
-    var baseUnit: Unit
-    {
-        switch self
-        {
-        case .volume: return .liters
-        case .length: return .meters
-        case .energy: return .joules
-        case .area: return .metersSquared
-        case .utility: return .any
-        case .system: return .any
-        }
-    }
-}
+public protocol Dimension {}
 
+public class Number: Dimension {}
+public class Energy: Dimension {}
+public class Length: Dimension {}
+public class Volume: Dimension {}
