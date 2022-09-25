@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class Measurement<DimensionType: Dimension>
+public struct Measurement<DimensionType: Dimension>
 {
     // MARK: - Variables
     
@@ -67,7 +67,7 @@ extension Measurement
     }
     
     static func -= (
-        lhs: Measurement,
+        lhs: inout Measurement,
         rhs: Measurement)
     {
         lhs.value -= rhs.value(in: lhs.unit)
@@ -84,7 +84,7 @@ extension Measurement
     }
     
     static func += (
-        lhs: Measurement,
+        lhs: inout Measurement,
         rhs: Measurement)
     {
         lhs.value += rhs.value(in: lhs.unit)

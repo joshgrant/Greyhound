@@ -84,7 +84,7 @@ final class Measurement_Tests: XCTestCase
     
     func test_addGets()
     {
-        let measurementA = Measurement(value: -2, unit: .meters)
+        var measurementA = Measurement(value: -2, unit: .meters)
         let measurementB = Measurement(value: 3, unit: .meters)
         measurementA += measurementB
         XCTAssertEqual(measurementA.value, 1)
@@ -110,7 +110,7 @@ final class Measurement_Tests: XCTestCase
     
     func test_converted_addGets()
     {
-        let measurementA = Measurement(value: 3, unit: .liters)
+        var measurementA = Measurement(value: 3, unit: .liters)
         let measurementB = Measurement(value: -1, unit: .gallons)
         measurementA += measurementB
         XCTAssertEqual(measurementA.value, -0.79, accuracy: 0.01)
@@ -118,7 +118,7 @@ final class Measurement_Tests: XCTestCase
     
     func test_converted_subtractGets()
     {
-        let measurementA = Measurement(value: 6, unit: .meters)
+        var measurementA = Measurement(value: 6, unit: .meters)
         let measurementB = Measurement(value: 5, unit: .feet)
         measurementA -= measurementB
         XCTAssertEqual(measurementA.value, 4.48, accuracy: 0.01)
