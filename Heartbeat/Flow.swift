@@ -82,31 +82,17 @@ open class Flow<DimensionType: Dimension>: FlowType
         let remainingAmount = highPressure.remainingAmount.valueInBase
         let remainingCapacity = lowPressure.remainingCapacity?.valueInBase
         
-        let limit: Double
+        let limit = min(
+            limitInBase?.multiplied(by: elapsedTime),
+            remainingAmount,
+            remainingCapacity) ?? 0
         
-        // This needs to be CLEANED UPPPP
-        if let limitInBase = limitInBase, let remainingCapacity = remainingCapacity
-        {
-            limit = min(
-                limitInBase * elapsedTime,
-                remainingAmount,
-                remainingCapacity)
-        }
-        else if let remainingCapacity = remainingCapacity
-        {
-            limit = min(remainingAmount, remainingCapacity)
-        }
-        else if let limitInBase = limitInBase
-        {
-            limit = min(limitInBase * elapsedTime, remainingAmount)
-        }
-        else
-        {
-            limit = remainingAmount
-        }
-        
-        let amountToRemoveFromHighPressure = Measurement(value: limit, unit: highPressure.unit)
-        let amountToAddToLowPressure = Measurement(value: limit, unit: lowPressure.unit)
+        let amountToRemoveFromHighPressure = Measurement(
+            value: limit,
+            unit: highPressure.unit)
+        let amountToAddToLowPressure = Measurement(
+            value: limit,
+            unit: lowPressure.unit)
         
         highPressure.current -= amountToRemoveFromHighPressure
         lowPressure.current += amountToAddToLowPressure
