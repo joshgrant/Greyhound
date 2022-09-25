@@ -11,7 +11,7 @@ public class Unit<DimensionType: Dimension>
 {
     // MARK: - Variables
     
-    var ratioToBase: Double
+    public var ratioToBase: Double
     
     // MARK: - Initialization
     
