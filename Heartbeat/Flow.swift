@@ -17,7 +17,7 @@ public protocol FlowType
     func update(_ timeInterval: TimeInterval)
 }
 
-open class Flow<DimensionType: Dimension>
+open class Flow<DimensionType: Dimension>: FlowType
 {
     // MARK: - Functions
     
