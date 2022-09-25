@@ -37,9 +37,10 @@ open class Stock<DimensionType: Dimension>: StockType
         current - min(ideal, maximum ?? ideal)
     }
     
-    public var remainingCapacity: Measurement<DimensionType>
+    public var remainingCapacity: Measurement<DimensionType>?
     {
-        (maximum ?? ideal) - current
+        guard let maximum = maximum else { return nil }
+        return maximum - current
     }
     
     public var remainingAmount: Measurement<DimensionType>

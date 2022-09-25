@@ -66,8 +66,8 @@ final class Stock_Tests: XCTestCase
             current: .init(value: 4, unit: .meters),
             maximum: nil,
             ideal: .init(value: 8, unit: .meters))
-        let value = stock.remainingCapacity.value
-        XCTAssertEqual(value, 4)
+        let value = stock.remainingCapacity?.value
+        XCTAssertNil(value)
     }
     
     func test_remainingCapacity_maximum()
@@ -76,7 +76,7 @@ final class Stock_Tests: XCTestCase
             current: .init(value: 4, unit: .meters),
             maximum: .init(value: 10, unit: .meters),
             ideal: .init(value: 6, unit: .meters))
-        let value = stock.remainingCapacity.value
+        let value = stock.remainingCapacity?.value
         XCTAssertEqual(value, 6)
     }
     
@@ -86,10 +86,10 @@ final class Stock_Tests: XCTestCase
             current: .init(value: 10, unit: .meters),
             maximum: .init(value: 10, unit: .meters),
             ideal: .init(value: 6, unit: .meters))
-        let value = stock.remainingCapacity.value
+        let value = stock.remainingCapacity?.value
         XCTAssertEqual(value, 0)
     }
-    
+
     func test_remainingAmount()
     {
         let stock = Stock(

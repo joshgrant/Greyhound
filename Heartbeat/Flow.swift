@@ -60,7 +60,7 @@ open class Flow<DimensionType: Dimension>
                 limitInBase: limitInBase,
                 elapsedTime: elapsedTime)
         }
-        else
+        else if pressureBInBase > pressureAInBase
         {
             _update(
                 highPressure: stockB,
@@ -73,23 +73,31 @@ open class Flow<DimensionType: Dimension>
         pTimeInterval = timeInterval
     }
     
-    private func _update(highPressure: Stock<DimensionType>, lowPressure: Stock<DimensionType>, limitInBase: Double?, elapsedTime: TimeInterval)
+    private func _update(
+        highPressure: Stock<DimensionType>,
+        lowPressure: Stock<DimensionType>,
+        limitInBase: Double?,
+        elapsedTime: TimeInterval)
     {
         let remainingAmount = highPressure.remainingAmount.valueInBase
-        let remainingCapacity = lowPressure.remainingCapacity.valueInBase
+        let remainingCapacity = lowPressure.remainingCapacity?.valueInBase
         
         let limit: Double
         
-        if let limitInBase = limitInBase
+        if let limitInBase = limitInBase, let remainingCapacity = remainingCapacity
         {
             limit = min(
                 limitInBase * elapsedTime,
                 remainingAmount,
                 remainingCapacity)
         }
-        else
+        else if let remainingCapacity = remainingCapacity
         {
             limit = min(remainingAmount, remainingCapacity)
+        }
+        else
+        {
+            limit = remainingAmount
         }
         
         let amountToRemoveFromHighPressure = Measurement(value: limit, unit: highPressure.unit)
