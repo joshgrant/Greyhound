@@ -17,12 +17,12 @@ public protocol FlowType
     func update(_ timeInterval: TimeInterval)
 }
 
-open class Flow<DimensionType: Dimension, UnitType: Unit<DimensionType>>
+open class Flow<DimensionType: Dimension>
 {
     // MARK: - Functions
     
     public let name: String?
-    public let unit: UnitType
+    public let unit: Unit<DimensionType>
     public var limit: Double?
     public var stockA: Stock<DimensionType>
     public var stockB: Stock<DimensionType>
@@ -34,7 +34,7 @@ open class Flow<DimensionType: Dimension, UnitType: Unit<DimensionType>>
     
     public init(
         name: String? = nil,
-        unit: UnitType,
+        unit: Unit<DimensionType>,
         limit: Double?,
         stockA: Stock<DimensionType>,
         stockB: Stock<DimensionType>)

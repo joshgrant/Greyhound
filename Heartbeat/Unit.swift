@@ -22,7 +22,7 @@ public class Unit<DimensionType: Dimension>
     
     // MARK: - Functions
     
-    func canConvert<D: Dimension>(to unit: Unit<D>) -> Bool
+    func canConvert(to unit: Unit) -> Bool
     {
         self.id == Unit<Number>.any.id ||
         unit.id == Unit<Number>.any.id ||

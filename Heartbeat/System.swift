@@ -14,6 +14,8 @@ open class System
     public var stocks: [any StockType]
     public var flows: [any FlowType]
     
+    public var pressure: Double { 0 }
+    
     // MARK: - Initialization
     
     public init(
@@ -31,55 +33,3 @@ open class System
         flows.forEach { $0.update(timeInterval) }
     }
 }
-  
-//    func stocksTotalCurrent() -> Double
-//    {
-//        stocks.reduce(0) { $0 + $1.current }
-//    }
-//    
-//    func stocksTotalPressure() -> Double
-//    {
-//        stocks.reduce(0) { $0 + $1.pressure }
-//    }
-//    
-//    func stocksTotalMaximum() -> Double?
-//    {
-//        stocks.compactMap { $0.maximum }.reduce(0, +)
-//    }
-//    
-//    func stocksTotalIdeal() -> Double
-//    {
-//        stocks.reduce(0) { $0 + $1.ideal }
-//    }
-//    
-//    public var pressure: Double
-//    {
-//        guard stocks.count > 0 else { return 0 }
-//        let current = stocksTotalCurrent()
-//        let ideal = stocksTotalIdeal()
-//        if let maximum = stocksTotalMaximum()
-//        {
-//            return current - min(ideal, maximum)
-//        }
-//        else
-//        {
-//            return current - ideal
-//        }
-//    }
-//    
-//    public func convertToStock() -> Stock
-//    {
-//        var maximumClosure: Stock.ValueClosure?
-//        
-//        if let totalMaximum = stocksTotalMaximum()
-//        {
-//            maximumClosure = { totalMaximum }
-//        }
-//        
-//        return Stock(
-//            unit: .system,
-//            current: stocksTotalCurrent,
-//            maximum: maximumClosure,
-//            ideal: stocksTotalIdeal)
-//    }
-//}

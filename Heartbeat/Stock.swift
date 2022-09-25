@@ -7,10 +7,35 @@
 
 import Foundation
 
+let _source = Stock(
+    name: "source",
+    unit: Unit<Number>.any,
+    current: .greatest,
+    maximum: nil,
+    ideal: 0)
+
+let _sink = Stock(
+    name: "sink",
+    unit: Unit<Number>.any,
+    current: 0,
+    maximum: nil,
+    ideal: .greatest)
+
+public extension Stock
+{
+    static var source: Stock<Number> { _source }
+    static var sink: Stock<Number> { _sink }
+}
+
 public protocol StockType
 {
     associatedtype DimensionType: Dimension
+    
+    var name: String? { get }
     var unit: Unit<DimensionType> { get }
+    var current: Double { get set }
+    var maximum: Double? { get set }
+    var ideal: Double { get set }
 }
 
 open class Stock<DimensionType: Dimension>: StockType
@@ -28,11 +53,6 @@ open class Stock<DimensionType: Dimension>: StockType
     {
         current - min(ideal, maximum ?? .greatest)
     }
-    
-    // Pressure in base?
-    // Current in base?
-    // Capacity in base?
-    //
     
     // MARK: - Initialization
     
@@ -67,25 +87,4 @@ extension Stock: Hashable
     {
         hasher.combine(id)
     }
-}
-
-let _source = Stock(
-    name: "source",
-    unit: Unit<Number>.any,
-    current: .greatest,
-    maximum: nil,
-    ideal: 0)
-
-let _sink = Stock(
-    name: "sink",
-    unit: Unit<Number>.any,
-    current: 0,
-    maximum: nil,
-    ideal: .greatest)
-
-
-public extension Stock
-{
-    static var source: Stock<Number> { _source }
-    static var sink: Stock<Number> { _sink }
 }
