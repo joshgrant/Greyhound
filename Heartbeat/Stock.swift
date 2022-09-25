@@ -27,13 +27,24 @@ open class Stock<DimensionType: Dimension>: StockType
     public var maximum: Measurement<DimensionType>?
     public var ideal: Measurement<DimensionType>
     
+    public var unit: Unit<DimensionType>
+    {
+        current.unit
+    }
+    
     public var pressure: Measurement<DimensionType>
     {
-        // We need to ensure that we convert
-        // everything to the same unit??
-        // What can measurements do? Are they always the
-        // same?
         current - min(ideal, maximum ?? ideal)
+    }
+    
+    public var remainingCapacity: Measurement<DimensionType>
+    {
+        (maximum ?? ideal) - current
+    }
+    
+    public var remainingAmount: Measurement<DimensionType>
+    {
+        current
     }
     
     // MARK: - Initialization

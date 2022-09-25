@@ -50,9 +50,9 @@ extension Unit: Hashable
 
 let _any = Unit<Number>(ratioToBase: 1)
 let _liters = Unit<Volume>(ratioToBase: 1)
-let _gallons = Unit<Volume>(ratioToBase: 0.26)
+let _gallons = Unit<Volume>(ratioToBase: 3.7854)
 let _meters = Unit<Length>(ratioToBase: 1.0)
-let _feet = Unit<Length>(ratioToBase: 3.28)
+let _feet = Unit<Length>(ratioToBase: 0.3048)
 
 extension Unit
 {

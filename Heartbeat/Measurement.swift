@@ -21,6 +21,18 @@ open class Measurement<DimensionType: Dimension>
         self.value = value
         self.unit = unit
     }
+    
+    // MARK: - Functions
+    
+    var valueInBase: Double
+    {
+        value * unit.ratioToBase
+    }
+    
+    func value(in unit: Unit<DimensionType>) -> Double
+    {
+        value * self.unit.ratioToBase / unit.ratioToBase
+    }
 }
 
 extension Measurement: Comparable
@@ -30,7 +42,7 @@ extension Measurement: Comparable
         rhs: Measurement<DimensionType>)
     -> Bool
     {
-        lhs.value > rhs.value
+        lhs.value < rhs.value
     }
     
     public static func == (
@@ -50,7 +62,31 @@ extension Measurement
     -> Measurement
     {
         Measurement(
-            value: lhs.value - rhs.value,
+            value: lhs.value - rhs.value(in: lhs.unit),
             unit: lhs.unit)
+    }
+    
+    static func -= (
+        lhs: Measurement,
+        rhs: Measurement)
+    {
+        lhs.value -= rhs.value(in: lhs.unit)
+    }
+    
+    static func + (
+        lhs: Measurement,
+        rhs: Measurement)
+    -> Measurement
+    {
+        Measurement(
+            value: lhs.value + rhs.value(in: lhs.unit),
+            unit: lhs.unit)
+    }
+    
+    static func += (
+        lhs: Measurement,
+        rhs: Measurement)
+    {
+        lhs.value += rhs.value(in: lhs.unit)
     }
 }
