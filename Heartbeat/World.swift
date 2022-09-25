@@ -38,7 +38,7 @@ open class World: System
     private static func makeCounter(with iterations: Stock<Number>) -> Flow<Number>
     {
         .init(limit: .init(value: 1, unit: .any),
-              stockA: .sink,
+              stockA: .source,
               stockB: iterations)
     }
 }

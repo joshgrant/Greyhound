@@ -84,6 +84,7 @@ open class Flow<DimensionType: Dimension>: FlowType
         
         let limit: Double
         
+        // This needs to be CLEANED UPPPP
         if let limitInBase = limitInBase, let remainingCapacity = remainingCapacity
         {
             limit = min(
@@ -94,6 +95,10 @@ open class Flow<DimensionType: Dimension>: FlowType
         else if let remainingCapacity = remainingCapacity
         {
             limit = min(remainingAmount, remainingCapacity)
+        }
+        else if let limitInBase = limitInBase
+        {
+            limit = min(limitInBase * elapsedTime, remainingAmount)
         }
         else
         {
