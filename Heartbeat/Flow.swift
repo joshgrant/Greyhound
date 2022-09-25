@@ -22,8 +22,7 @@ open class Flow<DimensionType: Dimension>
     // MARK: - Functions
     
     public let name: String?
-    public let unit: Unit<DimensionType>
-    public var limit: Double?
+    public var limit: Measurement<DimensionType>?
     public var stockA: Stock<DimensionType>
     public var stockB: Stock<DimensionType>
     // Limit in base?
@@ -34,13 +33,11 @@ open class Flow<DimensionType: Dimension>
     
     public init(
         name: String? = nil,
-        unit: Unit<DimensionType>,
-        limit: Double?,
+        limit: Measurement<DimensionType>?,
         stockA: Stock<DimensionType>,
         stockB: Stock<DimensionType>)
     {
         self.name = name
-        self.unit = unit
         self.limit = limit
         self.stockA = stockA
         self.stockB = stockB
