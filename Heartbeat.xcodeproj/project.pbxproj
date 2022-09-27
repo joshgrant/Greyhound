@@ -77,7 +77,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03747B9C28D7DBB20036678B /* Frameworks */ = {
+		0334550F28E0FC4D00F203CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -90,7 +90,7 @@
 				03FF92BA28C3FCE400FC1956 /* Heartbeat */,
 				03FF92C628C3FCE500FC1956 /* HeartbeatTests */,
 				03FF92B928C3FCE400FC1956 /* Products */,
-				03747B9C28D7DBB20036678B /* Frameworks */,
+				0334550F28E0FC4D00F203CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					03FF92B728C3FCE400FC1956 = {

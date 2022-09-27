@@ -69,7 +69,6 @@ open class Flow<DimensionType: Dimension>: FlowType
                 elapsedTime: elapsedTime)
         }
         
-        
         pTimeInterval = timeInterval
     }
     
