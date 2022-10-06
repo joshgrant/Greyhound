@@ -11,6 +11,7 @@ public class Unit<DimensionType: Dimension>
 {
     // MARK: - Variables
     
+    public var id = UUID()
     public var ratioToBase: Double
     
     // MARK: - Initialization
@@ -30,7 +31,10 @@ public class Unit<DimensionType: Dimension>
     }
 }
 
-extension Unit: Identifiable {}
+extension Unit: Identifiable
+{
+    public typealias ID = UUID
+}
 
 extension Unit: Hashable
 {

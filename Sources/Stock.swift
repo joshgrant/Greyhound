@@ -21,6 +21,8 @@ open class Stock<DimensionType: Dimension>: StockType
 {
     // MARK: - Variables
     
+    public var id = UUID()
+    
     public let name: String?
     
     public var current: Measurement<DimensionType>
@@ -63,7 +65,10 @@ open class Stock<DimensionType: Dimension>: StockType
     }
 }
 
-extension Stock: Identifiable {}
+extension Stock: Identifiable
+{
+    public typealias ID = UUID
+}
 
 extension Stock: Hashable
 {
