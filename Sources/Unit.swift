@@ -66,19 +66,28 @@ let _calories = Unit<Energy>(ratioToBase: 4.184)
 let _squareMeters = Unit<Area>(ratioToBase: 1)
 let _acres = Unit<Area>(ratioToBase: 4046.86)
 
+let _grams = Unit<Mass>(ratioToBase: 1)
+let _kilograms = Unit<Mass>(ratioToBase: 1000)
+let _pounds = Unit<Mass>(ratioToBase: 453.592)
+
+
 extension Unit
 {
-    static var any: Unit<Number> { _any }
+    public static var any: Unit<Number> { _any }
     
-    static var liters: Unit<Volume> { _liters }
-    static var gallons: Unit<Volume> { _gallons }
+    public static var liters: Unit<Volume> { _liters }
+    public static var gallons: Unit<Volume> { _gallons }
     
-    static var meters: Unit<Length> { _meters }
-    static var feet: Unit<Length> { _feet }
+    public static var meters: Unit<Length> { _meters }
+    public static var feet: Unit<Length> { _feet }
     
-    static var joules: Unit<Energy> { _joules }
-    static var calories: Unit<Energy> { _calories }
+    public static var joules: Unit<Energy> { _joules }
+    public static var calories: Unit<Energy> { _calories }
     
-    static var squareMeters: Unit<Area> { _squareMeters }
-    static var acres: Unit<Area> { _acres }
+    public static var squareMeters: Unit<Area> { _squareMeters }
+    public static var acres: Unit<Area> { _acres }
+    
+    public static var grams: Unit<Mass> { _grams }
+    public static var kilograms: Unit<Mass> { _kilograms }
+    public static var pounds: Unit<Mass> { _pounds }
 }
