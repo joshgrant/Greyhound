@@ -86,6 +86,31 @@ extension Stock: Hashable
     }
 }
 
+extension Stock: CustomStringConvertible
+{
+    public var description: String
+    {
+        var output = name ?? ""
+        
+        let current = current.value
+        let maximum = maximum?.value.description ?? "∞"
+        let ideal = ideal.value
+        
+        if output.count > 0 { output += "\n" }
+        
+        if current > ideal
+        {
+            output += "|\(ideal) ← \(current) \(maximum)|"
+        }
+        else
+        {
+            output += "|\(current) → \(ideal) \(maximum)|"
+        }
+        
+        return output
+    }
+}
+
 let _source = Stock<Number>(
     name: "source",
     current: Measurement(value: .greatestFiniteMagnitude, unit: .any),
