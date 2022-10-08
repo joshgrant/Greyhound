@@ -20,15 +20,6 @@ public class Unit<DimensionType: Dimension>
     {
         self.ratioToBase = ratioToBase
     }
-    
-    // MARK: - Functions
-    
-    public func canConvert<D: Dimension>(to unit: Unit<D>) -> Bool
-    {
-        self.id == Unit<Number>.any.id ||
-        unit.id == Unit<Number>.any.id ||
-        type(of: self) == type(of: unit)
-    }
 }
 
 extension Unit: Identifiable
